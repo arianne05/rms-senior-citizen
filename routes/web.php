@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SeniorCitizenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+// CONTROLLER ROUTE FOR SENIOR CITIZEN
+Route::controller(SeniorCitizenController::class)->group(function(){
+    Route::get('/senior','index');
 });
