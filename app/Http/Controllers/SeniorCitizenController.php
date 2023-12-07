@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class SeniorCitizenController extends Controller
 {
-    public function index(){
+    public function login(){
         return view('index');
     }
 }

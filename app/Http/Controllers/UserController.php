@@ -9,6 +9,10 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+    public function index(){
+        return view('index');
+    }
+    
     public function adduser(){
         return view('add_user');
     }
