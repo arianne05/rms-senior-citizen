@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // CONTROLLER ROUTE FOR SENIOR CITIZEN
 Route::controller(SeniorCitizenController::class)->group(function(){
-    Route::get('/senior','index');
+    Route::get('/','index');
 });
