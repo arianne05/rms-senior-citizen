@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SeniorCitizenController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +23,15 @@ use Illuminate\Support\Facades\Route;
 Route::controller(SeniorCitizenController::class)->group(function(){
     Route::get('/','index');
 });
+
+Route::controller(UserController::class)->group(function(){
+    Route::get('/adduser','adduser');
+    Route::post('/register','register');
+
+    Route::get('/dashboard','dashboard');
+    Route::post('/process_signin','process_signin');
+
+    Route::post('/logout','logout');
+});
+
 
