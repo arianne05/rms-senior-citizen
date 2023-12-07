@@ -26,13 +26,8 @@
                     <button type="submit" class="text-white bg-sky-700 hover:bg-sky-600 active:bg-sky-700 focus:outline-none focus:ring focus:ring-sky-300 p-1.5 w-full rounded">
                         Save changes
                     </button>
-
-                    <p><a href="/adduser" class="text-black flex justify-end">Add User Account</a></p>
-                       
                   </form>
 
                 </div>
               </div>
-        </body>
-    </html>
 @include('partials.footer')
