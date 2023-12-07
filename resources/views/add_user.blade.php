@@ -1,12 +1,4 @@
-<!doctype html>
-    <html>
-        <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        @vite('resources/css/app.css')
-        </head>
-
-        <body>
+@include('partials.header')
             <div class="min-h-screen flex items-center justify-center">
                 <div class="container rounded-md h-auto p-8 max-w-md h-40 border-solid border-2 border-gray-100 flex flex-col">
                   <h1 class="text-3xl font-bold mb-5 flex justify-center">
@@ -52,5 +44,5 @@
 
                 </div>
               </div>
-        </body>
-    </html>
+
+@include('partials.footer')

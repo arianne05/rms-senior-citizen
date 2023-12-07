@@ -10,15 +10,15 @@ use Illuminate\Validation\Rule;
 class UserController extends Controller
 {
     public function index(){
-        return view('index');
+        return view('index')->with('title','Login');
     }
     
     public function adduser(){
-        return view('add_user');
+        return view('add_user')->with('title','Add User');
     }
 
     public function dashboard(){
-        return view('dashboard');
+        return view('dashboard')->with('title','Senior Citizen System');
     }
 
     //LOGIN USER
