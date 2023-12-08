@@ -18,7 +18,14 @@ class UserController extends Controller
     }
 
     public function dashboard(){
-        return view('dashboard')->with('title','Senior Citizen System');
+         // Retrieve the currently authenticated user
+        $user = auth()->user();
+        // Access the name attribute
+        $userName = $user->name;
+
+        return view('dashboard',['title'=>'Senior Citizen',
+        'alert'=>'Welcome',
+        'name'=>$userName]);
     }
 
     //LOGIN USER
