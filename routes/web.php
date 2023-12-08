@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\SeniorCitizenController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// CONTROLLER ROUTE FOR SENIOR CITIZEN
+Route::controller(SeniorCitizenController::class)->group(function(){
+    Route::get('/login','login')->name('login')->middleware('guest');
 });
+
+Route::controller(UserController::class)->group(function(){
+    Route::get('/','index')->middleware('auth');
+
+    Route::get('/adduser','adduser');
+    Route::post('/register','register');
+
+    Route::get('/dashboard','dashboard')->middleware('auth');
+    Route::post('/process_signin','process_signin');
+
+    Route::post('/logout','logout');
+});
+
+
