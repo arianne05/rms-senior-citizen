@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SeniorCitizen;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
@@ -18,14 +20,18 @@ class UserController extends Controller
     }
 
     public function dashboard(){
+        //Fetch senior table
+        $seniors = SeniorCitizen::all();
+
          // Retrieve the currently authenticated user
         $user = auth()->user();
         // Access the name attribute
         $userName = $user->name;
 
-        return view('dashboard',['title'=>'Senior Citizen',
+        return view('dashboard',  $seniors, ['title'=>'Senior Citizen',
         'alert'=>'Welcome',
-        'name'=>$userName]);
+        'name'=>$userName,
+        'seniors'=> $seniors]);
     }
 
     //LOGIN USER
