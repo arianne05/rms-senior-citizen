@@ -1,8 +1,15 @@
 @include('partials.header')
 
+
 <section class="flex">
     @include('partials.sidebar')
-    <h1>HI {{$alert}}</h1>
+    
+    <div class="flex flex-col w-screen">
+      @include('partials.navbar')
+      <div class=""></div>
+      <h1>HI {{$alert}}</h1>
+    </div>
+   
 </section>
 
 
