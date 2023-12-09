@@ -12,7 +12,7 @@ class SeniorCitizenController extends Controller
     }
 
     public function add_citizen(){
-        $citizens = SeniorCitizen::all();
+        $citizens = SeniorCitizen::all(); 
 
         return view('senior_citizen.add_citizen', ['header'=>'Add New Record',
         'title'=>'Add New',
