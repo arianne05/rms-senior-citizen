@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 // CONTROLLER ROUTE FOR SENIOR CITIZEN
 Route::controller(SeniorCitizenController::class)->group(function(){
     Route::get('/login','login')->name('login')->middleware('guest');
+    Route::get('/add_citizen','add_citizen');
 });
 
 Route::controller(UserController::class)->group(function(){
