@@ -1,5 +1,5 @@
 <aside>
-    <div class="overflow-hidden w-48 h-screen max-h-screen border-solid border-2 border-gray-100 flex justify-center align-center pt-5">
+    <div class="sticky top-0 overflow-hidden w-48 h-screen max-h-screen border-solid border-2 border-gray-100 flex justify-center align-center pt-5">
         <ul class="">
             <li class="font-bold flex align-center text-lg justify-center rounded-lg group pb-7"><h1>RM SYSTEM</h1></li>
            

@@ -1,4 +1,4 @@
-<nav class="flex justify-between p-5 align-center">
+<nav class="sticky top-0 flex justify-between p-5 align-center bg-white border-2 border-white border-b-gray-100">
     <h1 class="text-xl font-bold flex justify-start align-center py-2 w-96">{{$title}}</h1>
 
     <div class="flex justify-end w-full space-x-4">
