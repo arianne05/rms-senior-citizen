@@ -28,7 +28,7 @@ class UserController extends Controller
         // Access the name attribute
         $userName = $user->name;
 
-        return view('dashboard',  $seniors, ['title'=>'Senior Citizen',
+        return view('dashboard',  $seniors, ['title'=>'Dashboard',
         'alert'=>'Welcome',
         'name'=>$userName,
         'seniors'=> $seniors]);
