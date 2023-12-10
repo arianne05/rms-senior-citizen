@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SeniorCitizen;
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Http\Request;
 
 class SeniorCitizenController extends Controller
@@ -19,5 +20,38 @@ class SeniorCitizenController extends Controller
         'citizens'=>$citizens]);
     }
 
+    public function process_add(Request $request){
+        // dd($request);
+
+        $validated = $request->validate([
+            "lastname" => ['required', 'min:4'],
+            "firstname" => ['required', 'min:4'],
+            "middlename" => ['nullable'],
+            "suffix" => ['nullable'],
+            "civil_status" => ['required'],
+            "birthplace" => ['required'],
+            "contact" => ['nullable', 'min:11'],
+            "birthdate" => ['required'],
+            "religion" => ['required'],
+            "sex" => ['required'],
+            "house_number" => ['required'],
+            "barangay" => ['required'],
+            "municipality" => ['required'],
+            "province" => ['required'],
+            "zipcode" => ['nullable'],
+            "gsis" => ['nullable'],
+            "philhealth" => ['nullable'],
+            "tin" => ['nullable'],
+            "sss" => ['nullable'],
+            "beneficiary" => ['nullable'],
+            "contact_beneficiary" => ['nullable', 'min:11'],
+            "status_membership" => ['required']
+       ]); //set rule in validation
+
+       SeniorCitizen::create($validated); //insert validated data in the database
+
+       return redirect('/add_citizen')->with('message', 'Student Added Successfully!');
+
+    }
     
 }
