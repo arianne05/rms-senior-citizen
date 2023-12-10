@@ -29,8 +29,6 @@ class UserController extends Controller
         $userName = $user->name;
 
         return view('dashboard',  $seniors, ['title'=>'Dashboard',
-        'alert'=>'Welcome',
-        'name'=>$userName,
         'seniors'=> $seniors]);
     }
 
@@ -43,7 +41,11 @@ class UserController extends Controller
 
        if(auth()->attempt($validated)){
         $request->session()->regenerate();
-        return redirect('/dashboard')->with('message', 'Welcome');
+        // Retrieve the currently authenticated user
+        $user = auth()->user();
+        // Access the name attribute
+        $userName = $user->name;
+        return redirect('/dashboard')->with('message', 'Welcome ' . $userName);
        }
 
        return back()->withErrors(['email' => 'Login Failed'])->onlyInput('email'); //if email is not existed nor password incorrect
