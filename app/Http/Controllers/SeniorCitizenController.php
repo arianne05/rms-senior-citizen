@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\SeniorCitizen;
-use Illuminate\Contracts\Validation\Rule;
+// use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class SeniorCitizenController extends Controller
@@ -38,11 +39,11 @@ class SeniorCitizenController extends Controller
             "barangay" => ['required'],
             "municipality" => ['required'],
             "province" => ['required'],
-            "zipcode" => ['nullable'],
+            "zipcode" => ['required'],
             "gsis" => ['nullable'],
-            "philhealth" => ['nullable'],
-            "tin" => ['nullable'],
-            "sss" => ['nullable'],
+            "philhealth" => ['nullable', Rule::unique('senior_citizens','philhealth')],
+            "tin" => ['nullable', Rule::unique('senior_citizens','philhealth')],
+            "sss" => ['nullable', Rule::unique('senior_citizens','philhealth')],
             "beneficiary" => ['nullable'],
             "contact_beneficiary" => ['nullable', 'min:11'],
             "status_membership" => ['required']
@@ -50,7 +51,7 @@ class SeniorCitizenController extends Controller
 
        SeniorCitizen::create($validated); //insert validated data in the database
 
-       return redirect('/add_citizen')->with('message', 'Student Added Successfully!');
+       return redirect('/add_citizen')->with('message','Added Successfully');
 
     }
     
