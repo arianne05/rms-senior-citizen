@@ -26,7 +26,7 @@
                          {{-- Lastname --}}
                          <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Lastname <span class="font-bold text-red-600">*</span></label>
-                            <input type="text" name="lastname" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="lastname" value="{{old('lastname')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                             @error('lastname')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -37,7 +37,7 @@
                         {{-- Firstname --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Firstname <span class="font-bold text-red-600">*</span></label>
-                            <input type="text" name="firstname" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="firstname" value="{{old('firstname')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                             @error('firstname')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -48,7 +48,7 @@
                         {{-- Middlename --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Middlename</label>
-                            <input type="text" name="middlename" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="middlename" value="{{old('middlename')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                             @error('middlename')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -62,14 +62,14 @@
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Suffix</label>
                             <select name="suffix" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
-                                <option value="" disabled selected>Select Suffix</option>
-                                <option value="Jr.">Jr.</option>
-                                <option value="Sr.">Sr.</option>
-                                <option value="I">I</option>
-                                <option value="II">II</option>
-                                <option value="III">III</option>
-                                <option value="IV">IV</option>
-                                <option value="IV">M.D</option>
+                                <option value="" disabled {{ old('suffix') == '' ? 'selected' : '' }}>Select Suffix</option>
+                                <option value="Jr." {{ old('suffix') == 'Jr.' ? 'selected' : '' }}>Jr.</option>
+                                <option value="Sr." {{ old('suffix') == 'Sr.' ? 'selected' : '' }}>Sr.</option>
+                                <option value="I" {{ old('suffix') == 'I' ? 'selected' : '' }}>I</option>
+                                <option value="II" {{ old('suffix') == 'II' ? 'selected' : '' }}>II</option>
+                                <option value="III" {{ old('suffix') == 'III' ? 'selected' : '' }}>III</option>
+                                <option value="IV" {{ old('suffix') == 'IV' ? 'selected' : '' }}>IV</option>
+                                <option value="M.D" {{ old('suffix') == 'M.D' ? 'selected' : '' }}>M.D</option>
                             </select>
                             @error('suffix')
                                 <p class="text-red-500 text-xs p-2">
@@ -82,11 +82,11 @@
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Civil Status</label>
                             <select name="civil_status" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
-                                <option value="" disabled selected>Select Status</option>
-                                <option value="Single">Single</option>
-                                <option value="Married">Married</option>
-                                <option value="Divorced">Divorced</option>
-                                <option value="Widowed">Widowed</option>
+                                <option value="" disabled {{ old('civil_status') == '' ? 'selected' : '' }}>Select Status</option>
+                                <option value="Single" {{ old('civil_status') == 'Single' ? 'selected' : '' }}>Single</option>
+                                <option value="Married" {{ old('civil_status') == 'Married' ? 'selected' : '' }}>Married</option>
+                                <option value="Divorced" {{ old('civil_status') == 'Divorced' ? 'selected' : '' }}>Divorced</option>
+                                <option value="Widowed" {{ old('civil_status') == 'Widowed' ? 'selected' : '' }}>Widowed</option>
                             </select>
                             @error('civil_status')
                                 <p class="text-red-500 text-xs p-2">
@@ -99,7 +99,7 @@
                     {{-- Birthplace --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Birthplace</label>
-                        <input type="text" name="birthplace" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="birthplace" value="{{old('birthplace')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         @error('birthplace')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -110,7 +110,7 @@
                     {{-- Contact --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Contact</label>
-                        <input type="number" name="contact" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="number" name="contact" value="{{old('contact')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         @error('contact')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -122,7 +122,7 @@
                         {{-- Bdate --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Birthdate</label>
-                            <input type="date" name="birthdate" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="date" name="birthdate" value="{{old('birthdate')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                             @error('birthdate')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -133,7 +133,7 @@
                         {{-- Religion --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Religion</label>
-                            <input type="text" name="religion" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="religion" value="{{old('religion')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                             @error('religion')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -145,10 +145,10 @@
                         <div class="flex flex-col align-center w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Sex</label>
                             <div class="flex items-center space-x-4 py-2">
-                                <input type="radio" id="male" name="sex" value="Male" class="text-sky-500 focus:ring-sky-500">
+                                <input type="radio" id="male" name="sex" value="Male" class="text-sky-500 focus:ring-sky-500" {{ old('sex') == 'Male' ? 'checked' : '' }}>
                                 <label for="male">Male</label>
-
-                                <input type="radio" id="female" name="sex" value="Female" class="text-pink-500 focus:ring-pink-500">
+                            
+                                <input type="radio" id="female" name="sex" value="Female" class="text-pink-500 focus:ring-pink-500" {{ old('sex') == 'Female' ? 'checked' : '' }}>
                                 <label for="female">Female</label>
                             </div>
                             @error('sex')
@@ -166,7 +166,7 @@
                     {{-- Unit/House Number --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Unit/House Number</label>
-                        <input type="text" name="house_number" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="house_number" value="{{old('house_number')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         @error('house_number')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -178,7 +178,7 @@
                         {{-- Barangay --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Barangay</label>
-                            <input type="text" name="barangay" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="barangay" value="{{old('barangay')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                             @error('barangay')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -189,7 +189,7 @@
                          {{-- Municipality --}}
                          <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Municipality</label>
-                            <input type="text" name="municipality" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="municipality" value="{{old('municipality')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                             @error('municipality')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -202,7 +202,7 @@
                         {{-- Province --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Province</label>
-                            <input type="text" name="province" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="province" value="{{old('province')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                             @error('province')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -213,7 +213,7 @@
                          {{-- Zip Code --}}
                          <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Zip Code</label>
-                            <input type="number" name="zipcode" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="number" name="zipcode" value="{{old('zipcode')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                             @error('zipcode')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -230,7 +230,7 @@
                     {{-- GSIS --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">GSIS</label>
-                        <input type="text" name="gsis" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="gsis" value="{{old('gsis')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         @error('gsis')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -241,7 +241,7 @@
                     {{-- Philhealth --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Philhealth</label>
-                        <input type="text" name="philhealth" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="philhealth" value="{{old('philhealth')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         @error('philhealth')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -252,7 +252,7 @@
                     {{-- Tin --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Tin</label>
-                        <input type="text" name="tin" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="tin" value="{{old('tin')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         @error('tin')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -263,7 +263,7 @@
                     {{-- SSS --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">SSS</label>
-                        <input type="text" name="sss" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="sss" value="{{old('sss')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         @error('sss')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -278,7 +278,7 @@
                     {{-- Beneficiary --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Beneficiaries</label>
-                        <input type="text" name="beneficiary" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="beneficiary" value="{{old('beneficiary')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         @error('beneficiary')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -289,7 +289,7 @@
                     {{-- Contact Beneficiary --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Beneficiaries Contact</label>
-                        <input type="number" name="contact_beneficiary" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="number" name="contact_beneficiary" value="{{old('contact_beneficiary')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         @error('contact_beneficiary')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -326,20 +326,21 @@
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Membership Status</label>
                         <div class="flex flex-col">
                             <div class="flex items-center space-x-2">
-                                <input type="radio" name="status_membership" value="Person w/ Disability" class="text-sky-500 focus:ring-sky-500">
+                                <input type="radio" name="status_membership" value="Person w/ Disability" class="text-sky-500 focus:ring-sky-500" {{ old('status_membership') == 'Person w/ Disability' ? 'checked' : '' }}>
                                 <label>Person w/ Disability (PWD)</label>
                             </div>
-                            
+                        
                             <div class="flex items-center space-x-2">
-                                <input type="radio" name="status_membership" value="Pension" class="text-pink-500 focus:ring-pink-500">
+                                <input type="radio" name="status_membership" value="Pension" class="text-pink-500 focus:ring-pink-500" {{ old('status_membership') == 'Pension' ? 'checked' : '' }}>
                                 <label>Pension</label>
                             </div>
-
+                        
                             <div class="flex items-center space-x-2">
-                                <input type="radio" name="status_membership" value="Non-Pension" class="text-pink-500 focus:ring-pink-500">
+                                <input type="radio" name="status_membership" value="Non-Pension" class="text-pink-500 focus:ring-pink-500" {{ old('status_membership') == 'Non-Pension' ? 'checked' : '' }}>
                                 <label>Non-Pension</label>
                             </div>
                         </div>
+                        
                         @error('status_membership')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -371,6 +372,9 @@
     </div>
 
 </section>
+
+{{-- Component --}}
+<x-message />
 
 <script>
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
