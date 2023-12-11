@@ -35,6 +35,9 @@ Route::controller(UserController::class)->group(function(){
     Route::get('/dashboard','dashboard')->middleware('auth');
     Route::post('/process_signin','process_signin');
 
+    Route::get('/barangay','barangay')->middleware('auth');
+    Route::get('/view_barangay/{barangay}','view_barangay')->middleware('auth');
+
     Route::post('/logout','logout');
 });
 
