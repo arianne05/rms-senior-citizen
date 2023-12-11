@@ -29,6 +29,10 @@ Route::controller(SeniorCitizenController::class)->group(function(){
     Route::put('/process_edit/{id}','process_edit');
 
     Route::get('/delete_citizen/{id}','delete_citizen');
+
+    Route::get('/view_citizen/{id}','view_citizen');
+
+
 });
 
 Route::controller(UserController::class)->group(function(){
