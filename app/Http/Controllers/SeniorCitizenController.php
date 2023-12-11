@@ -146,5 +146,10 @@ class SeniorCitizenController extends Controller
         $seniorCitizen->update($validated);
         return back()->with('message', 'Data Successfully Updated');
     }
+
+    public function delete_citizen(SeniorCitizen $id){
+        $id->delete();
+        return back()->with('message','Deleted Successfully');
+    }
     
 }

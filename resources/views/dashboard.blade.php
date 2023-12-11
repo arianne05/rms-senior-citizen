@@ -32,9 +32,9 @@
                     <td>{{$senior->middlename}}</td>
                     <td>{{$senior->sex}}</td>
                     <td>{{$senior->birthdate}}</td>
-                    <td class="flex">
+                    <td class="flex gap-x-3">
                       <a href="/edit_citizen/{{$senior->id}}">Edit</a>
-                      <button>Delete</button></td>
+                      <a href="/delete_citizen/{{$senior->id}}">Delete</a></td>
                 </tr>
               @endforeach
           </tbody>
