@@ -85,7 +85,7 @@
                                 <option value="" disabled {{ old('civil_status') == '' ? 'selected' : '' }}>Select Status</option>
                                 <option value="Single" {{ old('civil_status') == 'Single' ? 'selected' : '' }}>Single</option>
                                 <option value="Married" {{ old('civil_status') == 'Married' ? 'selected' : '' }}>Married</option>
-                                <option value="Divorced" {{ old('civil_status') == 'Divorced' ? 'selected' : '' }}>Divorced</option>
+                                <option value="Separated" {{ old('civil_status') == 'Separated' ? 'selected' : '' }}>Separated</option>
                                 <option value="Widowed" {{ old('civil_status') == 'Widowed' ? 'selected' : '' }}>Widowed</option>
                             </select>
                             @error('civil_status')
