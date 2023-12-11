@@ -32,7 +32,9 @@
                     <td>{{$senior->middlename}}</td>
                     <td>{{$senior->sex}}</td>
                     <td>{{$senior->birthdate}}</td>
-                    <td><button>Edit</button> <button>Delete</button></td>
+                    <td class="flex">
+                      <a href="/edit_citizen/{{$senior->id}}">Edit</a>
+                      <button>Delete</button></td>
                 </tr>
               @endforeach
           </tbody>
