@@ -24,6 +24,9 @@ Route::controller(SeniorCitizenController::class)->group(function(){
     Route::get('/login','login')->name('login')->middleware('guest');
     Route::get('/add_citizen','add_citizen');
     Route::post('/process_add','process_add');
+
+    Route::get('/edit_citizen/{id}','edit_citizen');
+    Route::put('/process_edit/{id}','process_edit');
 });
 
 Route::controller(UserController::class)->group(function(){
