@@ -6,6 +6,7 @@ use App\Models\SeniorCitizen;
 // use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class SeniorCitizenController extends Controller
 {
@@ -49,10 +50,41 @@ class SeniorCitizenController extends Controller
             "status_membership" => ['required']
        ]); //set rule in validation
 
+        //save img query
+            if($request->hasFile('senior_img')){ //Validate for image
+                $request->validate([
+                    "senior_img" => 'mimes:jpeg,png,bmp,tiff |max:8192' //rules to validate image must be on jpeg,png and 4mb
+                ]);
+                
+                $filenameWithExtension = $request->file("senior_img");
+                $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME);
+                $extension = $request->file("senior_img")->getClientOriginalExtension();
+        
+                $filenameToStore = $filename.'_'.time().'.'.$extension;
+                $smallThumbnail= $filename.'_'.time().'.'.$extension;
+        
+                $request->file('senior_img')->storeAs('public/citizen_profile', $filenameToStore);
+                $request->file("senior_img")->storeAs('public/citizen_profile/thumbnail', $smallThumbnail);
+                
+                $thumbnail = 'storage/citizen_profile/thumbnail/'.$smallThumbnail;
+                $this->createThumbnail($thumbnail, 150, 93);
+        
+                $validated['senior_img'] = $filenameToStore; //save to the citizen_profile col in the db
+            }
+
        SeniorCitizen::create($validated); //insert validated data in the database
 
        return redirect('/add_citizen')->with('message','Added Successfully');
 
     }
+
+    //UPLOAD FILE/IMG BY GETTING THE NAME PATH
+    public function createThumbnail($path, $width, $height){
+        $img = Image::make($path)->resize($width, $height, function($constraint){
+            $constraint->aspectRatio();
+        });
+        $img->save($path);
+    }
+
     
 }

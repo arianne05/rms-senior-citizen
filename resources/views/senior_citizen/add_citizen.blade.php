@@ -9,7 +9,7 @@
         {{-- Navbar --}}
         @include('partials.navbar')
 
-        <form action="/process_add" method="POST">
+        <form action="/process_add" method="POST" enctype="multipart/form-data">
             @csrf
        
         <div class="flex m-7 gap-2">
@@ -304,19 +304,26 @@
             {{-- Left Section --}}
             <div class="flex flex-auto overflow-hidden sticky top 0 justify-center">
                 <div class="fixed top 0 p-8 border-solid border-2 border-gray-100 rounded-lg overflow-hidden">
-                    <div class="flex items-center space-x-6">
+                    <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Upload Image</label>
+                    <div class="flex items-center space-x-6 mt-2">
+                        @php $default_img="https://avatars.dicebear.com/api/initials/" @endphp
                         <div class="shrink-0">
-                            <img class="h-16 w-16 object-cover rounded-full" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1361&q=80" alt="Current profile photo" />
+                            <img class="h-16 w-16 object-cover rounded-full" src="https://api.dicebear.com/7.x/initials/svg?seed=Upload Image" alt="avatar" />
                         </div>
                         <label class="block">
                             <span class="sr-only">Choose profile photo</span>
-                            <input type="file" class="block w-full text-sm text-slate-500
+                            <input type="file" name="senior_img" class="block w-full text-sm text-slate-500
                             file:mr-4 file:py-2 file:px-4
                             file:rounded-full file:border-0
                             file:text-sm file:font-semibold
                             file:bg-violet-50 file:text-violet-700
                             hover:file:bg-violet-100
                             "/>
+                            @error('senior_img')
+                                <p class="text-red-500 text-xs p-2">
+                                    {{$message}}
+                                </p>
+                            @enderror
                         </label>
                     </div>
                     <br>
