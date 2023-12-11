@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 // CONTROLLER ROUTE FOR SENIOR CITIZEN
 Route::controller(SeniorCitizenController::class)->group(function(){
     Route::get('/login','login')->name('login')->middleware('guest');
+    Route::get('/add_citizen','add_citizen');
+    Route::post('/process_add','process_add');
 });
 
 Route::controller(UserController::class)->group(function(){
@@ -32,6 +34,9 @@ Route::controller(UserController::class)->group(function(){
 
     Route::get('/dashboard','dashboard')->middleware('auth');
     Route::post('/process_signin','process_signin');
+
+    Route::get('/barangay','barangay')->middleware('auth');
+    Route::get('/view_barangay/{barangay}','view_barangay')->middleware('auth');
 
     Route::post('/logout','logout');
 });

@@ -28,9 +28,7 @@ class UserController extends Controller
         // Access the name attribute
         $userName = $user->name;
 
-        return view('dashboard',  $seniors, ['title'=>'Senior Citizen',
-        'alert'=>'Welcome',
-        'name'=>$userName,
+        return view('dashboard',  $seniors, ['title'=>'Dashboard',
         'seniors'=> $seniors]);
     }
 
@@ -43,7 +41,11 @@ class UserController extends Controller
 
        if(auth()->attempt($validated)){
         $request->session()->regenerate();
-        return redirect('/dashboard')->with('message', 'Welcome');
+        // Retrieve the currently authenticated user
+        $user = auth()->user();
+        // Access the name attribute
+        $userName = $user->name;
+        return redirect('/dashboard')->with('message', 'Welcome ' . $userName);
        }
 
        return back()->withErrors(['email' => 'Login Failed'])->onlyInput('email'); //if email is not existed nor password incorrect
@@ -71,5 +73,20 @@ class UserController extends Controller
         $request->session()->regenerateToken(); //reset token
 
         return redirect('/')->with('message', 'Logout Success');
+    }
+
+    public function barangay(){
+        $barangay = DB::table('senior_citizens')
+                ->select(DB::raw('count(*) as barangay_count, barangay'))
+                ->groupBy('barangay')
+                ->get();
+        return view('barangay', ['title'=>'Barangay',
+                    'data_barangay'=>$barangay]);
+    }
+
+    public function view_barangay(Request $request, $barangay){
+        $barangay_list = SeniorCitizen::where('barangay', $barangay)->get();
+        return view("senior_citizen.view_barangay", ['title'=>$barangay,
+        'barangay_list' => $barangay_list]);
     }
 }

@@ -1,5 +1,5 @@
-<nav class="flex justify-between p-5 align-center">
-    <h1 class="text-xl font-bold flex justify-start align-center py-2 px-4">Dashboard</h1>
+<nav class="sticky top-0 flex justify-between p-5 align-center bg-white border-2 border-white border-b-gray-100">
+    <h1 class="text-xl font-bold flex justify-start align-center py-2 w-96">{{$title}}</h1>
 
     <div class="flex justify-end w-full space-x-4">
         
@@ -14,9 +14,11 @@
         
         <ul class="flex space-x-4">
             <li>
+                <a href="/add_citizen">
                 <button class="flex align-center font-medium text-slate-100 bg-sky-500 hover:bg-sky-700 rounded-lg py-2 px-8 mr-5">
                     <span class="material-symbols-outlined">add</span>Add New
                 </button>
+                </a>
             </li>
         </ul>
     </div>
