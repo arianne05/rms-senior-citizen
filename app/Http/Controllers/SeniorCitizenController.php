@@ -147,9 +147,16 @@ class SeniorCitizenController extends Controller
         return back()->with('message', 'Data Successfully Updated');
     }
 
+    //DELETE FUNCTION
     public function delete_citizen(SeniorCitizen $id){
         $id->delete();
         return back()->with('message','Deleted Successfully');
+    }
+
+    //VIEW CITIZEN
+    public function view_citizen(Request $request, $id){
+        $citizens = SeniorCitizen::where('id', $id)->first();
+        return view("senior_citizen.view_citizen", ['title'=>'View','citizens'=>$citizens]);
     }
     
 }
