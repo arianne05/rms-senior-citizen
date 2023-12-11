@@ -74,4 +74,19 @@ class UserController extends Controller
 
         return redirect('/')->with('message', 'Logout Success');
     }
+
+    public function barangay(){
+        $barangay = DB::table('senior_citizens')
+                ->select(DB::raw('count(*) as barangay_count, barangay'))
+                ->groupBy('barangay')
+                ->get();
+        return view('barangay', ['title'=>'Barangay',
+                    'data_barangay'=>$barangay]);
+    }
+
+    public function view_barangay(Request $request, $barangay){
+        $barangay_list = SeniorCitizen::where('barangay', $barangay)->get();
+        return view("senior_citizen.view_barangay", ['title'=>$barangay,
+        'barangay_list' => $barangay_list]);
+    }
 }
