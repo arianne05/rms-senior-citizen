@@ -10,7 +10,7 @@
                             <span class="material-symbols-outlined pr-2">grid_view</span>Dashboard
                         </li>
                     </a>        
-                    <a href="">
+                    <a href="/barangay">
                         <li class="flex align-center mb-2 mt-2 rounded-lg py-1.5 px-7 bg-white group hover:bg-sky-500 hover:text-white">
                             <span class="material-symbols-outlined pr-2">holiday_village</span>Barangay
                         </li>
