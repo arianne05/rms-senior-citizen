@@ -336,7 +336,7 @@
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Membership Status</label>
                         <div class="flex flex-col">
                             <div class="flex items-center space-x-2">
-                                <input type="radio" name="status_membership" value="Person w/ Disability" class="text-sky-500 focus:ring-sky-500" {{ $citizens->status_membership == 'Person w/ Disability' ? 'checked' : '' }}>
+                                <input type="radio" name="status_membership" value="PWD" class="text-sky-500 focus:ring-sky-500" {{ $citizens->status_membership == 'Person w/ Disability' ? 'checked' : '' }}>
                                 <label>Person w/ Disability (PWD)</label>
                             </div>
                         
