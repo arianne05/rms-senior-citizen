@@ -47,6 +47,9 @@ Route::controller(UserController::class)->group(function(){
     Route::get('/barangay','barangay')->middleware('auth');
     Route::get('/view_barangay/{barangay}','view_barangay')->middleware('auth');
 
+    Route::get('/citizen','citizen');
+    Route::post('/filter_process','filter_process');
+
     Route::post('/logout','logout');
 });
 
