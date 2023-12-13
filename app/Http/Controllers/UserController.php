@@ -75,6 +75,7 @@ class UserController extends Controller
         return redirect('/')->with('message', 'Logout Success');
     }
 
+    //TEMPLATE BARANGAY PAGE
     public function barangay(){
         $barangay = DB::table('senior_citizens')
                 ->select(DB::raw('count(*) as barangay_count, barangay'))
@@ -84,9 +85,92 @@ class UserController extends Controller
                     'data_barangay'=>$barangay]);
     }
 
+     //TEMPLATE VIEW BARANGAY PAGE
     public function view_barangay(Request $request, $barangay){
         $barangay_list = SeniorCitizen::where('barangay', $barangay)->get();
         return view("senior_citizen.view_barangay", ['title'=>$barangay,
         'barangay_list' => $barangay_list]);
     }
+
+     //TEMPLATE CITIZEN PAGE
+     public function citizen(){
+        $seniors = SeniorCitizen::all();
+        $totalCount = DB::table('senior_citizens')->count();
+        $totalMaleCount = DB::table('senior_citizens')
+            ->where('sex', 'Male')
+            ->count();
+        $totalFemaleCount = DB::table('senior_citizens')
+            ->where('sex', 'Female')
+            ->count();
+
+        return view('citizen', ['title'=>'Citizen','seniors'=> $seniors, 
+        'totalCount'=>$totalCount,
+        'totalMaleCount'=>$totalMaleCount,
+        'totalFemaleCount'=>$totalFemaleCount
+        ]);
+    }
+
+    public function filter_process(Request $request){
+
+        $validated = $request->validate([
+            "sex" => ['nullable'],
+            "civil_status" => ['nullable'],
+            "status_membership" => ['nullable'],
+            "dateto" => ['nullable'],
+            "datefrom" => ['nullable']
+        ]);
+    
+        $sex = $validated['sex'];
+        $civil = $validated['civil_status'];
+        $membership = $validated['status_membership'];
+        $dateto = $validated['dateto'];
+        $datefrom = $validated['datefrom'];
+
+        $seniorsQuery = SeniorCitizen::query();
+        
+
+        if ($sex) {
+            $seniorsQuery->where('sex', $sex);
+        }
+
+        if ($civil) {
+            $seniorsQuery->where('civil_status', $civil);
+        }
+
+        if ($membership) {
+            $seniorsQuery->where('status_membership', $membership);
+        }
+
+        if ($datefrom) {
+            $seniorsQuery->where(function ($query) use ($datefrom) {
+                $query->where('birthdate', '=', $datefrom);
+            });
+        }
+        
+        if ($datefrom && $dateto) {
+            $seniorsQuery->where(function ($query) use ($datefrom, $dateto) {
+                $query->where('birthdate', '>=', $datefrom)
+                    ->where('birthdate', '<=', $dateto);
+            });
+        }
+
+        $seniors = $seniorsQuery->get();
+        $totalCount =  $seniorsQuery->count();
+        $totalMaleCount = DB::table('senior_citizens')
+            ->where('sex', 'Male')
+            ->count();
+        $totalFemaleCount = DB::table('senior_citizens')
+            ->where('sex', 'Female')
+            ->count();
+    
+        return view('citizen')->with([
+            'title' => 'Citizen',
+            'seniors' => $seniors,
+            'totalCount' => $totalCount,
+            'totalMaleCount' => $totalMaleCount,
+            'totalFemaleCount' => $totalFemaleCount
+        ]);
+    }
+    
+    
 }
