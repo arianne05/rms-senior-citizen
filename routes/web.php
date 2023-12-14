@@ -51,6 +51,7 @@ Route::controller(UserController::class)->group(function(){
     Route::post('/filter_process','filter_process');
 
     Route::get('/account','account');
+    Route::post('/process_user_update/{id}','process_user_update');
 
     Route::post('/logout','logout');
 });
