@@ -107,4 +107,7 @@
     </div>
 </section>
 
+{{-- Component --}}
+<x-message />
+
 @include('partials.footer')

@@ -205,6 +205,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->update($validated);
 
+        // redirect('account')->with('message', 'Data Successfully Updated');
         return back()->with('message', 'Data Successfully Updated');
     }
 
