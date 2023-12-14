@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\SeniorCitizen;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -171,6 +172,18 @@ class UserController extends Controller
             'totalFemaleCount' => $totalFemaleCount
         ]);
     }
-    
+
+    //ACCOUNT TEMPLATE
+    public function account(Request $request){
+        $user = Auth::user();
+        $userId = $user->id;
+
+        $userdetail = User::find($userId);
+        $alluser = User::all();
+
+        return view('account',['title'=>'Account', 
+        'userdetail'=> $userdetail,
+        'alluser'=>$alluser]);
+    }
     
 }
