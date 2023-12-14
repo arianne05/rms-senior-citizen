@@ -50,6 +50,8 @@ Route::controller(UserController::class)->group(function(){
     Route::get('/citizen','citizen');
     Route::post('/filter_process','filter_process');
 
+    Route::get('/account','account');
+
     Route::post('/logout','logout');
 });
 
