@@ -186,4 +186,26 @@ class UserController extends Controller
         'alluser'=>$alluser]);
     }
     
+    // PROCESS USER UPDATE
+    public function process_user_update(Request $request, $id){
+        $validated = $request->validate([
+            "name" => ['required', 'min:4'],
+            "email" => ['required', 'email', Rule::unique('users', 'email')->ignore($id)],
+            "password" => 'nullable|confirmed|min:6',
+        ]);
+
+        // Remove password from the validated data if it's null
+        if ($validated['password'] === null) {
+            unset($validated['password']);
+        } else {
+            // Hash the password if it's not null
+            $validated['password'] = Hash::make($validated['password']);
+        }
+
+        $user = User::find($id);
+        $user->update($validated);
+
+        return back()->with('message', 'Data Successfully Updated');
+    }
+
 }
