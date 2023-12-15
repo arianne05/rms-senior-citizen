@@ -29,7 +29,7 @@
                           <td>{{$list->middlename}}</td>
                           <td>{{$list->sex}}</td>
                           <td>{{$list->birthdate}}</td>
-                          <td><a href="/edit_citizen/{{$list->id}}">Edit</a> <button>Delete</button></td>
+                          <td><a href="/edit_citizen/{{$list->id}}">Edit</a> <a href="/delete_citizen/{{$list->id}}">Delete</button></a>
                       </tr>
                     @endforeach
                 </tbody>
