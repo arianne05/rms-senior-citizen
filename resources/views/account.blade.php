@@ -11,7 +11,7 @@
         {{-- Main Section --}}
         <div class="container flex flex-col w-full h-auto p-10">
             <div class="flex gap-x-4">
-                <form action="/process_user_update/{{$userdetail->id}}}" method="POST" class="flex flex-col w-1/2 p-5">
+                <form action="/process_user_update/{{$userdetail->id}}}" id="myForm" method="POST" class="flex flex-col w-1/2 p-5">
                     @csrf
                     <h1 class="font-bold text-xl">Personal Detail</h1>
                     <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Name</label>
@@ -46,7 +46,7 @@
                             </p>
                     @enderror
 
-                    <button type="submit" class="w-4/2 font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl p-3 px-12 mt-8 text-center">Save Changes</button>
+                    <button type="submit" id="saveChangesBtn" class="w-4/2 font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl p-3 px-12 mt-8 text-center">Save Changes</button>
                 </form>
                 <div class="w-1/2 h-auto border-2 border-solid border-gray-200 p-5 rounded-xl">
                     <h1 class="font-bold text-xl">User Overview</h1>
@@ -118,5 +118,6 @@
 
 {{-- Component --}}
 <x-message />
+<x-save_message />
 
 @include('partials.footer')

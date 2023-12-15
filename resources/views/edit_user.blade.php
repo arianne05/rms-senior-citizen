@@ -9,7 +9,7 @@
 
         {{-- Main Section --}}
         <div class="container flex flex-col w-full h-auto p-10">
-            <form action="/process_edit_user/{{$users->id}}" method="post">
+            <form action="/process_edit_user/{{$users->id}}" id="myForm" method="post">
                 @csrf
                 <label class="block mb-5">
                     <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">Name</span>
@@ -82,7 +82,7 @@
                     
                 </label>
 
-                <button type="submit" class="text-white bg-sky-700 hover:bg-sky-600 active:bg-sky-700 focus:outline-none focus:ring focus:ring-sky-300 p-1.5 w-full rounded">
+                <button type="submit" id="saveChangesBtn" class="text-white bg-sky-700 hover:bg-sky-600 active:bg-sky-700 focus:outline-none focus:ring focus:ring-sky-300 p-1.5 w-full rounded">
                     Save Changes
                 </button>
               </form>
@@ -92,5 +92,6 @@
 
 {{-- Component --}}
 <x-message />
+<x-save_message />
 @include('partials.footer')
 

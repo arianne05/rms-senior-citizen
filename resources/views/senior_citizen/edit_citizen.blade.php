@@ -9,7 +9,7 @@
         {{-- Navbar --}}
         @include('partials.navbar')
 
-        <form action="/process_edit/{{$citizens->id}}" method="POST" enctype="multipart/form-data">
+        <form action="/process_edit/{{$citizens->id}}" method="POST" id="myForm" enctype="multipart/form-data">
             @method('PUT')
             @csrf
         
@@ -336,7 +336,7 @@
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Membership Status</label>
                         <div class="flex flex-col">
                             <div class="flex items-center space-x-2">
-                                <input type="radio" name="status_membership" value="PWD" class="text-sky-500 focus:ring-sky-500" {{ $citizens->status_membership == 'Person w/ Disability' ? 'checked' : '' }}>
+                                <input type="radio" name="status_membership" value="PWD" class="text-sky-500 focus:ring-sky-500" {{ $citizens->status_membership == 'PWD' ? 'checked' : '' }}>
                                 <label>Person w/ Disability (PWD)</label>
                             </div>
                         
@@ -369,7 +369,7 @@
                     <br>
                     <div class="flex flex-auto justify-center gap-4 w-full p-4">
                         <a href="/dashboard" class="font-medium text-red-700 bg-red-200 hover:bg-red-700 hover:text-white rounded-xl py-2 px-9">Cancel</a>
-                        <button type="submit" class="font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl py-2 px-5">Update Record</button>
+                        <button type="submit" id="saveChangesBtn" class="font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl py-2 px-5">Update Record</button>
                     </div>
                     
                 </div>
@@ -385,6 +385,7 @@
 
 {{-- Component --}}
 <x-message />
+<x-save_message />
 
 <script>
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
