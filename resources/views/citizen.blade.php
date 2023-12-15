@@ -10,15 +10,17 @@
 
         {{-- Main Section --}}
         <div class="container w-full h-auto p-10">
-            <div class="flex justify-end">
-                <div class="flex flex-col">
-                    <label>Save As</label>
-                    <div class="mt-4">
-                        <a href="#" class="font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl p-3 px-12">Excel</a>
-                        <a href="#" class="font-medium text-slate-100 bg-red-700 hover:bg-red-500 rounded-xl p-3 px-12">PDF</a>
+            @if(auth()->user()->position == 'Admin')
+                <div class="flex justify-end">
+                    <div class="flex flex-col">
+                        <label>Save As</label>
+                        <div class="mt-4">
+                            <a href="#" class="font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl p-3 px-12">Excel</a>
+                            <a href="#" class="font-medium text-slate-100 bg-red-700 hover:bg-red-500 rounded-xl p-3 px-12">PDF</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endif
 
             {{-- Card Report --}}
             <div class="flex justify-evenly gap-x-2 mb-8 mt-8">
@@ -122,7 +124,9 @@
                         <td>{{$senior->birthdate}}</td>
                         <td class="flex gap-x-3">
                             <a href="/edit_citizen/{{$senior->id}}">Edit</a>
-                            <a href="/delete_citizen/{{$senior->id}}">Delete</a>
+                            @if(auth()->user()->position == 'Admin')
+                                <a href="/delete_citizen/{{$senior->id}}">Delete</a>
+                            @endif
                             <a href="/view_citizen/{{$senior->id}}">View</a>
                         </td>
                     </tr>
