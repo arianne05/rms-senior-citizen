@@ -57,14 +57,48 @@ class UserController extends Controller
         $validated = $request->validate([
             "name" => ['required', 'min:4'],
             "email" => ['required', 'email', Rule::unique('users', 'email')],
-            "password" => 'required|min:6'
+            "password" => 'required|min:6',
+            "position" => ['required'],
+            "status" => ['required'],
        ]); //set rule in validation
 
        $validated['password'] = Hash::make($validated['password']); //encrypt or hash the password | you can also use bycrpt($validated['password'])
 
        $user = User::create($validated); //insert validated name, email, pass in the database
-       auth()->login($user);
+    //    auth()->login($user);
        return redirect('/adduser')->with('message', 'Added Sucessfully');
+    }
+
+    //EDIT USER ACCOUNT
+    public function edit_user(Request $request, $id){
+        $user = User::where('id', $id)->first();
+        return view('edit_user', ['title'=>'Edit Account', 'users'=>$user]);
+    }
+
+    //PROCESS EDIT USER ACCOUNT
+    public function process_edit_user(Request $request, $id){
+        // dd($request);
+        $validated = $request->validate([
+            "name" => ['required', 'min:4'],
+            "email" => ['required', 'email', Rule::unique('users', 'email')->ignore($id)],
+            "password" => 'nullable|confirmed|min:6',
+            "position" => ['required'],
+            "status" => ['required'],
+        ]);
+
+        // Remove password from the validated data if it's null
+        if ($validated['password'] === null) {
+            unset($validated['password']);
+        } else {
+            // Hash the password if it's not null
+            $validated['password'] = Hash::make($validated['password']);
+        }
+
+        $user = User::find($id);
+        $user->update($validated);
+
+        // redirect('account')->with('message', 'Data Successfully Updated');
+        return back()->with('message', 'Data Successfully Updated');
     }
 
     //Logout Function
@@ -186,7 +220,7 @@ class UserController extends Controller
         'alluser'=>$alluser]);
     }
     
-    // PROCESS USER UPDATE
+    // PROCESS UPDATE FOR LOGGED IN USER
     public function process_user_update(Request $request, $id){
         $validated = $request->validate([
             "name" => ['required', 'min:4'],
