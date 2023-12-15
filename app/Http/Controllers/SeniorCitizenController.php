@@ -150,7 +150,7 @@ class SeniorCitizenController extends Controller
     //DELETE FUNCTION
     public function delete_citizen(SeniorCitizen $id){
         $id->delete();
-        return back()->with('message','Deleted Successfully');
+        return redirect('/citizen')->with('message', 'Deleted Successfully');
     }
 
     //VIEW CITIZEN
