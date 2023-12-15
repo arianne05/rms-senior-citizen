@@ -24,6 +24,15 @@ Route::controller(SeniorCitizenController::class)->group(function(){
     Route::get('/login','login')->name('login')->middleware('guest');
     Route::get('/add_citizen','add_citizen');
     Route::post('/process_add','process_add');
+
+    Route::get('/edit_citizen/{id}','edit_citizen');
+    Route::put('/process_edit/{id}','process_edit');
+
+    Route::get('/delete_citizen/{id}','delete_citizen');
+
+    Route::get('/view_citizen/{id}','view_citizen');
+
+
 });
 
 Route::controller(UserController::class)->group(function(){
@@ -32,11 +41,22 @@ Route::controller(UserController::class)->group(function(){
     Route::get('/adduser','adduser');
     Route::post('/register','register');
 
+    Route::get('/edit_user/{id}','edit_user');
+    Route::post('/process_edit_user/{id}','process_edit_user');
+
+    Route::get('/activate/{id}','activate');
+
     Route::get('/dashboard','dashboard')->middleware('auth');
     Route::post('/process_signin','process_signin');
 
     Route::get('/barangay','barangay')->middleware('auth');
     Route::get('/view_barangay/{barangay}','view_barangay')->middleware('auth');
+
+    Route::get('/citizen','citizen');
+    Route::post('/filter_process','filter_process');
+
+    Route::get('/account','account');
+    Route::post('/process_user_update/{id}','process_user_update');
 
     Route::post('/logout','logout');
 });

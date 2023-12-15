@@ -7,11 +7,11 @@
   <div class="flex flex-col w-screen">
     {{-- Navbar --}}
     @include('partials.navbar')
-    
-    <h1 class="ml-7 font-semibold text-lg">Latest Added</h1>
+
 
     {{-- Main Section --}}
-    <div class="container rounded-lg border-solid border-2 border-gray-100 max-w-5xl w-full h-auto m-7 p-8">
+    <div class="container w-full h-auto p-10">
+      <h1 class="font-semibold text-lg mb-5">Latest Added</h1>
 
       <table id="dashboardTbl" class="display">
           <thead>
@@ -32,7 +32,13 @@
                     <td>{{$senior->middlename}}</td>
                     <td>{{$senior->sex}}</td>
                     <td>{{$senior->birthdate}}</td>
-                    <td><button>Edit</button> <button>Delete</button></td>
+                    <td class="flex gap-x-3">
+                      <a href="/edit_citizen/{{$senior->id}}">Edit</a>
+                      @if(auth()->user()->position == 'Admin')
+                        <a href="/delete_citizen/{{$senior->id}}" id="delete_confirmation">Delete</a>
+                      @endif
+                      <a href="/view_citizen/{{$senior->id}}">View</a>
+                    </td>
                 </tr>
               @endforeach
           </tbody>
@@ -45,5 +51,6 @@
 
 {{-- Component --}}
 <x-message />
+<x-delete_message />
 
 @include('partials.footer')

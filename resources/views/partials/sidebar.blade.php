@@ -15,7 +15,7 @@
                             <span class="material-symbols-outlined pr-2">holiday_village</span>Barangay
                         </li>
                     </a>
-                    <a href="">
+                    <a href="/citizen">
                         <li class="flex align-center mb-2 mt-2 rounded-lg py-1.5 px-7 bg-white group hover:bg-sky-500 hover:text-white">
                             <span class="material-symbols-outlined pr-2">group</span>Citizen
                         </li>
@@ -25,7 +25,7 @@
                 <hr>
 
                 <div class="">
-                    <a href="">
+                    <a href="/account">
                         <li class="flex align-center mb-2 mt-2 rounded-lg py-1.5 px-7 bg-white group hover:bg-sky-500 hover:text-white">
                             <span class="material-symbols-outlined pr-2">person</span>Account
                         </li>
