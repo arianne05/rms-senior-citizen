@@ -71,7 +71,7 @@
                 </div>
             </div>
             
-
+            @if(auth()->user()->position == 'Admin')
             <div class="flex align-center justify-between mb-5">
                 <div class="">
                     <h1 class="font-bold text-xl mt-8">List of Registered User</h1>
@@ -82,35 +82,37 @@
             
             <hr><br>
 
-            <table id="dashboardTbl" class="display">
-                <thead>
-                    <tr>
-                        <th>User Name</th>
-                        <th>Email</th>
-                        <th>Position</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($alluser as $user)  
-                    <tr>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>{{$user->position}}</td>
-                        <td>{{$user->status}}</td>
-                        <td class="flex gap-x-3">
-                            <a href="/edit_user/{{$user->id}}">Edit</a>
-                            @if ($user->status == 'Active')
-                                <a href="/activate/{{$user->id}}">Deactivate</a>
-                            @else
-                                <a href="/activate/{{$user->id}}">Activate</a>
-                            @endif
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            
+                <table id="dashboardTbl" class="display">
+                    <thead>
+                        <tr>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Position</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($alluser as $user)  
+                        <tr>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>{{$user->position}}</td>
+                            <td>{{$user->status}}</td>
+                            <td class="flex gap-x-3">
+                                <a href="/edit_user/{{$user->id}}">Edit</a>
+                                @if ($user->status == 'Active')
+                                    <a href="/activate/{{$user->id}}">Deactivate</a>
+                                @else
+                                    <a href="/activate/{{$user->id}}">Activate</a>
+                                @endif
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @endif
 
         </div>
     </div>
