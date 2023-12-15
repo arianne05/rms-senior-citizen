@@ -34,7 +34,7 @@
                     <td>{{$senior->birthdate}}</td>
                     <td class="flex gap-x-3">
                       <a href="/edit_citizen/{{$senior->id}}">Edit</a>
-                      <a href="/delete_citizen/{{$senior->id}}">Delete</a>
+                      <a href="/delete_citizen/{{$senior->id}}" id="delete_confirmation">Delete</a>
                       <a href="/view_citizen/{{$senior->id}}">View</a>
                     </td>
                 </tr>
@@ -49,5 +49,6 @@
 
 {{-- Component --}}
 <x-message />
+<x-delete_message />
 
 @include('partials.footer')

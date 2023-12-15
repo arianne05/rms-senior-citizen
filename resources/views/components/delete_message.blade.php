@@ -1,6 +1,6 @@
 <script>
-    document.getElementById('saveChangesBtn').addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent the default form submission behavior
+    document.getElementById('delete_confirmation').addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default link behavior
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -11,22 +11,21 @@
         });
 
         swalWithBootstrapButtons.fire({
-            title: "Edit this account?",
-            text: "",
+            title: "Delete this account?",
+            text: "You won't be able to revert this",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonText: "Yes, save changes!",
+            confirmButtonText: "Yes, delete it!",
             cancelButtonText: "No, cancel",
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                // Trigger the form submission
-                document.getElementById('myForm').submit();
+                // Redirect to the specified URL
+                window.location.href = document.getElementById('delete_confirmation').getAttribute('href');
             } else {
-                // If the user clicks 'No' or closes the dialog, do nothing
                 swalWithBootstrapButtons.fire({
                     title: "Cancelled",
-                    text: "Your changes are not saved.",
+                    text: "The account is safe",
                     icon: "error"
                 });
             }
