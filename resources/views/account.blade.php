@@ -101,7 +101,11 @@
                         <td>{{$user->status}}</td>
                         <td class="flex gap-x-3">
                             <a href="/edit_user/{{$user->id}}">Edit</a>
-                            <a href="#/{{$user->id}}">Deactivate</a>
+                            @if ($user->status == 'Active')
+                                <a href="/activate/{{$user->id}}">Deactivate</a>
+                            @else
+                                <a href="/activate/{{$user->id}}">Activate</a>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

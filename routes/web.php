@@ -44,7 +44,7 @@ Route::controller(UserController::class)->group(function(){
     Route::get('/edit_user/{id}','edit_user');
     Route::post('/process_edit_user/{id}','process_edit_user');
 
-
+    Route::get('/activate/{id}','activate');
 
     Route::get('/dashboard','dashboard')->middleware('auth');
     Route::post('/process_signin','process_signin');

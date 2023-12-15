@@ -243,4 +243,20 @@ class UserController extends Controller
         return back()->with('message', 'Data Successfully Updated');
     }
 
+    //ACTIVATE ACCOUNT
+    public function activate(Request $request, $id){
+        $user = User::find($id);
+    
+        // Use the ternary operator to toggle the status and construct the message
+        $status = ($user->status === 'Active') ? 'Inactive' : 'Active';
+        $user->update(['status' => $status]);
+    
+        // Construct the display message based on the toggled status
+        $display_message = ucfirst(strtolower($status)).'d'; // 'Activated' or 'Deactivated'
+    
+        return back()->with('message', 'Account ' . $display_message . ' Successfully');
+    }
+    
+    
+
 }
