@@ -72,8 +72,14 @@
             </div>
             
 
-            <h1 class="font-bold text-xl mt-8">List of Registered User</h1>
-            <p>List of all registered user in the system</p>
+            <div class="flex align-center justify-between mb-5">
+                <div class="">
+                    <h1 class="font-bold text-xl mt-8">List of Registered User</h1>
+                    <p>List of all registered user in the system</p>
+                </div>
+                <a href="/adduser" class="w-4/2 font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl p-3 px-12 mt-8 text-center">Add User</a>
+            </div>
+            
             <hr><br>
 
             <table id="dashboardTbl" class="display">
@@ -94,9 +100,8 @@
                         <td>{{$user->position}}</td>
                         <td>{{$user->status}}</td>
                         <td class="flex gap-x-3">
-                            <a href="/edit_citizen/{{$user->id}}">Edit</a>
-                            <a href="/delete_citizen/{{$user->id}}">Deactivate</a>
-                            <a href="/view_citizen/{{$user->id}}">View</a>
+                            <a href="/edit_user/{{$user->id}}">Edit</a>
+                            <a href="#/{{$user->id}}">Deactivate</a>
                         </td>
                     </tr>
                     @endforeach
