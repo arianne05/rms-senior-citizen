@@ -34,7 +34,9 @@
                     <td>{{$senior->birthdate}}</td>
                     <td class="flex gap-x-3">
                       <a href="/edit_citizen/{{$senior->id}}">Edit</a>
-                      <a href="/delete_citizen/{{$senior->id}}" id="delete_confirmation">Delete</a>
+                      @if(auth()->user()->position == 'Admin')
+                        <a href="/delete_citizen/{{$senior->id}}" id="delete_confirmation">Delete</a>
+                      @endif
                       <a href="/view_citizen/{{$senior->id}}">View</a>
                     </td>
                 </tr>

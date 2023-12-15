@@ -21,7 +21,9 @@
 
                     <div class="flex justify-center mt-10 gap-x-2">
                         <a href="/edit_citizen/{{$citizens->id}}" class="font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl py-2 px-5">Update</a>
-                        <a href="/delete_citizen/{{$citizens->id}}" id="delete_confirmation" class="font-medium text-red-700 bg-red-200 hover:bg-red-700 hover:text-white rounded-xl py-2 px-9">Delete</a>
+                        @if(auth()->user()->position == 'Admin')
+                            <a href="/delete_citizen/{{$citizens->id}}" id="delete_confirmation" class="font-medium text-red-700 bg-red-200 hover:bg-red-700 hover:text-white rounded-xl py-2 px-9">Delete</a>
+                        @endif
                     </div>
                 </div>
 
