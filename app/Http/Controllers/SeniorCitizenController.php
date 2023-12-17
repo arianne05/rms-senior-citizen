@@ -7,6 +7,7 @@ use App\Models\SeniorCitizen;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use PDF;
 
 class SeniorCitizenController extends Controller
 {
@@ -157,6 +158,20 @@ class SeniorCitizenController extends Controller
     public function view_citizen(Request $request, $id){
         $citizens = SeniorCitizen::where('id', $id)->first();
         return view("senior_citizen.view_citizen", ['title'=>'View','citizens'=>$citizens]);
+    }
+
+    //VIEW PDF
+    public function viewpdf(){
+        $users = SeniorCitizen::all();
+        $pdf = PDF::loadView('partials.viewPDF');
+        return $pdf->stream();
+    }
+
+    //DOWNLOAD PDF
+    public function downloadpdf(){
+        $users = SeniorCitizen::all();
+        $pdf = PDF::loadView('partials.viewPDF');
+        return $pdf->download('senior-citizen.pdf');
     }
     
 }

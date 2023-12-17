@@ -14,9 +14,21 @@
                 <div class="flex justify-end">
                     <div class="flex flex-col">
                         <label>Save As</label>
-                        <div class="mt-4">
+                        <div class="mt-4 flex gap-x-3">
+                            <div class="">
+                                <form action="/viewpdf" method="POST" target="__blank">
+                                    @csrf
+                                    <button type="submit" class="font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl p-3 px-12">View</button>
+                                </form>
+                            </div>
+                                
+                            <div class="">
+                                <form action="/downloadpdf" method="POST">
+                                    @csrf
+                                    <button type="submit" class="font-medium text-slate-100 bg-red-700 hover:bg-red-500 rounded-xl p-3 px-12">PDF</button>
+                                </form>
+                            </div>
                             <a href="#" class="font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl p-3 px-12">Excel</a>
-                            <a href="#" class="font-medium text-slate-100 bg-red-700 hover:bg-red-500 rounded-xl p-3 px-12">PDF</a>
                         </div>
                     </div>
                 </div>
