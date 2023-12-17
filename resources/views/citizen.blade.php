@@ -28,7 +28,14 @@
                                     <button type="submit" class="font-medium text-slate-100 bg-red-700 hover:bg-red-500 rounded-xl p-3 px-12">PDF</button>
                                 </form>
                             </div>
-                            <a href="#" class="font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl p-3 px-12">Excel</a>
+
+                            <div class="">
+                                <form action="/exportExcel" method="POST">
+                                    @csrf
+                                    <button type="submit" class="font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl p-3 px-12">Excel</button>
+                                </form>
+                            </div>
+
                         </div>
                     </div>
                 </div>

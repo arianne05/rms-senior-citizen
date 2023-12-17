@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SeniorExcelExport;
 use App\Models\SeniorCitizen;
 // use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
 class SeniorCitizenController extends Controller
@@ -172,6 +174,11 @@ class SeniorCitizenController extends Controller
         $users = SeniorCitizen::all();
         $pdf = PDF::loadView('partials.viewPDF');
         return $pdf->download('senior-citizen.pdf');
+    }
+
+    //EXPORT EXCEL
+    public function exportExcel(){
+        return Excel::download(new SeniorExcelExport, 'senior-citizen.xlsx');
     }
     
 }
