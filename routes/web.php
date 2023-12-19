@@ -36,6 +36,8 @@ Route::controller(SeniorCitizenController::class)->group(function(){
     Route::post('/downloadpdf','downloadpdf');
     Route::post('/exportExcel','exportExcel');
 
+    Route::post('/search','search');
+
 });
 
 Route::controller(UserController::class)->group(function(){

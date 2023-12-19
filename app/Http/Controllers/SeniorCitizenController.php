@@ -180,5 +180,15 @@ class SeniorCitizenController extends Controller
     public function exportExcel(){
         return Excel::download(new SeniorExcelExport, 'senior-citizen.xlsx');
     }
+
+    //SEARCH FUNCTION
+    public function search(Request $request){
+        // dd($request);
+        $searchValue = request()->input('searchvalue');
+        $seniors = SeniorCitizen::where('lastname', 'like', '%' . $searchValue . '%')
+                            ->orWhere('firstname', 'like', '%' . $searchValue . '%')
+                            ->get();
+        return view('search_result', ['title' => 'Search Result', 'seniors'=>$seniors, 'searchValue' => $searchValue]);
+    }
     
 }
