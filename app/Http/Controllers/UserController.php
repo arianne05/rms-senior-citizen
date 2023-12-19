@@ -145,8 +145,9 @@ class UserController extends Controller
         ]);
     }
 
+    //FILTER PROCESS
     public function filter_process(Request $request){
-
+        // dd($request);
         $validated = $request->validate([
             "sex" => ['nullable'],
             "civil_status" => ['nullable'],
@@ -155,8 +156,8 @@ class UserController extends Controller
             "datefrom" => ['nullable']
         ]);
     
-        $sex = $validated['sex'];
-        $civil = $validated['civil_status'];
+        $sex = $validated['sex'] ?? null;
+        $civil = $validated['civil_status'] ?? null;
         $membership = $validated['status_membership'];
         $dateto = $validated['dateto'];
         $datefrom = $validated['datefrom'];
@@ -176,18 +177,19 @@ class UserController extends Controller
             $seniorsQuery->where('status_membership', $membership);
         }
 
-        if ($datefrom) {
-            $seniorsQuery->where(function ($query) use ($datefrom) {
-                $query->where('birthdate', '=', $datefrom);
-            });
+        if ($datefrom && !$dateto) {
+            // If $datefrom has value but $dateto is null
+            $seniorsQuery->where('birthdate', '=', $datefrom);
+        } elseif (!$datefrom && $dateto) {
+            // If $datefrom is null but $dateto has value
+            // Display an error message or handle it accordingly
+            // For example, you can redirect back with an error message
+            return redirect()->back()->with('message', 'Please provide a starting date.');
+        } elseif ($datefrom && $dateto) {
+            // If both $datefrom and $dateto have values
+            $seniorsQuery->whereBetween('birthdate', [$datefrom, $dateto]);
         }
         
-        if ($datefrom && $dateto) {
-            $seniorsQuery->where(function ($query) use ($datefrom, $dateto) {
-                $query->where('birthdate', '>=', $datefrom)
-                    ->where('birthdate', '<=', $dateto);
-            });
-        }
 
         $seniors = $seniorsQuery->get();
         $totalCount =  $seniorsQuery->count();
@@ -203,7 +205,12 @@ class UserController extends Controller
             'seniors' => $seniors,
             'totalCount' => $totalCount,
             'totalMaleCount' => $totalMaleCount,
-            'totalFemaleCount' => $totalFemaleCount
+            'totalFemaleCount' => $totalFemaleCount,
+            'sex' => $sex,
+            'civil' =>$civil,
+            'membership' =>$membership,
+            'dateto' =>$dateto,
+            'datefrom' =>$datefrom,
         ]);
     }
 

@@ -78,35 +78,35 @@
                     <form action="/filter_process" method="post" class="flex flex-col">
                         @csrf
                         <h1 class="text-2xl font-bold group-hover:text-white">Filter</h1>
-                        <label>Sex</label>
+                        <label>Sex</label>  
                         <select name="sex" id="" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm mb-2">
-                            <option value="" selected>Choose Sex</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <option value="" {{ isset($sex) ? 'selected' : '' }}>Choose Sex</option>
+                            <option value="Male" {{ isset($sex) && $sex == 'Male' ? 'selected' : '' }}>Male</option>
+                            <option value="Female" {{ isset($sex) && $sex == 'Female' ? 'selected' : '' }}>Female</option>
                         </select>
-
+                        
                         <label>Civil Status</label>
                         <select name="civil_status" id="" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm mb-2">
-                            <option value="" selected>Choose Status</option>
-                            <option value="Single">Single</option>
-                            <option value="Married">Married</option>
-                            <option value="Separated">Separated</option>
-                            <option value="Widowed">Widowed</option>
+                            <option value="" {{ isset($civil) ? 'selected' : '' }}>Choose Civil Status</option>
+                            <option value="Single" {{ isset($civil) && $civil == 'Single' ? 'selected' : '' }}>Single</option>
+                            <option value="Married" {{ isset($civil) && $civil == 'Married' ? 'selected' : '' }}>Married</option>
+                            <option value="Separated" {{ isset($civil) && $civil == 'Separated' ? 'selected' : '' }}>Separated</option>
+                            <option value="Widowed" {{ isset($civil) && $civil == 'Widowed' ? 'selected' : '' }}>Widowed</option>
                         </select>
 
                         <label>Membership Status</label>
                         <select name="status_membership" id="" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm mb-2">
-                            <option value="" selected>Choose Status</option>
-                            <option value="PWD">PWD</option>
-                            <option value="Pension">Pension</option>
-                            <option value="Non-Pension">Non-Pension</option>
+                            <option value="" {{ isset($membership) ? 'selected' : '' }}>Choose Membership</option>
+                            <option value="PWD" {{ isset($membership) && $membership == 'PWD' ? 'selected' : '' }}>PWD</option>
+                            <option value="Pension" {{ isset($membership) && $membership == 'Pension' ? 'selected' : '' }}>Pension</option>
+                            <option value="Non-Pension" {{ isset($membership) && $membership == 'Non-Pension' ? 'selected' : '' }}>Non-Pension</option>
                         </select>
 
                         <label>Date From</label>
-                        <input type="date" name="datefrom" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm mb-2">
+                        <input type="date" value="{{ $datefrom ?? '' }}" name="datefrom" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm mb-2">
 
                         <label>Date To</label>
-                        <input type="date" name="dateto" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm mb-2">
+                        <input type="date" value="{{ $dateto ?? '' }}" name="dateto" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm mb-2">
 
                         <button class="font-medium text-center text-slate-100 bg-blue-700 hover:bg-blue-500 rounded-xl p-3" type="submit">Filter</button>
                         
