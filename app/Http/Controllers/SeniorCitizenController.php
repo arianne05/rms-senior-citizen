@@ -254,15 +254,79 @@ class SeniorCitizenController extends Controller
     
 
     //DOWNLOAD PDF
-    public function downloadpdf(){
-        $totalusers = SeniorCitizen::all();
+    public function downloadpdf(Request $request){
+        $validated = $request->validate([
+            "sex" => ['nullable'],
+            "civil_status" => ['nullable'],
+            "status_membership" => ['nullable'],
+            "dateto" => ['nullable'],
+            "datefrom" => ['nullable']
+        ]);
+    
+        $sex = $validated['sex'] ?? null;
+        $civil_status = $validated['civil_status'] ?? null;
+        $status_membership = $validated['status_membership'] ?? null;
+        $dateto = $validated['dateto'] ?? null;
+        $datefrom = $validated['datefrom'] ?? null;
+
+        $seniorsQuery = SeniorCitizen::query();
+        
+            if ($sex) {
+                $seniorsQuery->where('sex', $sex);
+            }
+            if ($civil_status) {
+                $seniorsQuery->where('civil_status', $civil_status);
+            }
+            if ($status_membership) {
+                $seniorsQuery->where('status_membership', $status_membership);
+            }
+            if ($datefrom && !$dateto) {
+                $seniorsQuery->where('birthdate', '=', $datefrom);
+            } elseif ($datefrom && $dateto) {
+                $seniorsQuery->whereBetween('birthdate', [$datefrom, $dateto]);
+            }
+        $totalusers = $seniorsQuery->get();
+
         $pdf = PDF::loadView('partials.viewPDF', compact('totalusers'));
         return $pdf->download('senior-citizen.pdf');
     }
 
     //EXPORT EXCEL
-    public function exportExcel(){
-        return Excel::download(new SeniorExcelExport, 'senior-citizen.xlsx');
+    public function exportExcel(Request $request){
+        $validated = $request->validate([
+            "sex" => ['nullable'],
+            "civil_status" => ['nullable'],
+            "status_membership" => ['nullable'],
+            "dateto" => ['nullable'],
+            "datefrom" => ['nullable']
+        ]);
+    
+        $sex = $validated['sex'] ?? null;
+        $civil_status = $validated['civil_status'] ?? null;
+        $status_membership = $validated['status_membership'] ?? null;
+        $dateto = $validated['dateto'] ?? null;
+        $datefrom = $validated['datefrom'] ?? null;
+
+        $seniorsQuery = SeniorCitizen::query();
+        
+            if ($sex) {
+                $seniorsQuery->where('sex', $sex);
+            }
+            if ($civil_status) {
+                $seniorsQuery->where('civil_status', $civil_status);
+            }
+            if ($status_membership) {
+                $seniorsQuery->where('status_membership', $status_membership);
+            }
+            if ($datefrom && !$dateto) {
+                $seniorsQuery->where('birthdate', '=', $datefrom);
+            } elseif ($datefrom && $dateto) {
+                $seniorsQuery->whereBetween('birthdate', [$datefrom, $dateto]);
+            }
+        $totalusers = $seniorsQuery->get();
+        
+        return Excel::download(new SeniorExcelExport($seniorsQuery), 'senior-citizen.xlsx');
+        // return Excel::download(new SeniorExcelExport, 'senior-citizen.xlsx');
     }
 
     //SEARCH FUNCTION

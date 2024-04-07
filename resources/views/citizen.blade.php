@@ -18,6 +18,12 @@
                             <div class="">
                                 <form action="/downloadpdf" method="POST">
                                     @csrf
+                                    {{-- HIDDEN VALUE --}}
+                                    <input type="hidden" name="sex" value="{{ $sex ?? null }}">
+                                    <input type="hidden" name="civil" value="{{ $civil ?? null }}">
+                                    <input type="hidden" name="membership" value="{{ $membership ?? null }}">
+                                    <input type="hidden" name="dateto" value="{{ $dateto ?? null }}">
+                                    <input type="hidden" name="datefrom" value="{{ $datefrom ?? null }}">
                                     <button type="submit" class="font-medium text-slate-100 bg-red-700 hover:bg-red-500 rounded-xl p-3 px-12">PDF</button>
                                 </form>
                             </div>
@@ -25,6 +31,12 @@
                             <div class="">
                                 <form action="/exportExcel" method="POST">
                                     @csrf
+                                    {{-- HIDDEN VALUE --}}
+                                    <input type="hidden" name="sex" value="{{ $sex ?? null }}">
+                                    <input type="hidden" name="civil" value="{{ $civil ?? null }}">
+                                    <input type="hidden" name="membership" value="{{ $membership ?? null }}">
+                                    <input type="hidden" name="dateto" value="{{ $dateto ?? null }}">
+                                    <input type="hidden" name="datefrom" value="{{ $datefrom ?? null }}">
                                     <button type="submit" class="font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl p-3 px-12">Excel</button>
                                 </form>
                             </div>
@@ -73,7 +85,7 @@
                     <input type="hidden" name="membership" value="{{ $membership ?? null }}">
                     <input type="hidden" name="dateto" value="{{ $dateto ?? null }}">
                     <input type="hidden" name="datefrom" value="{{ $datefrom ?? null }}">
-                    
+
                     <button type="submit" class="bg-white hover:bg-sky-500 border-2 border-solid border-gray-200 hover:border-blue-100 hover:shadow-lg h-40 w-full rounded-xl p-4 flex flex-col justify-end">
                         <h1 class="text-4xl font-bold group-hover:text-white">{{$totalFemaleCount}}</h1>
                         <h1 class="font-semibold group-hover:text-white">Female</h1>

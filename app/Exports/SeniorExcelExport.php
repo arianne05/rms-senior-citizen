@@ -10,17 +10,16 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
 class SeniorExcelExport implements FromView, ShouldAutoSize
 {
-    use Exportable;
+    private $seniorsQuery;
 
-    private $users;
-
-    public function __construct() {
-        $this->users = SeniorCitizen::all(); //to access senior citizen table and can be passed on view function
+    public function __construct($seniorsQuery)
+    {
+        $this->seniorsQuery = $seniorsQuery;
     }
 
     public function view(): View
-    {   
-        $totalusers = SeniorCitizen::all();
-        return view('partials.viewPDF', ['totalusers' => $totalusers]);
+    {
+        $totalusers  = $this->seniorsQuery->get();
+        return view('partials.viewPDF', ['totalusers' => $totalusers ]);
     }
 }
