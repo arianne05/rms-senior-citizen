@@ -193,12 +193,8 @@ class UserController extends Controller
 
         $seniors = $seniorsQuery->get();
         $totalCount =  $seniorsQuery->count();
-        $totalMaleCount = DB::table('senior_citizens')
-            ->where('sex', 'Male')
-            ->count();
-        $totalFemaleCount = DB::table('senior_citizens')
-            ->where('sex', 'Female')
-            ->count();
+        $totalMaleCount = $seniors->where('sex', 'Male')->count();
+        $totalFemaleCount = $seniors->where('sex', 'Female')->count();
     
         return view('citizen')->with([
             'title' => 'Citizen',

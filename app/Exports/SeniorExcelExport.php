@@ -19,7 +19,8 @@ class SeniorExcelExport implements FromView, ShouldAutoSize
     }
 
     public function view(): View
-    {
-        return view('partials.viewPDF');
+    {   
+        $totalusers = SeniorCitizen::all();
+        return view('partials.viewPDF', ['totalusers' => $totalusers]);
     }
 }

@@ -184,8 +184,8 @@ class SeniorCitizenController extends Controller
 
     //DOWNLOAD PDF
     public function downloadpdf(){
-        $users = SeniorCitizen::all();
-        $pdf = PDF::loadView('partials.viewPDF');
+        $totalusers = SeniorCitizen::all();
+        $pdf = PDF::loadView('partials.viewPDF', compact('totalusers'));
         return $pdf->download('senior-citizen.pdf');
     }
 
