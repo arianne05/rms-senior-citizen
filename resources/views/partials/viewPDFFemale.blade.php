@@ -19,13 +19,15 @@
         </thead>
 
         <tbody>
+            @foreach ($totalfemale as $senior)  
             <tr>
-                <td>Arianne Quimpo3</td>
-                <td>Dec 05, 2000</td>
-                <td>Male</td>
-                <td>Single</td>
-                <td>Non-Pensionary</td>
+                <td>{{$senior->firstname.' '.$senior->lastname}}</td>
+                <td>{{$senior->birthdate}}</td>
+                <td>{{$senior->sex}}</td>
+                <td>{{$senior->civil_status}}</td>
+                <td>{{$senior->status_membership}}</td>
             </tr>
+          @endforeach
         </tbody>
         
     </table>
