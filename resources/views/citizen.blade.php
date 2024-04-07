@@ -37,6 +37,13 @@
             <div class="flex justify-between gap-x-2 mb-8 mt-8">
                 <form action="/viewpdf/{{'total'}}" method="POST" target="__blank" class="flex-grow p-0 m-0">
                     @csrf
+                    {{-- HIDDEN VALUE --}}
+                    <input type="hidden" name="sex" value="{{ $sex ?? null }}">
+                    <input type="hidden" name="civil" value="{{ $civil ?? null }}">
+                    <input type="hidden" name="membership" value="{{ $membership ?? null }}">
+                    <input type="hidden" name="dateto" value="{{ $dateto ?? null }}">
+                    <input type="hidden" name="datefrom" value="{{ $datefrom ?? null }}">
+
                     <button type="submit" class="bg-white hover:bg-sky-500 border-2 border-solid border-gray-200 hover:border-blue-100 hover:shadow-lg h-40 w-full rounded-xl p-4 flex flex-col justify-end">
                         <h1 class="text-4xl font-bold group-hover:text-white">{{$totalCount}}</h1>
                         <h1 class="font-semibold group-hover:text-white">Total</h1>
@@ -45,6 +52,13 @@
                 </form>
                 <form action="/viewpdf/{{'male'}}" method="POST" target="__blank" class="flex-grow p-0 m-0">
                     @csrf
+                    {{-- HIDDEN VALUE --}}
+                    <input type="hidden" name="sex" value="{{ $sex ?? null }}">
+                    <input type="hidden" name="civil" value="{{ $civil ?? null }}">
+                    <input type="hidden" name="membership" value="{{ $membership ?? null }}">
+                    <input type="hidden" name="dateto" value="{{ $dateto ?? null }}">
+                    <input type="hidden" name="datefrom" value="{{ $datefrom ?? null }}">
+
                     <button type="submit" class="bg-white hover:bg-sky-500 border-2 border-solid border-gray-200 hover:border-blue-100 hover:shadow-lg h-40 w-full rounded-xl p-4 flex flex-col justify-end">
                         <h1 class="text-4xl font-bold group-hover:text-white">{{$totalMaleCount}}</h1>
                         <h1 class="font-semibold group-hover:text-white">Male</h1>
@@ -53,6 +67,13 @@
                 </form>
                 <form action="/viewpdf/{{'female'}}" method="POST" target="__blank" class="flex-grow p-0 m-0">
                     @csrf
+                    {{-- HIDDEN VALUE --}}
+                    <input type="hidden" name="sex" value="{{ $sex ?? null }}">
+                    <input type="hidden" name="civil" value="{{ $civil ?? null }}">
+                    <input type="hidden" name="membership" value="{{ $membership ?? null }}">
+                    <input type="hidden" name="dateto" value="{{ $dateto ?? null }}">
+                    <input type="hidden" name="datefrom" value="{{ $datefrom ?? null }}">
+                    
                     <button type="submit" class="bg-white hover:bg-sky-500 border-2 border-solid border-gray-200 hover:border-blue-100 hover:shadow-lg h-40 w-full rounded-xl p-4 flex flex-col justify-end">
                         <h1 class="text-4xl font-bold group-hover:text-white">{{$totalFemaleCount}}</h1>
                         <h1 class="font-semibold group-hover:text-white">Female</h1>

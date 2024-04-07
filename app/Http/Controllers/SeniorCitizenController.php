@@ -164,22 +164,93 @@ class SeniorCitizenController extends Controller
 
     //VIEW PDF
     public function viewpdf(Request $request, $category){
-        $totalusers = SeniorCitizen::all();
-        $totalmale = SeniorCitizen::where('sex', 'Male')->get(); 
-        $totalfemale = SeniorCitizen::where('sex', 'Female')->get(); 
+        // dd($request);
+        $validated = $request->validate([
+            "sex" => ['nullable'],
+            "civil_status" => ['nullable'],
+            "status_membership" => ['nullable'],
+            "dateto" => ['nullable'],
+            "datefrom" => ['nullable']
+        ]);
+    
+        $sex = $validated['sex'] ?? null;
+        $civil_status = $validated['civil_status'] ?? null;
+        $status_membership = $validated['status_membership'] ?? null;
+        $dateto = $validated['dateto'] ?? null;
+        $datefrom = $validated['datefrom'] ?? null;
 
-        if ($category == 'total'){
-            $pdf = PDF::loadView('partials.viewPDF', compact('totalusers'));
-            return $pdf->stream();
-        }
+        if ($category == 'total') {
+            $seniorsQuery = SeniorCitizen::query();
+        
+            if ($sex) {
+                $seniorsQuery->where('sex', $sex);
+            }
+            if ($civil_status) {
+                $seniorsQuery->where('civil_status', $civil_status);
+            }
+            if ($status_membership) {
+                $seniorsQuery->where('status_membership', $status_membership);
+            }
+            if ($datefrom && !$dateto) {
+                $seniorsQuery->where('birthdate', '=', $datefrom);
+            } elseif ($datefrom && $dateto) {
+                $seniorsQuery->whereBetween('birthdate', [$datefrom, $dateto]);
+            }
+            $totalusers = $seniorsQuery->get();
+
+            $pdf = PDF::loadView('partials.viewPDF', ['totalusers' => $totalusers]);
+        } 
+        
         elseif ($category == 'male') {
-            $pdf = PDF::loadView('partials.viewPDFMale', compact('totalmale'));
-            return $pdf->stream();
-        } else {
-            $pdf = PDF::loadView('partials.viewPDFFemale', compact('totalfemale'));
-            return $pdf->stream();
+
+            $maleSeniorsQuery = SeniorCitizen::query();
+
+            if ($sex) {
+                $maleSeniorsQuery->where('sex', $sex);
+            }
+            if ($civil_status) {
+                $maleSeniorsQuery->where('civil_status', $civil_status);
+            }
+            if ($status_membership) {
+                $maleSeniorsQuery->where('status_membership', $status_membership);
+            }
+            if ($datefrom && !$dateto) {
+                $maleSeniorsQuery->where('birthdate', '=', $datefrom);
+            } elseif ($datefrom && $dateto) {
+                $maleSeniorsQuery->whereBetween('birthdate', [$datefrom, $dateto]);
+            }
+        
+            // Fetch total male seniors based on filters
+            $totalmale = $maleSeniorsQuery->where('sex', 'Male')->get();
+            $pdf = PDF::loadView('partials.viewPDFMale', ['totalmale' => $totalmale]);
+        } 
+        
+        elseif ($category == 'female') {
+            $femaleSeniorsQuery = SeniorCitizen::query();
+
+            if ($sex) {
+                $femaleSeniorsQuery->where('sex', $sex);
+            }
+            if ($civil_status) {
+                $femaleSeniorsQuery->where('civil_status', $civil_status);
+            }
+            if ($status_membership) {
+                $femaleSeniorsQuery->where('status_membership', $status_membership);
+            }
+            if ($datefrom && !$dateto) {
+                $femaleSeniorsQuery->where('birthdate', '=', $datefrom);
+            } elseif ($datefrom && $dateto) {
+                $femaleSeniorsQuery->whereBetween('birthdate', [$datefrom, $dateto]);
+            }
+        
+            // Fetch total female seniors based on filters
+            $totalfemale = $femaleSeniorsQuery->where('sex', 'Female')->get();
+            $pdf = PDF::loadView('partials.viewPDFFemale', ['totalfemale' => $totalfemale]);
         }
+    
+        return $pdf->stream();
     }
+    
     
 
     //DOWNLOAD PDF
