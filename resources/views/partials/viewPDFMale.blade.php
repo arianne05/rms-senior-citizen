@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Total Record</title>
+    <title>Total Male Record</title>
 </head>
 <body>
     <table>
@@ -20,7 +20,7 @@
 
         <tbody>
             <tr>
-                <td>Arianne Quimpo1</td>
+                <td>Arianne Quimpo2</td>
                 <td>Dec 05, 2000</td>
                 <td>Male</td>
                 <td>Single</td>

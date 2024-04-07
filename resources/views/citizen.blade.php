@@ -14,14 +14,7 @@
                 <div class="flex justify-end">
                     <div class="flex flex-col">
                         <label>Save As</label>
-                        <div class="mt-4 flex gap-x-3">
-                            <div class="">
-                                <form action="/viewpdf" method="POST" target="__blank">
-                                    @csrf
-                                    <button type="submit" class="font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl p-3 px-12">View</button>
-                                </form>
-                            </div>
-                                
+                        <div class="mt-4 flex gap-x-3">    
                             <div class="">
                                 <form action="/downloadpdf" method="POST">
                                     @csrf
@@ -35,36 +28,39 @@
                                     <button type="submit" class="font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl p-3 px-12">Excel</button>
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
             @endif
 
             {{-- Card Report --}}
-            <div class="flex justify-evenly gap-x-2 mb-8 mt-8">
-                <a href="#" class="group container bg-white hover:bg-sky-500 border-2 border-solid border-gray-200 hover:border-blue-100 hover:shadow-lg h-40 w-full rounded-xl p-4 flex flex-col justify-end">
-                    <div class="">
+            <div class="flex justify-between gap-x-2 mb-8 mt-8">
+                <form action="/viewpdf/{{'total'}}" method="POST" target="__blank" class="flex-grow p-0 m-0">
+                    @csrf
+                    <button type="submit" class="bg-white hover:bg-sky-500 border-2 border-solid border-gray-200 hover:border-blue-100 hover:shadow-lg h-40 w-full rounded-xl p-4 flex flex-col justify-end">
                         <h1 class="text-4xl font-bold group-hover:text-white">{{$totalCount}}</h1>
                         <h1 class="font-semibold group-hover:text-white">Total</h1>
                         <p class="text-sm group-hover:text-blue-100">Click here to view details</p>
-                    </div>
-                </a>
-                <a href="#" class="group container bg-white hover:bg-sky-500 border-2 border-solid border-gray-200 hover:border-blue-100 hover:shadow-lg h-40 w-full rounded-xl p-4 flex flex-col justify-end">
-                    <div class="">
+                    </button>
+                </form>
+                <form action="/viewpdf/{{'male'}}" method="POST" target="__blank" class="flex-grow p-0 m-0">
+                    @csrf
+                    <button type="submit" class="bg-white hover:bg-sky-500 border-2 border-solid border-gray-200 hover:border-blue-100 hover:shadow-lg h-40 w-full rounded-xl p-4 flex flex-col justify-end">
                         <h1 class="text-4xl font-bold group-hover:text-white">{{$totalMaleCount}}</h1>
                         <h1 class="font-semibold group-hover:text-white">Male</h1>
                         <p class="text-sm group-hover:text-blue-100">Click here to view details</p>
-                    </div>
-                </a>
-                <a href="#" class="group container bg-white hover:bg-sky-500 border-2 border-solid border-gray-200 hover:border-blue-100 hover:shadow-lg h-40 w-full rounded-xl p-4 flex flex-col justify-end">
-                    <div class="">
+                    </button>
+                </form>
+                <form action="/viewpdf/{{'female'}}" method="POST" target="__blank" class="flex-grow p-0 m-0">
+                    @csrf
+                    <button type="submit" class="bg-white hover:bg-sky-500 border-2 border-solid border-gray-200 hover:border-blue-100 hover:shadow-lg h-40 w-full rounded-xl p-4 flex flex-col justify-end">
                         <h1 class="text-4xl font-bold group-hover:text-white">{{$totalFemaleCount}}</h1>
                         <h1 class="font-semibold group-hover:text-white">Female</h1>
                         <p class="text-sm group-hover:text-blue-100">Click here to view details</p>
-                    </div>
-                </a>
+                    </button>
+                </form>
             </div>
+            
 
             {{-- Chart --}}
             <div class="flex gap-x-2 mb-8">

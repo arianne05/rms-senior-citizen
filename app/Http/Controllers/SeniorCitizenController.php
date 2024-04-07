@@ -163,11 +163,21 @@ class SeniorCitizenController extends Controller
     }
 
     //VIEW PDF
-    public function viewpdf(){
+    public function viewpdf(Request $request, $category){
         $users = SeniorCitizen::all();
-        $pdf = PDF::loadView('partials.viewPDF');
-        return $pdf->stream();
+        if ($category == 'total'){
+            $pdf = PDF::loadView('partials.viewPDF', compact('users'));
+            return $pdf->stream();
+        }
+        elseif ($category == 'male') {
+            $pdf = PDF::loadView('partials.viewPDFMale', compact('users'));
+            return $pdf->stream();
+        } else {
+            $pdf = PDF::loadView('partials.viewPDFFemale', compact('users'));
+            return $pdf->stream();
+        }
     }
+    
 
     //DOWNLOAD PDF
     public function downloadpdf(){

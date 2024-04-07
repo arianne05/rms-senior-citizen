@@ -32,7 +32,7 @@ Route::controller(SeniorCitizenController::class)->group(function(){
 
     Route::get('/view_citizen/{id}','view_citizen');
 
-    Route::post('/viewpdf','viewpdf');
+    Route::post('/viewpdf/{category}','viewpdf');
     Route::post('/downloadpdf','downloadpdf');
     Route::post('/exportExcel','exportExcel');
 
