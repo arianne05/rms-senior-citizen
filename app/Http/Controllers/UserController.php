@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -24,13 +25,40 @@ class UserController extends Controller
         //Fetch senior table
         $seniors = SeniorCitizen::all();
 
+        //TimeZone
+        $manilaTime = Carbon::now('Asia/Manila');
+        $timeFormatted = $manilaTime->format('M j, Y');
+
+        //total
+        $totalCount = DB::table('senior_citizens')->count();
+        $totalUsers = DB::table('users')
+            ->where('status', 'Active')
+            ->count();
+        $totalMaleCount = DB::table('senior_citizens')
+            ->where('sex', 'Male')
+            ->count();
+        $totalFemaleCount = DB::table('senior_citizens')
+            ->where('sex', 'Female')
+            ->count();
+        $totalBarangay = DB::table('senior_citizens')
+            ->distinct('barangay')
+            ->count();
+
          // Retrieve the currently authenticated user
         $user = auth()->user();
         // Access the name attribute
         $userName = $user->name;
 
         return view('dashboard',  $seniors, ['title'=>'Dashboard',
-        'seniors'=> $seniors]);
+        'seniors'=> $seniors,
+        'name'=>$userName,
+        'totalCount'=>$totalCount,
+        'totalMaleCount'=>$totalMaleCount,
+        'totalFemaleCount'=>$totalFemaleCount,
+        'totalBarangay'=>$totalBarangay,
+        'totalUsers'=>$totalUsers,
+        'timeFormatted'=>$timeFormatted,
+        ]);
     }
 
     //LOGIN USER
