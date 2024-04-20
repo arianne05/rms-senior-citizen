@@ -6,8 +6,70 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Total Male Record</title>
 </head>
+
+<style>
+    .table {
+        width: 100%;
+        border: 1px solid #000;
+        border-collapse: collapse;
+    }
+    .headerTotal{
+        width: 100%;
+        /* border: 1px solid #000;
+        border-collapse: collapse; */
+    }
+
+    .table th, 
+    .table td {
+        border: 1px solid #000; /* 1px solid black border for table cells */
+        padding: 5px;
+    }
+     /* Style even rows */
+     .table tbody tr:nth-child(even) {
+        background-color: #f2f2f2; /* Light gray */
+    }
+    /* Style odd rows */
+    .table tbody tr:nth-child(odd) {
+        background-color: #fff; /* White */
+    }
+    
+</style>
+
 <body>
-    <table>
+    <table style="width: 100%; text-align:center;">
+        <tr>
+            <td><img src="img/indang.png" width="70" height="70" alt=""></td>
+        </tr>
+        <tr>
+            <td><h4 style="padding:0; margin:0;">OFFICE OF THE SENIOR CITIZEN INDANG</h4></td>
+        </tr>
+        <tr>
+            <td> <p style="padding:0; margin:0;">Male Registered Senior Citizen Overall Report</p></td>
+        </tr>
+    </table>
+
+    <br>
+
+    <table class="headerTotal">
+        <tbody>
+            <tr>
+                <td>Total Male: {{$totalMaleCount}}</td>
+                <td>Total PWD: {{$totalPWD}}</td>
+            </tr>
+            <tr>
+                <td>Total Female: NA</td>
+                <td>Total Pension: {{$totalPension}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Total Non-Pension: {{$totalNonPension}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <table class="table">
         <thead>
             <tr>
                 <th>Name</th>
@@ -19,7 +81,7 @@
         </thead>
 
         <tbody>
-            @foreach ($totalmale as $senior)  
+            @foreach ($totalusers as $senior)  
                 <tr>
                     <td>{{$senior->firstname.' '.$senior->lastname}}</td>
                     <td>{{$senior->birthdate}}</td>
