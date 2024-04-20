@@ -181,7 +181,47 @@
                         {{-- Barangay --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Barangay</label>
-                            <input type="text" name="barangay" value="{{$citizens->barangay}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            {{-- <input type="text" name="barangay" value="{{$citizens->barangay}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"> --}}
+                            
+                            <select name="barangay" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                                <option value="" disabled {{ $citizens->barangay == '' ? 'selected' : '' }}>Select Barangay</option>
+                                <option value="Agus-Os" {{ $citizens->barangay == 'Agus-Os' ? 'selected' : '' }}>Agus-Os</option>
+                                <option value="Alulod" {{ $citizens->barangay == 'Alulod' ? 'selected' : '' }}>Alulod</option>
+                                <option value="Banaba Cerca" {{ $citizens->barangay == 'Banaba Cerca' ? 'selected' : '' }}>Banaba Cerca</option>
+                                <option value="Banaba Lejos" {{ $citizens->barangay == 'Banaba Lejos' ? 'selected' : '' }}>Banaba Lejos</option>
+                                <option value="Bancod" {{ $citizens->barangay == 'Bancod' ? 'selected' : '' }}>Bancod</option>
+                                <option value="Buna Cerca" {{ $citizens->barangay == 'Buna Cerca' ? 'selected' : '' }}>Buna Cerca</option>
+                                <option value="Buna Lejos 1" {{ $citizens->barangay == 'Buna Lejos 1' ? 'selected' : '' }}>Buna Lejos 1</option>
+                                <option value="Buna Lejos 2" {{ $citizens->barangay == 'Buna Lejos 2' ? 'selected' : '' }}>Buna Lejos 2</option>
+                                <option value="Calumpang Cerca" {{ $citizens->barangay == 'Calumpang Cerca' ? 'selected' : '' }}>Calumpang Cerca</option>
+                                <option value="Calumpang Lejos" {{ $citizens->barangay == 'Calumpang Lejos' ? 'selected' : '' }}>Calumpang Lejos</option>
+                                <option value="Carasuchi" {{ $citizens->barangay == 'Carasuchi' ? 'selected' : '' }}>Carasuchi</option>
+                                <option value="Daine 1" {{ $citizens->barangay == 'Daine 1' ? 'selected' : '' }}>Daine 1</option>
+                                <option value="Daine 2" {{ $citizens->barangay == 'Daine 2' ? 'selected' : '' }}>Daine 2</option>
+                                <option value="Guyam Malaki" {{ $citizens->barangay == 'Guyam Malaki' ? 'selected' : '' }}>Guyam Malaki</option>
+                                <option value="Guyam Munti" {{ $citizens->barangay == 'Guyam Munti' ? 'selected' : '' }}>Guyam Munti</option>
+                                <option value="Harasan" {{ $citizens->barangay == 'Harasan' ? 'selected' : '' }}>Harasan</option>
+                                <option value="Kayquit 1" {{ $citizens->barangay == 'Kayquit 1' ? 'selected' : '' }}>Kayquit 1</option>
+                                <option value="Kayquit 2" {{ $citizens->barangay == 'Kayquit 2' ? 'selected' : '' }}>Kayquit 2</option>
+                                <option value="Kayquit 3" {{ $citizens->barangay == 'Kayquit 3' ? 'selected' : '' }}>Kayquit 3</option>
+                                <option value="Καυταμβog" {{ $citizens->barangay == 'Καυταμβog' ? 'selected' : '' }}>Καυταμβog</option>
+                                <option value="Καυταροs" {{ $citizens->barangay == 'Καυταροs' ? 'selected' : '' }}>Καυταροs</option>
+                                <option value="Limbon" {{ $citizens->barangay == 'Limbon' ? 'selected' : '' }}>Limbon</option>
+                                <option value="Lumampong Balagbag" {{ $citizens->barangay == 'Lumampong Balagbag' ? 'selected' : '' }}>Lumampong Balagbag</option>
+                                <option value="Lumampong Halayhay" {{ $citizens->barangay == 'Lumampong Halayhay' ? 'selected' : '' }}>Lumampong Halayhay</option>
+                                <option value="Mahabang Kahoy Cerca" {{ $citizens->barangay == 'Mahabang Kahoy Cerca' ? 'selected' : '' }}>Mahabang Kahoy Cerca</option>
+                                <option value="Mahabang Kahoy Lejos" {{ $citizens->barangay == 'Mahabang Kahoy Lejos' ? 'selected' : '' }}>Mahabang Kahoy Lejos</option>
+                                <option value="Mataas Na Lupa" {{ $citizens->barangay == 'Mataas Na Lupa' ? 'selected' : '' }}>Mataas Na Lupa</option>
+                                <option value="Poblacion 1" {{ $citizens->barangay == 'Poblacion 1' ? 'selected' : '' }}>Poblacion 1</option>
+                                <option value="Poblacion 2" {{ $citizens->barangay == 'Poblacion 2' ? 'selected' : '' }}>Poblacion 2</option>
+                                <option value="Poblacion 3" {{ $citizens->barangay == 'Poblacion 3' ? 'selected' : '' }}>Poblacion 3</option>
+                                <option value="Poblacion 4" {{ $citizens->barangay == 'Poblacion 4' ? 'selected' : '' }}>Poblacion 4</option>
+                                <option value="Pulo" {{ $citizens->barangay == 'Pulo' ? 'selected' : '' }}>Pulo</option>
+                                <option value="Tambo Balagbag" {{ $citizens->barangay == 'Tambo Balagbag' ? 'selected' : '' }}>Tambo Balagbag</option>
+                                <option value="Tambo Ilaya" {{ $citizens->barangay == 'Tambo Ilaya' ? 'selected' : '' }}>Tambo Ilaya</option>
+                                <option value="Tambo Malaki" {{ $citizens->barangay == 'Tambo Malaki' ? 'selected' : '' }}>Tambo Malaki</option>
+                                <option value="Tambo Munti Kulit" {{ $citizens->barangay == 'Tambo Munti Kulit' ? 'selected' : '' }}>Tambo Munti Kulit</option>
+                            </select>
                             @error('barangay')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -192,12 +232,7 @@
                          {{-- Municipality --}}
                          <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Municipality</label>
-                            <input type="text" name="municipality" value="{{$citizens->municipality}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
-                            @error('municipality')
-                                <p class="text-red-500 text-xs p-2">
-                                    {{$message}}
-                                </p>
-                            @enderror   
+                            <input type="text" name="municipality" value="Indang" readonly class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         </div>
                     </div>
 
@@ -205,23 +240,13 @@
                         {{-- Province --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Province</label>
-                            <input type="text" name="province" value="{{$citizens->province}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
-                            @error('province')
-                                <p class="text-red-500 text-xs p-2">
-                                    {{$message}}
-                                </p>
-                            @enderror   
+                            <input type="text" name="province" value="Cavite" readonly class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         </div>
 
                          {{-- Zip Code --}}
                          <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Zip Code</label>
-                            <input type="number" name="zipcode" value="{{$citizens->zipcode}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
-                            @error('zipcode')
-                                <p class="text-red-500 text-xs p-2">
-                                    {{$message}}
-                                </p>
-                            @enderror   
+                            <input type="number" name="zipcode" value="4122" readonly class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         </div>
                     </div>
 

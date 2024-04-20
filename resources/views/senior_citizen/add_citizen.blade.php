@@ -178,7 +178,46 @@
                         {{-- Barangay --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Barangay</label>
-                            <input type="text" name="barangay" value="{{old('barangay')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            {{-- <input type="text" name="barangay" value="{{old('barangay')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"> --}}
+                            <select name="barangay" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                                <option value="" disabled {{ old('barangay') == '' ? 'selected' : '' }}>Select Barangay</option>
+                                <option value="Agus-Os" {{ old('barangay') == 'Agus-Os' ? 'selected' : '' }}>Agus-Os</option>
+                                <option value="Alulod" {{ old('barangay') == 'Alulod' ? 'selected' : '' }}>Alulod</option>
+                                <option value="Banaba Cerca" {{ old('barangay') == 'Banaba Cerca' ? 'selected' : '' }}>Banaba Cerca</option>
+                                <option value="Banaba Lejos" {{ old('barangay') == 'Banaba Lejos' ? 'selected' : '' }}>Banaba Lejos</option>
+                                <option value="Bancod" {{ old('barangay') == 'Bancod' ? 'selected' : '' }}>Bancod</option>
+                                <option value="Buna Cerca" {{ old('barangay') == 'Buna Cerca' ? 'selected' : '' }}>Buna Cerca</option>
+                                <option value="Buna Lejos 1" {{ old('barangay') == 'Buna Lejos 1' ? 'selected' : '' }}>Buna Lejos 1</option>
+                                <option value="Buna Lejos 2" {{ old('barangay') == 'Buna Lejos 2' ? 'selected' : '' }}>Buna Lejos 2</option>
+                                <option value="Calumpang Cerca" {{ old('barangay') == 'Calumpang Cerca' ? 'selected' : '' }}>Calumpang Cerca</option>
+                                <option value="Calumpang Lejos" {{ old('barangay') == 'Calumpang Lejos' ? 'selected' : '' }}>Calumpang Lejos</option>
+                                <option value="Carasuchi" {{ old('barangay') == 'Carasuchi' ? 'selected' : '' }}>Carasuchi</option>
+                                <option value="Daine 1" {{ old('barangay') == 'Daine 1' ? 'selected' : '' }}>Daine 1</option>
+                                <option value="Daine 2" {{ old('barangay') == 'Daine 2' ? 'selected' : '' }}>Daine 2</option>
+                                <option value="Guyam Malaki" {{ old('barangay') == 'Guyam Malaki' ? 'selected' : '' }}>Guyam Malaki</option>
+                                <option value="Guyam Munti" {{ old('barangay') == 'Guyam Munti' ? 'selected' : '' }}>Guyam Munti</option>
+                                <option value="Harasan" {{ old('barangay') == 'Harasan' ? 'selected' : '' }}>Harasan</option>
+                                <option value="Kayquit 1" {{ old('barangay') == 'Kayquit 1' ? 'selected' : '' }}>Kayquit 1</option>
+                                <option value="Kayquit 2" {{ old('barangay') == 'Kayquit 2' ? 'selected' : '' }}>Kayquit 2</option>
+                                <option value="Kayquit 3" {{ old('barangay') == 'Kayquit 3' ? 'selected' : '' }}>Kayquit 3</option>
+                                <option value="Καυταμβog" {{ old('barangay') == 'Καυταμβog' ? 'selected' : '' }}>Καυταμβog</option>
+                                <option value="Καυταροs" {{ old('barangay') == 'Καυταροs' ? 'selected' : '' }}>Καυταροs</option>
+                                <option value="Limbon" {{ old('barangay') == 'Limbon' ? 'selected' : '' }}>Limbon</option>
+                                <option value="Lumampong Balagbag" {{ old('barangay') == 'Lumampong Balagbag' ? 'selected' : '' }}>Lumampong Balagbag</option>
+                                <option value="Lumampong Halayhay" {{ old('barangay') == 'Lumampong Halayhay' ? 'selected' : '' }}>Lumampong Halayhay</option>
+                                <option value="Mahabang Kahoy Cerca" {{ old('barangay') == 'Mahabang Kahoy Cerca' ? 'selected' : '' }}>Mahabang Kahoy Cerca</option>
+                                <option value="Mahabang Kahoy Lejos" {{ old('barangay') == 'Mahabang Kahoy Lejos' ? 'selected' : '' }}>Mahabang Kahoy Lejos</option>
+                                <option value="Mataas Na Lupa" {{ old('barangay') == 'Mataas Na Lupa' ? 'selected' : '' }}>Mataas Na Lupa</option>
+                                <option value="Poblacion 1" {{ old('barangay') == 'Poblacion 1' ? 'selected' : '' }}>Poblacion 1</option>
+                                <option value="Poblacion 2" {{ old('barangay') == 'Poblacion 2' ? 'selected' : '' }}>Poblacion 2</option>
+                                <option value="Poblacion 3" {{ old('barangay') == 'Poblacion 3' ? 'selected' : '' }}>Poblacion 3</option>
+                                <option value="Poblacion 4" {{ old('barangay') == 'Poblacion 4' ? 'selected' : '' }}>Poblacion 4</option>
+                                <option value="Pulo" {{ old('barangay') == 'Pulo' ? 'selected' : '' }}>Pulo</option>
+                                <option value="Tambo Balagbag" {{ old('barangay') == 'Tambo Balagbag' ? 'selected' : '' }}>Tambo Balagbag</option>
+                                <option value="Tambo Ilaya" {{ old('barangay') == 'Tambo Ilaya' ? 'selected' : '' }}>Tambo Ilaya</option>
+                                <option value="Tambo Malaki" {{ old('barangay') == 'Tambo Malaki' ? 'selected' : '' }}>Tambo Malaki</option>
+                                <option value="Tambo Munti Kulit" {{ old('barangay') == 'Tambo Munti Kulit' ? 'selected' : '' }}>Tambo Munti Kulit</option>
+                            </select>
                             @error('barangay')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -189,12 +228,7 @@
                          {{-- Municipality --}}
                          <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Municipality</label>
-                            <input type="text" name="municipality" value="{{old('municipality')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
-                            @error('municipality')
-                                <p class="text-red-500 text-xs p-2">
-                                    {{$message}}
-                                </p>
-                            @enderror   
+                            <input type="text" name="municipality" value="Indang" readonly class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         </div>
                     </div>
 
@@ -202,23 +236,13 @@
                         {{-- Province --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Province</label>
-                            <input type="text" name="province" value="{{old('province')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
-                            @error('province')
-                                <p class="text-red-500 text-xs p-2">
-                                    {{$message}}
-                                </p>
-                            @enderror   
+                            <input type="text" name="province" value="Cavite" readonly class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"> 
                         </div>
 
                          {{-- Zip Code --}}
                          <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Zip Code</label>
-                            <input type="number" name="zipcode" value="{{old('zipcode')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
-                            @error('zipcode')
-                                <p class="text-red-500 text-xs p-2">
-                                    {{$message}}
-                                </p>
-                            @enderror   
+                            <input type="number" name="zipcode" value="4122" readonly class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         </div>
                     </div>
 
@@ -333,7 +357,7 @@
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Membership Status</label>
                         <div class="flex flex-col">
                             <div class="flex items-center space-x-2">
-                                <input type="radio" name="status_membership" value="PWD" class="text-sky-500 focus:ring-sky-500" {{ old('status_membership') == 'Person w/ Disability' ? 'checked' : '' }}>
+                                <input type="radio" name="status_membership" value="PWD" class="text-sky-500 focus:ring-sky-500" {{ old('status_membership') == 'PWD' ? 'checked' : '' }}>
                                 <label>Person w/ Disability (PWD)</label>
                             </div>
                         
