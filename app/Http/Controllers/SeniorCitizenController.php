@@ -168,19 +168,20 @@ class SeniorCitizenController extends Controller
         // dd($request);
         $validated = $request->validate([
             "sex" => ['nullable'],
-            "civil_status" => ['nullable'],
-            "status_membership" => ['nullable'],
+            "civil" => ['nullable'],
+            "membership" => ['nullable'],
             "dateto" => ['nullable'],
             "datefrom" => ['nullable']
         ]);
     
         $sex = $validated['sex'] ?? null;
-        $civil_status = $validated['civil_status'] ?? null;
-        $status_membership = $validated['status_membership'] ?? null;
+        $civil_status = $validated['civil'] ?? null;
+        $status_membership = $validated['membership'] ?? null;
         $dateto = $validated['dateto'] ?? null;
         $datefrom = $validated['datefrom'] ?? null;
 
         if ($category == 'total') {
+            // dd($request);
             $seniorsQuery = SeniorCitizen::query();
             $seniorsQueryMale = SeniorCitizen::query();
             $seniorsQueryFemale = SeniorCitizen::query();
@@ -262,49 +263,167 @@ class SeniorCitizenController extends Controller
         
         elseif ($category == 'male') {
 
-            $maleSeniorsQuery = SeniorCitizen::query();
-
+            $seniorsQuery = SeniorCitizen::query();
+            $seniorsQueryMale = SeniorCitizen::query();
+            $seniorsQueryFemale = SeniorCitizen::query();
+            $seniorsQueryPWD = SeniorCitizen::query();
+            $seniorsQueryPension = SeniorCitizen::query();
+            $seniorsQueryNonPension = SeniorCitizen::query();
+        
             if ($sex) {
-                $maleSeniorsQuery->where('sex', $sex);
+                $seniorsQuery->where('sex', $sex);
+                $seniorsQueryMale->where('sex', $sex);
+                $seniorsQueryFemale->where('sex', $sex);
+                $seniorsQueryPWD->where('sex', $sex);
+                $seniorsQueryPension->where('sex', $sex);
+                $seniorsQueryNonPension->where('sex', $sex);
             }
             if ($civil_status) {
-                $maleSeniorsQuery->where('civil_status', $civil_status);
+                $seniorsQuery->where('civil_status', $civil_status);
+                $seniorsQueryMale->where('civil_status', $civil_status);
+                $seniorsQueryFemale->where('civil_status', $civil_status);
+                $seniorsQueryPWD->where('civil_status', $civil_status);
+                $seniorsQueryPension->where('civil_status', $civil_status);
+                $seniorsQueryNonPension->where('civil_status', $civil_status);
             }
             if ($status_membership) {
-                $maleSeniorsQuery->where('status_membership', $status_membership);
+                $seniorsQuery->where('status_membership', $status_membership);
+                $seniorsQueryMale->where('status_membership', $status_membership);
+                $seniorsQueryFemale->where('status_membership', $status_membership);
+                $seniorsQueryPWD->where('status_membership', $status_membership);
+                $seniorsQueryPension->where('status_membership', $status_membership);
+                $seniorsQueryNonPension->where('status_membership', $status_membership);
             }
             if ($datefrom && !$dateto) {
-                $maleSeniorsQuery->where('birthdate', '=', $datefrom);
+                $seniorsQuery->where('birthdate', '=', $datefrom);
+                $seniorsQueryMale->where('birthdate', '=', $datefrom);
+                $seniorsQueryFemale->where('birthdate', '=', $datefrom);
+                $seniorsQueryPWD->where('birthdate', '=', $datefrom);
+                $seniorsQueryPension->where('birthdate', '=', $datefrom);
+                $seniorsQueryNonPension->where('birthdate', '=', $datefrom);
+
             } elseif ($datefrom && $dateto) {
-                $maleSeniorsQuery->whereBetween('birthdate', [$datefrom, $dateto]);
+                $seniorsQuery->whereBetween('birthdate', [$datefrom, $dateto]);
+                $seniorsQueryMale->whereBetween('birthdate', [$datefrom, $dateto]);
+                $seniorsQueryFemale->whereBetween('birthdate', [$datefrom, $dateto]);
+                $seniorsQueryPWD->whereBetween('birthdate', [$datefrom, $dateto]);
+                $seniorsQueryPension->whereBetween('birthdate', [$datefrom, $dateto]);
+                $seniorsQueryNonPension->whereBetween('birthdate', [$datefrom, $dateto]);
             }
-        
-            // Fetch total male seniors based on filters
-            $totalmale = $maleSeniorsQuery->where('sex', 'Male')->get();
-            $pdf = PDF::loadView('partials.viewPDFMale', ['totalmale' => $totalmale]);
+            $totalusers = $seniorsQuery->where('sex', 'Male')->get();
+
+            $totalCount = $seniorsQuery->count();
+            $totalMaleCount = $seniorsQueryMale
+                ->where('sex', 'Male')
+                ->count();
+            $totalFemaleCount = $seniorsQueryFemale
+                ->where('sex', 'Female')
+                ->count();
+
+            $totalPWD = $seniorsQueryPWD
+                ->where('status_membership', 'PWD')
+                ->where('sex', 'Male')
+                ->count();
+            $totalPension = $seniorsQueryPension
+                ->where('status_membership', 'Pension')
+                ->where('sex', 'Male')
+                ->count();
+            $totalNonPension = $seniorsQueryNonPension
+                ->where('status_membership', 'Non-Pension')
+                ->where('sex', 'Male')
+                ->count();
+            
+            $pdf = PDF::loadView('partials.viewPDFMale', 
+            ['totalusers' => $totalusers, 
+            'totalCount' => $totalCount,
+            'totalMaleCount' => $totalMaleCount,
+            'totalFemaleCount' => $totalFemaleCount,
+            'totalPWD' => $totalPWD,
+            'totalPension' => $totalPension,
+            'totalNonPension' => $totalNonPension,
+            ]);
         } 
         
         elseif ($category == 'female') {
-            $femaleSeniorsQuery = SeniorCitizen::query();
-
+            $seniorsQuery = SeniorCitizen::query();
+            $seniorsQueryMale = SeniorCitizen::query();
+            $seniorsQueryFemale = SeniorCitizen::query();
+            $seniorsQueryPWD = SeniorCitizen::query();
+            $seniorsQueryPension = SeniorCitizen::query();
+            $seniorsQueryNonPension = SeniorCitizen::query();
+        
             if ($sex) {
-                $femaleSeniorsQuery->where('sex', $sex);
+                $seniorsQuery->where('sex', $sex);
+                $seniorsQueryMale->where('sex', $sex);
+                $seniorsQueryFemale->where('sex', $sex);
+                $seniorsQueryPWD->where('sex', $sex);
+                $seniorsQueryPension->where('sex', $sex);
+                $seniorsQueryNonPension->where('sex', $sex);
             }
             if ($civil_status) {
-                $femaleSeniorsQuery->where('civil_status', $civil_status);
+                $seniorsQuery->where('civil_status', $civil_status);
+                $seniorsQueryMale->where('civil_status', $civil_status);
+                $seniorsQueryFemale->where('civil_status', $civil_status);
+                $seniorsQueryPWD->where('civil_status', $civil_status);
+                $seniorsQueryPension->where('civil_status', $civil_status);
+                $seniorsQueryNonPension->where('civil_status', $civil_status);
             }
             if ($status_membership) {
-                $femaleSeniorsQuery->where('status_membership', $status_membership);
+                $seniorsQuery->where('status_membership', $status_membership);
+                $seniorsQueryMale->where('status_membership', $status_membership);
+                $seniorsQueryFemale->where('status_membership', $status_membership);
+                $seniorsQueryPWD->where('status_membership', $status_membership);
+                $seniorsQueryPension->where('status_membership', $status_membership);
+                $seniorsQueryNonPension->where('status_membership', $status_membership);
             }
             if ($datefrom && !$dateto) {
-                $femaleSeniorsQuery->where('birthdate', '=', $datefrom);
+                $seniorsQuery->where('birthdate', '=', $datefrom);
+                $seniorsQueryMale->where('birthdate', '=', $datefrom);
+                $seniorsQueryFemale->where('birthdate', '=', $datefrom);
+                $seniorsQueryPWD->where('birthdate', '=', $datefrom);
+                $seniorsQueryPension->where('birthdate', '=', $datefrom);
+                $seniorsQueryNonPension->where('birthdate', '=', $datefrom);
+
             } elseif ($datefrom && $dateto) {
-                $femaleSeniorsQuery->whereBetween('birthdate', [$datefrom, $dateto]);
+                $seniorsQuery->whereBetween('birthdate', [$datefrom, $dateto]);
+                $seniorsQueryMale->whereBetween('birthdate', [$datefrom, $dateto]);
+                $seniorsQueryFemale->whereBetween('birthdate', [$datefrom, $dateto]);
+                $seniorsQueryPWD->whereBetween('birthdate', [$datefrom, $dateto]);
+                $seniorsQueryPension->whereBetween('birthdate', [$datefrom, $dateto]);
+                $seniorsQueryNonPension->whereBetween('birthdate', [$datefrom, $dateto]);
             }
-        
-            // Fetch total female seniors based on filters
-            $totalfemale = $femaleSeniorsQuery->where('sex', 'Female')->get();
-            $pdf = PDF::loadView('partials.viewPDFFemale', ['totalfemale' => $totalfemale]);
+            $totalusers = $seniorsQuery->where('sex', 'Female')->get();
+
+            $totalCount = $seniorsQuery->count();
+            $totalMaleCount = $seniorsQueryMale
+                ->where('sex', 'Male')
+                ->count();
+            $totalFemaleCount = $seniorsQueryFemale
+                ->where('sex', 'Female')
+                ->count();
+
+            $totalPWD = $seniorsQueryPWD
+                ->where('status_membership', 'PWD')
+                ->where('sex', 'Female')
+                ->count();
+            $totalPension = $seniorsQueryPension
+                ->where('status_membership', 'Pension')
+                ->where('sex', 'Female')
+                ->count();
+            $totalNonPension = $seniorsQueryNonPension
+                ->where('status_membership', 'Non-Pension')
+                ->where('sex', 'Female')
+                ->count();
+            
+            $pdf = PDF::loadView('partials.viewPDFFemale', 
+            ['totalusers' => $totalusers, 
+            'totalCount' => $totalCount,
+            'totalMaleCount' => $totalMaleCount,
+            'totalFemaleCount' => $totalFemaleCount,
+            'totalPWD' => $totalPWD,
+            'totalPension' => $totalPension,
+            'totalNonPension' => $totalNonPension,
+            ]);
         }
     
         return $pdf->stream();
@@ -471,26 +590,6 @@ class SeniorCitizenController extends Controller
                 $seniorsQueryPension->whereBetween('birthdate', [$datefrom, $dateto]);
                 $seniorsQueryNonPension->whereBetween('birthdate', [$datefrom, $dateto]);
             }
-        // $totalusers = $seniorsQuery->get();
-        // // $totalusers = $seniorsQueryPWD->get();
-
-        // $totalCount = $seniorsQuery->count();
-        // $totalMaleCount = $seniorsQueryMale
-        //     ->where('sex', 'Male')
-        //     ->count();
-        // $totalFemaleCount = $seniorsQueryFemale
-        //     ->where('sex', 'Female')
-        //     ->count();
-
-        // $totalPWD = $seniorsQueryPWD
-        //     ->where('status_membership', 'PWD')
-        //     ->count();
-        // $totalPension = $seniorsQueryPension
-        //     ->where('status_membership', 'Pension')
-        //     ->count();
-        // $totalNonPension = $seniorsQueryNonPension
-        //     ->where('status_membership', 'Non-Pension')
-        //     ->count();
         
         return Excel::download(new SeniorExcelExport($seniorsQuery, $seniorsQueryMale, $seniorsQueryFemale, $seniorsQueryPWD, $seniorsQueryPension, $seniorsQueryNonPension), 'senior-citizen.xlsx');
         // return Excel::download(new SeniorExcelExport, 'senior-citizen.xlsx');
