@@ -62,7 +62,7 @@
           </div>
 
           <div class="w-1/2 flex flex-col gap-3">
-            <div class="relative p-10 border-2 border-gray-300 rounded-lg hover:shadow-lg">
+            <a href="/account" class="relative p-10 border-2 border-gray-300 rounded-lg hover:shadow-lg">
               <!-- Background Image -->
               <img src="{{asset('img/totaluser.png')}}" class="absolute right-0 z-0 w-[120px] h-[100px] pr-5 opacity-70" alt="">
                <!-- Text Content -->
@@ -71,7 +71,7 @@
                 <p>Total Users</p> <!--only clickable for admin user-->
                 <p>No. of Registered Users</p>
               </div>
-            </div>
+            </a>
             <div class="border-2 border-gray-300 bg-[#F9C5C5] rounded-lg p-5 flex items-center">
               <div class="flex items-center">
                 <div class="w-10 h-10 rounded-full bg-red-500"></div>
