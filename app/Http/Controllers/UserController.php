@@ -180,6 +180,7 @@ class UserController extends Controller
             "sex" => ['nullable'],
             "civil_status" => ['nullable'],
             "status_membership" => ['nullable'],
+            "age_class" => ['nullable'],
             "dateto" => ['nullable'],
             "datefrom" => ['nullable']
         ]);
@@ -187,6 +188,7 @@ class UserController extends Controller
         $sex = $validated['sex'] ?? null;
         $civil = $validated['civil_status'] ?? null;
         $membership = $validated['status_membership'];
+        $class = $validated['age_class'];
         $dateto = $validated['dateto'];
         $datefrom = $validated['datefrom'];
 
@@ -204,6 +206,19 @@ class UserController extends Controller
         if ($membership) {
             $seniorsQuery->where('status_membership', $membership);
         }
+
+        if ($class) {
+            if ($class == "Centenarian"){
+                $seniorsQuery->whereRaw('YEAR(NOW()) - YEAR(birthdate) >= 100');
+            }
+            if ($class == "Nonagenarian"){
+                $seniorsQuery->whereRaw('YEAR(NOW()) - YEAR(birthdate) >= 90 AND YEAR(NOW()) - YEAR(birthdate) <= 99');
+            }
+            if ($class == "Octogenarian"){
+                $seniorsQuery->whereRaw('YEAR(NOW()) - YEAR(birthdate) >= 80 AND YEAR(NOW()) - YEAR(birthdate) <= 89');
+            }
+        }
+        
 
         if ($datefrom && !$dateto) {
             // If $datefrom has value but $dateto is null
@@ -233,6 +248,7 @@ class UserController extends Controller
             'sex' => $sex,
             'civil' =>$civil,
             'membership' =>$membership,
+            'class' =>$class,
             'dateto' =>$dateto,
             'datefrom' =>$datefrom,
         ]);

@@ -170,6 +170,7 @@ class SeniorCitizenController extends Controller
             "sex" => ['nullable'],
             "civil" => ['nullable'],
             "membership" => ['nullable'],
+            "age_class" => ['nullable'],
             "dateto" => ['nullable'],
             "datefrom" => ['nullable']
         ]);
@@ -177,6 +178,7 @@ class SeniorCitizenController extends Controller
         $sex = $validated['sex'] ?? null;
         $civil_status = $validated['civil'] ?? null;
         $status_membership = $validated['membership'] ?? null;
+        $class = $validated['age_class'] ?? null;
         $dateto = $validated['dateto'] ?? null;
         $datefrom = $validated['datefrom'] ?? null;
 
@@ -213,6 +215,30 @@ class SeniorCitizenController extends Controller
                 $seniorsQueryPension->where('status_membership', $status_membership);
                 $seniorsQueryNonPension->where('status_membership', $status_membership);
             }
+            if ($class) {
+                $applyAgeFilter = function ($query, $minAge, $maxAge) {
+                    $query->whereRaw('YEAR(NOW()) - YEAR(birthdate) >= ? AND YEAR(NOW()) - YEAR(birthdate) <= ?', [$minAge, $maxAge]);
+                };
+            
+                switch ($class) {
+                    case "Centenarian":
+                        $applyAgeFilter($seniorsQuery, 100, PHP_INT_MAX);
+                        break;
+                    case "Nonagenarian":
+                        $applyAgeFilter($seniorsQuery, 90, 99);
+                        break;
+                    case "Octogenarian":
+                        $applyAgeFilter($seniorsQuery, 80, 89);
+                        break;
+                }
+            
+                // Applying the same logic for other queries
+                $applyAgeFilter($seniorsQueryMale, 100, PHP_INT_MAX);
+                $applyAgeFilter($seniorsQueryFemale, 100, PHP_INT_MAX);
+                $applyAgeFilter($seniorsQueryPWD, 100, PHP_INT_MAX);
+                $applyAgeFilter($seniorsQueryPension, 100, PHP_INT_MAX);
+                $applyAgeFilter($seniorsQueryNonPension, 100, PHP_INT_MAX);
+            }            
             if ($datefrom && !$dateto) {
                 $seniorsQuery->where('birthdate', '=', $datefrom);
                 $seniorsQueryMale->where('birthdate', '=', $datefrom);
@@ -294,6 +320,30 @@ class SeniorCitizenController extends Controller
                 $seniorsQueryPension->where('status_membership', $status_membership);
                 $seniorsQueryNonPension->where('status_membership', $status_membership);
             }
+            if ($class) {
+                $applyAgeFilter = function ($query, $minAge, $maxAge) {
+                    $query->whereRaw('YEAR(NOW()) - YEAR(birthdate) >= ? AND YEAR(NOW()) - YEAR(birthdate) <= ?', [$minAge, $maxAge]);
+                };
+            
+                switch ($class) {
+                    case "Centenarian":
+                        $applyAgeFilter($seniorsQuery, 100, PHP_INT_MAX);
+                        break;
+                    case "Nonagenarian":
+                        $applyAgeFilter($seniorsQuery, 90, 99);
+                        break;
+                    case "Octogenarian":
+                        $applyAgeFilter($seniorsQuery, 80, 89);
+                        break;
+                }
+            
+                // Applying the same logic for other queries
+                $applyAgeFilter($seniorsQueryMale, 100, PHP_INT_MAX);
+                $applyAgeFilter($seniorsQueryFemale, 100, PHP_INT_MAX);
+                $applyAgeFilter($seniorsQueryPWD, 100, PHP_INT_MAX);
+                $applyAgeFilter($seniorsQueryPension, 100, PHP_INT_MAX);
+                $applyAgeFilter($seniorsQueryNonPension, 100, PHP_INT_MAX);
+            }    
             if ($datefrom && !$dateto) {
                 $seniorsQuery->where('birthdate', '=', $datefrom);
                 $seniorsQueryMale->where('birthdate', '=', $datefrom);
@@ -376,6 +426,30 @@ class SeniorCitizenController extends Controller
                 $seniorsQueryPension->where('status_membership', $status_membership);
                 $seniorsQueryNonPension->where('status_membership', $status_membership);
             }
+            if ($class) {
+                $applyAgeFilter = function ($query, $minAge, $maxAge) {
+                    $query->whereRaw('YEAR(NOW()) - YEAR(birthdate) >= ? AND YEAR(NOW()) - YEAR(birthdate) <= ?', [$minAge, $maxAge]);
+                };
+            
+                switch ($class) {
+                    case "Centenarian":
+                        $applyAgeFilter($seniorsQuery, 100, PHP_INT_MAX);
+                        break;
+                    case "Nonagenarian":
+                        $applyAgeFilter($seniorsQuery, 90, 99);
+                        break;
+                    case "Octogenarian":
+                        $applyAgeFilter($seniorsQuery, 80, 89);
+                        break;
+                }
+            
+                // Applying the same logic for other queries
+                $applyAgeFilter($seniorsQueryMale, 100, PHP_INT_MAX);
+                $applyAgeFilter($seniorsQueryFemale, 100, PHP_INT_MAX);
+                $applyAgeFilter($seniorsQueryPWD, 100, PHP_INT_MAX);
+                $applyAgeFilter($seniorsQueryPension, 100, PHP_INT_MAX);
+                $applyAgeFilter($seniorsQueryNonPension, 100, PHP_INT_MAX);
+            }    
             if ($datefrom && !$dateto) {
                 $seniorsQuery->where('birthdate', '=', $datefrom);
                 $seniorsQueryMale->where('birthdate', '=', $datefrom);
