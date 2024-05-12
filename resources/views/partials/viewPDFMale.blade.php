@@ -51,18 +51,40 @@
     <br>
 
     <table class="headerTotal">
+        @php
+            $totalOctogenarian = 0;
+            $totalNonagenarian = 0;
+            $totalCentenarian = 0;
+        @endphp
+
+        @foreach ($totalusers as $senior)  
+            @php
+                $age = \Carbon\Carbon::parse($senior->birthdate)->age;
+                if ($age >= 100) {
+                    $totalCentenarian++;
+                } elseif ($age >= 90) {
+                    $totalNonagenarian++;
+                } elseif ($age >= 80) {
+                    $totalOctogenarian++;
+                }
+            @endphp
+        @endforeach
+
         <tbody>
             <tr>
                 <td>Total Male: {{$totalMaleCount}}</td>
                 <td>Total PWD: {{$totalPWD}}</td>
+                <td>Total Octagenarian: {{$totalOctogenarian}}</td>
             </tr>
             <tr>
                 <td>Total Female: NA</td>
                 <td>Total Pension: {{$totalPension}}</td>
+                <td>Total Nonagenarian: {{$totalNonagenarian}}</td>
             </tr>
             <tr>
                 <td></td>
                 <td>Total Non-Pension: {{$totalNonPension}}</td>
+                <td>Total Centenarian: {{$totalCentenarian}}</td>
             </tr>
         </tbody>
     </table>
@@ -72,26 +94,47 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
                 <th>Birthdate</th>
+                <th>Age</th>
                 <th>Sex</th>
                 <th>Civil Status</th>
                 <th>Status Membership</th>
+                <th>Classification</th>
             </tr>
         </thead>
 
         <tbody>
             @foreach ($totalusers as $senior)  
                 <tr>
-                    <td>{{$senior->firstname.' '.$senior->lastname}}</td>
+                    <td>{{$senior->lastname}}</td>
+                    <td>{{$senior->firstname}}</td>
+                    <td>{{$senior->middlename}}</td>
                     <td>{{$senior->birthdate}}</td>
+                    <td>{{ \Carbon\Carbon::parse($senior->birthdate)->age }}</td>
                     <td>{{$senior->sex}}</td>
                     <td>{{$senior->civil_status}}</td>
                     <td>{{$senior->status_membership}}</td>
+                    <td>
+                        @php
+                            $age = \Carbon\Carbon::parse($senior->birthdate)->age;
+                            if ($age >= 100) {
+                                echo 'Centenarian';
+                            } elseif ($age >= 90) {
+                                echo 'Nonagenarian';
+                            } elseif ($age >= 80) {
+                                echo 'Octogenarian';
+                            } else {
+                                echo 'NA';
+                            }
+                        @endphp
+                    </td>
                 </tr>
-            @endforeach
+              @endforeach
         </tbody>
-        
+
     </table>
 </body>
 </html>
