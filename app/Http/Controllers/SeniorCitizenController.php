@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
+use Carbon\Carbon;
 
 class SeniorCitizenController extends Controller
 {
@@ -162,6 +163,60 @@ class SeniorCitizenController extends Controller
         $citizens = SeniorCitizen::where('id', $id)->first();
         return view("senior_citizen.view_citizen", ['title'=>'View','citizens'=>$citizens]);
     }
+
+    // SAVE PDF BRGY LIST
+    public function brgypdf(Request $request){
+        $validated = $request->validate([
+            "dateto" => ['nullable', 'date'],
+            "datefrom" => ['nullable', 'date']
+        ]);
+        $dateto = $validated['dateto'] ?? null;
+        $datefrom = $validated['datefrom'] ?? null;
+        
+        if ($datefrom && !$dateto) {
+            $header = "Total Brgy List As of ".$datefrom;
+            $barangays = SeniorCitizen::whereDate('created_at', '=', $datefrom)
+                ->select(
+                    'barangay', 
+                    DB::raw('count(*) as totalBrgy'), 
+                    DB::raw('sum(case when sex = "Male" then 1 else 0 end) as totalMale'), 
+                    DB::raw('sum(case when sex = "Female" then 1 else 0 end) as totalFemale')
+                    )
+                ->groupBy('barangay')
+                ->get();
+        } elseif (!$datefrom && $dateto) {
+            $header = null;
+            return redirect()->back()->with('message', 'Please provide a starting date.');
+        } elseif ($datefrom && $dateto) {
+            $header = "Total Brgy List As of ".$datefrom." to ".$dateto;
+            $barangays = SeniorCitizen::whereDate('created_at', '>=', $datefrom)
+                ->whereDate('created_at', '<=', $dateto)
+                ->select(
+                    'barangay', 
+                    DB::raw('count(*) as totalBrgy'), 
+                    DB::raw('sum(case when sex = "Male" then 1 else 0 end) as totalMale'), 
+                    DB::raw('sum(case when sex = "Female" then 1 else 0 end) as totalFemale')
+                    )
+                ->groupBy('barangay')
+                ->get();
+        } else {
+            $header = "Overall Brgy List";
+            $barangays = SeniorCitizen::select(
+                    'barangay', 
+                    DB::raw('count(*) as totalBrgy'), 
+                    DB::raw('sum(case when sex = "Male" then 1 else 0 end) as totalMale'), 
+                    DB::raw('sum(case when sex = "Female" then 1 else 0 end) as totalFemale')
+                )
+                ->groupBy('barangay')
+                ->get();
+        }
+        
+    
+        $pdf = PDF::loadView('partials.brgylist', ['brgylist' => $barangays, 'header' => $header]);
+        return $pdf->stream();
+    }
+    
+    
 
     //VIEW PDF
     public function viewpdf(Request $request, $category){
