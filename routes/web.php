@@ -37,6 +37,7 @@ Route::controller(SeniorCitizenController::class)->group(function(){
     Route::post('/exportExcel','exportExcel');
 
     Route::post('/brgypdf','brgypdf');
+    Route::post('/viewbrgypdf','viewbrgypdf');
 
     Route::post('/search','search');
 

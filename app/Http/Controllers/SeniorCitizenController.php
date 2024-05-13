@@ -215,6 +215,43 @@ class SeniorCitizenController extends Controller
         $pdf = PDF::loadView('partials.brgylist', ['brgylist' => $barangays, 'header' => $header]);
         return $pdf->stream();
     }
+
+    
+    // SAVE PDF PER BRGY LIST
+    public function viewbrgypdf(Request $request){
+        // dd($request);
+        $validated = $request->validate([
+            "brgyname" => ['nullable'],
+            "dateto" => ['nullable', 'date'],
+            "datefrom" => ['nullable', 'date']
+        ]);
+        $brgyname = $validated['brgyname'] ?? null;
+        $dateto = $validated['dateto'] ?? null;
+        $datefrom = $validated['datefrom'] ?? null;
+
+        if ($datefrom && !$dateto) {
+            $header = "List of Senior Citizen in " . $brgyname . " As of " . $datefrom;
+            $barangays = SeniorCitizen::where('barangay', $brgyname)
+                ->whereDate('created_at', '=', $datefrom)
+                ->get();
+        } elseif (!$datefrom && $dateto) {
+            $header = null;
+            return redirect()->back()->with('message', 'Please provide a starting date.');
+        } elseif ($datefrom && $dateto) {
+            $header = "List of Senior Citizen in " . $brgyname . " As of " . $datefrom ." to ". $dateto;
+            $barangays = SeniorCitizen::where('barangay', $brgyname)
+                ->whereDate('created_at', '>=', $datefrom)
+                ->whereDate('created_at', '<=', $dateto)
+                ->get();
+        } else {
+            $header = "Overall Brgy List In ". $brgyname;
+            $barangays = SeniorCitizen::where('barangay', $brgyname)
+                ->get();
+        }
+
+        $pdf = PDF::loadView('partials.perbrgylist', ['brgylist' => $barangays, 'header' => $header]);
+        return $pdf->stream();
+    }
     
     
 
