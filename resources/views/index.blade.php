@@ -1,5 +1,5 @@
 @include('partials.header')
-              <div class="w-screen h-screen" style="background-image: linear-gradient(to top, rgb(8, 66, 161), rgba(59, 130, 246, 0)), url('img/bg1.jpg'); background-size: cover; background-position: center;">
+              <div class="w-screen h-screen" style="background-image: linear-gradient(to top, rgb(8, 66, 161), rgba(59, 130, 246, 0)), url('img/bg2.jpg'); background-size: cover; background-position: center;">
                 
                 <div class="flex">
                   {{-- Text Container --}}
@@ -9,21 +9,20 @@
                       <div class="">
                         <div class="">
                           <h1 class="text-white text-lg font-semibold font-sans pb-1">Reynalyn Avilla</h1>
-                          <p class="text-neutral-200">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga quae dolor in quam quod voluptatem facilis corporis recusandae nostrum optio.</p>  
+                          <p class="text-neutral-200">In today's fast-paced digital landscape, investing in an electronic management record system is not just advantageous but essential for maintaining competitiveness, efficiency, and accountability in business operations.</p>  
                         </div>
                       </div>
                     </div>  
 
                     <br>
                     <div class="">
-                      <h1 class="text-white text-5xl font-bold pb-5">Lorem ipsum dolor sit amet consectur.</h1>
-                      <p class="text-neutral-100 text-2xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis repudiandae beatae labore quia. Aspernatur recusandae optio aliquid officiis cupiditate eveniet.</p>
+                      <h1 class="text-white text-5xl font-bold pb-5">OSCA Record Management System.</h1>
+                      <p class="text-neutral-100 text-2xl">Marks the transition from traditional paper-based methods to efficient, digital workflows. The deployment process involves careful planning, customization, and training to ensure a smooth transition for all stakeholders.</p>
                    </div>
                    
                    <div class="flex pt-5 w-full gap-3">
-                    <input type="text" class="w-full mt-2 rounded-md pr-2 pl-6 pt-2 pb-2" value="" placeholder="yourname@email.com">
-                    <a href="mailto:yourname@email.com" class="text-center p-2 w-40 mt-2 rounded-md text-white bg-teal-400 hover:bg-teal-600 active:bg-teal-700 focus:outline-none focus:ring focus:ring-teal-300">
-                     Send
+                    <a href="#" class="text-center p-2 w-40 mt-2 rounded-md text-white bg-teal-400 hover:bg-teal-600 active:bg-teal-700 focus:outline-none focus:ring focus:ring-teal-300">
+                     Learn More
                     </a>
                    </div>
                   </div>

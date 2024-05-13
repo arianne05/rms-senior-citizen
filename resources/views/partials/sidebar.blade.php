@@ -38,7 +38,7 @@
 
                     <br><br><br><br><br><br><br><br><br><br><br> <!--Temporary-->
                     <div class="p-4">
-                        <img src="{{asset('img/bg1.jpg')}}" class="w-full h-30 rounded" alt="">
+                        <img src="{{asset('img/bg2.jpg')}}" class="w-full h-30 rounded" alt="">
                         <li class="flex align-center mb-2 mt-2 rounded-lg py-2.5 px-7 bg-[#DAE5FF] group hover:bg-[#5C7CC7] hover:text-white">
                             <form action="/logout" id="logoutform" method="POST">
                                 @csrf
