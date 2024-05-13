@@ -103,9 +103,9 @@
                             <td class="flex gap-x-3">
                                 <a href="/edit_user/{{$user->id}}">Edit</a>
                                 @if ($user->status == 'Active')
-                                    <a href="/activate/{{$user->id}}">Deactivate</a>
+                                    <a href="/activate/{{$user->id}}" id="deactiveBTN">Deactivate</a>
                                 @else
-                                    <a href="/activate/{{$user->id}}">Activate</a>
+                                    <a href="/activate/{{$user->id}}" id="activeBTN">Activate</a>
                                 @endif
                             </td>
                         </tr>
@@ -121,5 +121,7 @@
 {{-- Component --}}
 <x-message />
 <x-save_message />
+<x-active_message />
+<x-deactive_message />
 
 @include('partials.footer')

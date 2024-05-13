@@ -125,4 +125,5 @@
 
 {{-- Components --}}
 <x-delete_message />
+
 @include('partials.footer')
