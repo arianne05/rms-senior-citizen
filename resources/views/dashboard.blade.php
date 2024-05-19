@@ -28,41 +28,41 @@
       <br>
 
       {{-- Card Dashboard --}}
-      <div class="flex w-full gap-3">
-        <a href="/citizen" class="relative w-2/5 p-10 border-2 border-gray-300 rounded-lg hover:shadow-lg">
-          <!-- Background Image -->
-          <img src="{{asset('img/totals.png')}}" class="absolute right-0 z-0 w-[250px] h-[150px] pr-5 opacity-70" alt="">
-          <!-- Text Content -->
-          <div class="relative z-10" id="text">
-            <h2 class="text-8xl p-0 m-0 font-bold">{{$totalCount}}</h2>
-            <p class="font-bold pl-5">Total Record</p>
-            <p class="pl-5">As of today {{$timeFormatted}}</p>
-          </div>
-        </a>
-
-        <div class="w-3/5 flex gap-3">
-          <div class="w-1/2 flex flex-col gap-3">
-            <a href="/barangay" class="relative p-10 border-2 border-gray-300 rounded-lg hover:shadow-lg">
-              <!-- Background Image -->
-              <img src="{{asset('img/totalbrgy.png')}}" class="absolute right-0 z-0 w-[150px] h-[50px] pr-5 opacity-70" alt="">
-               <!-- Text Content -->
-              <div class="relative z-10" id="text">
-                <h2 class="text-5xl font-bold">{{$totalBarangay}}</h2>
-                <p>Total Barangay</p>
-                <p>No. of Registered Barangays</p>
-              </div>
-            </a>
-            <div class="border-2 border-gray-300 bg-[#C5E0F9] rounded-lg p-5 flex items-center">
-              <div class="flex items-center">
-                <div class="w-10 h-10 rounded-full bg-blue-500"></div>
-                <h2 class="text-4xl font-bold pl-5">{{$totalMaleCount}}</h2>
-              </div>
-              <p class="pl-2">Total Male</p>
+        <div class="flex w-full gap-3">
+          <div class="relative w-2/5 p-10 border-2 border-gray-300 rounded-lg hover:shadow-lg">
+            <!-- Background Image -->
+            <img src="{{asset('img/totals.png')}}" class="absolute right-0 z-0 w-[250px] h-[150px] pr-5 opacity-70" alt="">
+            <!-- Text Content -->
+            <div class="relative z-10" id="text">
+              <h2 class="text-8xl p-0 m-0 font-bold">{{$totalCount}}</h2>
+              <p class="font-bold pl-5">Total Record</p>
+              <p class="pl-5">As of today {{$timeFormatted}}</p>
             </div>
           </div>
 
+          <div class="w-3/5 flex gap-3">
+            <div class="w-1/2 flex flex-col gap-3">
+              <div class="relative p-10 border-2 border-gray-300 rounded-lg hover:shadow-lg">
+                <!-- Background Image -->
+                <img src="{{asset('img/totalbrgy.png')}}" class="absolute right-0 z-0 w-[150px] h-[50px] pr-5 opacity-70" alt="">
+                <!-- Text Content -->
+                <div class="relative z-10" id="text">
+                  <h2 class="text-5xl font-bold">{{$totalBarangay}}</h2>
+                  <p>Total Barangay</p>
+                  <p>No. of Registered Barangays</p>
+                </div>
+              </div>
+              <div class="border-2 border-gray-300 bg-[#C5E0F9] rounded-lg p-5 flex items-center">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 rounded-full bg-blue-500"></div>
+                  <h2 class="text-4xl font-bold pl-5">{{$totalMaleCount}}</h2>
+                </div>
+                <p class="pl-2">Total Male</p>
+              </div>
+          </div>
+
           <div class="w-1/2 flex flex-col gap-3">
-            <a href="/account" class="relative p-10 border-2 border-gray-300 rounded-lg hover:shadow-lg">
+            <div class="relative p-10 border-2 border-gray-300 rounded-lg hover:shadow-lg">
               <!-- Background Image -->
               <img src="{{asset('img/totaluser.png')}}" class="absolute right-0 z-0 w-[120px] h-[100px] pr-5 opacity-70" alt="">
                <!-- Text Content -->
@@ -71,7 +71,7 @@
                 <p>Total Users</p> <!--only clickable for admin user-->
                 <p>No. of Registered Users</p>
               </div>
-            </a>
+            </div>
             <div class="border-2 border-gray-300 bg-[#F9C5C5] rounded-lg p-5 flex items-center">
               <div class="flex items-center">
                 <div class="w-10 h-10 rounded-full bg-red-500"></div>

@@ -22,32 +22,61 @@ class UserController extends Controller
     }
 
     public function dashboard(){
-        //Fetch senior table
-        $seniors = SeniorCitizen::all();
-
         //TimeZone
         $manilaTime = Carbon::now('Asia/Manila');
         $timeFormatted = $manilaTime->format('M j, Y');
 
-        //total
-        $totalCount = DB::table('senior_citizens')->count();
-        $totalUsers = DB::table('users')
-            ->where('status', 'Active')
-            ->count();
-        $totalMaleCount = DB::table('senior_citizens')
-            ->where('sex', 'Male')
-            ->count();
-        $totalFemaleCount = DB::table('senior_citizens')
-            ->where('sex', 'Female')
-            ->count();
-        $totalBarangay = DB::table('senior_citizens')
-            ->distinct('barangay')
-            ->count();
-
-         // Retrieve the currently authenticated user
+        // Retrieve the currently authenticated user
         $user = auth()->user();
         // Access the name attribute
         $userName = $user->name;
+        $userPosition = $user->position;
+        $assignbrgy = $user->assignbrgy;
+
+        if($userPosition == "Admin"){
+            $seniors = SeniorCitizen::all();
+            
+            //total
+            $totalCount = DB::table('senior_citizens')->count();
+            $totalUsers = DB::table('users')
+                ->where('status', 'Active')
+                ->count();
+            $totalMaleCount = DB::table('senior_citizens')
+                ->where('sex', 'Male')
+                ->count();
+            $totalFemaleCount = DB::table('senior_citizens')
+                ->where('sex', 'Female')
+                ->count();
+            $totalBarangay = DB::table('senior_citizens')
+                ->distinct('barangay')
+                ->count();
+        } else{
+            $seniors = SeniorCitizen::where('barangay', $assignbrgy)->get();
+
+            //total
+            $totalCount = DB::table('senior_citizens')
+            ->where('barangay', $assignbrgy)
+            ->count();
+            $totalUsers = DB::table('users')
+                ->where('status', 'Active')
+                ->where('assignbrgy', $assignbrgy)
+                ->count();
+            $totalMaleCount = DB::table('senior_citizens')
+                ->where('sex', 'Male')
+                ->where('barangay', $assignbrgy)
+                ->count();
+            $totalFemaleCount = DB::table('senior_citizens')
+                ->where('sex', 'Female')
+                ->where('barangay', $assignbrgy)
+                ->count();
+            $totalBarangay = DB::table('senior_citizens')
+                ->distinct('barangay')
+                ->count();
+        }
+
+        // $totalCountBrgy = DB::table('senior_citizens')
+        //     ->where('barangay', $assignbrgy)
+        //     ->count();
 
         return view('dashboard',  $seniors, ['title'=>'Dashboard',
         'seniors'=> $seniors,
