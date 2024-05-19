@@ -66,19 +66,29 @@ class UserController extends Controller
         $validated = $request->validate([
             "email" => ['required', 'email'],
             "password" => 'required'
-       ]); //set rule in validation
-
-       if(auth()->attempt($validated)){
-        $request->session()->regenerate();
-        // Retrieve the currently authenticated user
-        $user = auth()->user();
-        // Access the name attribute
-        $userName = $user->name;
-        return redirect('/dashboard')->with('message', 'Welcome ' . $userName);
-       }
-
-       return back()->withErrors(['email' => 'Login Failed'])->onlyInput('email'); //if email is not existed nor password incorrect
+        ]); //set rule in validation
+    
+        // Attempt to authenticate the user
+        if(auth()->attempt($validated)){
+            // Retrieve the currently authenticated user
+            $user = auth()->user();
+    
+            // Check if user status is 'Active'
+            if ($user->status === 'Active') {
+                $request->session()->regenerate();
+                // Access the name attribute
+                $userName = $user->name;
+                return redirect('/dashboard')->with('message', 'Welcome ' . $userName);
+            } else {
+                // If user status is 'Inactive', logout the user
+                auth()->logout();
+                return back()->withErrors(['loginerror' => 'Your account is inactive.']);
+            }
+        }
+    
+        return back()->withErrors(['email' => 'Login Failed'])->onlyInput('email'); //if email is not existed nor password incorrect
     }
+    
 
     //ADD USER ACCOUNT
     public function register(Request $request){
