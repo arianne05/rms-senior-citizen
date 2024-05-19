@@ -191,7 +191,17 @@ class UserController extends Controller
 
      //TEMPLATE VIEW BARANGAY PAGE
     public function view_barangay(Request $request, $barangay){
-        $barangay_list = SeniorCitizen::where('barangay', $barangay)->get();
+        $user = auth()->user();
+        $assignbrgy = $user->assignbrgy;
+        $userPosition = $user->position;
+
+        if($userPosition == "Admin"){
+            $barangay_list = SeniorCitizen::where('barangay', $barangay)->get();
+        } else {
+            $barangay_list = SeniorCitizen::where('barangay', $assignbrgy)->get();
+        }
+
+        
         return view("senior_citizen.view_barangay", ['title'=>$barangay,
         'barangay_list' => $barangay_list]);
     }

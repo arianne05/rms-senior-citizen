@@ -11,8 +11,17 @@
                         <li class="flex align-center mb-2 mt-2 rounded-lg py-2.5 px-7 bg-[#DAE5FF] group hover:bg-[#5C7CC7] hover:text-white">
                             <span class="material-symbols-outlined pr-2">grid_view</span>Dashboard
                         </li>
-                    </a>        
-                    <a href="/barangay">
+                    </a>     
+                    @php
+                    if(auth()->user()->position == 'Admin'){
+                        $linkbrgy = '/barangay';
+                     } else{
+                        $user = auth()->user();
+                        $assignbrgy = $user->assignbrgy;
+                        $linkbrgy = '/view_barangay/'.$assignbrgy;
+                     }
+                    @endphp   
+                    <a href="{{$linkbrgy}}">
                         <li class="flex align-center mb-2 mt-2 rounded-lg py-2.5 px-7 bg-[#DAE5FF] group hover:bg-[#5C7CC7] hover:text-white">
                             <span class="material-symbols-outlined pr-2">holiday_village</span>Barangay
                         </li>
