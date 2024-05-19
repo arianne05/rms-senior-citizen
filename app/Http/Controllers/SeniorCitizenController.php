@@ -332,21 +332,24 @@ class SeniorCitizenController extends Controller
                 $applyAgeFilter($seniorsQueryNonPension, 100, PHP_INT_MAX);
             }            
             if ($datefrom && !$dateto) {
-                $seniorsQuery->where('birthdate', '=', $datefrom);
-                $seniorsQueryMale->where('birthdate', '=', $datefrom);
-                $seniorsQueryFemale->where('birthdate', '=', $datefrom);
-                $seniorsQueryPWD->where('birthdate', '=', $datefrom);
-                $seniorsQueryPension->where('birthdate', '=', $datefrom);
-                $seniorsQueryNonPension->where('birthdate', '=', $datefrom);
-
+                $startOfDay = Carbon::parse($datefrom)->startOfDay();
+                $seniorsQuery->where('created_at', '>=', $startOfDay);
+                $seniorsQueryMale->where('created_at', '>=', $startOfDay);
+                $seniorsQueryFemale->where('created_at', '>=', $startOfDay);
+                $seniorsQueryPWD->where('created_at', '>=', $startOfDay);
+                $seniorsQueryPension->where('created_at', '>=', $startOfDay);
+                $seniorsQueryNonPension->where('created_at', '>=', $startOfDay);
             } elseif ($datefrom && $dateto) {
-                $seniorsQuery->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryMale->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryFemale->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryPWD->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryPension->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryNonPension->whereBetween('birthdate', [$datefrom, $dateto]);
+                $startOfDay = Carbon::parse($datefrom)->startOfDay();
+                $endOfDay = Carbon::parse($dateto)->endOfDay();
+                $seniorsQuery->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryMale->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryFemale->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryPWD->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryPension->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryNonPension->whereBetween('created_at', [$startOfDay, $endOfDay]);
             }
+            
             $totalusers = $seniorsQuery->get();
             // $totalusers = $seniorsQueryPWD->get();
 
@@ -437,21 +440,24 @@ class SeniorCitizenController extends Controller
                 $applyAgeFilter($seniorsQueryNonPension, 100, PHP_INT_MAX);
             }    
             if ($datefrom && !$dateto) {
-                $seniorsQuery->where('birthdate', '=', $datefrom);
-                $seniorsQueryMale->where('birthdate', '=', $datefrom);
-                $seniorsQueryFemale->where('birthdate', '=', $datefrom);
-                $seniorsQueryPWD->where('birthdate', '=', $datefrom);
-                $seniorsQueryPension->where('birthdate', '=', $datefrom);
-                $seniorsQueryNonPension->where('birthdate', '=', $datefrom);
-
+                $startOfDay = Carbon::parse($datefrom)->startOfDay();
+                $seniorsQuery->where('created_at', '>=', $startOfDay);
+                $seniorsQueryMale->where('created_at', '>=', $startOfDay);
+                $seniorsQueryFemale->where('created_at', '>=', $startOfDay);
+                $seniorsQueryPWD->where('created_at', '>=', $startOfDay);
+                $seniorsQueryPension->where('created_at', '>=', $startOfDay);
+                $seniorsQueryNonPension->where('created_at', '>=', $startOfDay);
             } elseif ($datefrom && $dateto) {
-                $seniorsQuery->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryMale->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryFemale->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryPWD->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryPension->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryNonPension->whereBetween('birthdate', [$datefrom, $dateto]);
+                $startOfDay = Carbon::parse($datefrom)->startOfDay();
+                $endOfDay = Carbon::parse($dateto)->endOfDay();
+                $seniorsQuery->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryMale->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryFemale->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryPWD->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryPension->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryNonPension->whereBetween('created_at', [$startOfDay, $endOfDay]);
             }
+            
             $totalusers = $seniorsQuery->where('sex', 'Male')->get();
 
             $totalCount = $seniorsQuery->count();
@@ -543,21 +549,24 @@ class SeniorCitizenController extends Controller
                 $applyAgeFilter($seniorsQueryNonPension, 100, PHP_INT_MAX);
             }    
             if ($datefrom && !$dateto) {
-                $seniorsQuery->where('birthdate', '=', $datefrom);
-                $seniorsQueryMale->where('birthdate', '=', $datefrom);
-                $seniorsQueryFemale->where('birthdate', '=', $datefrom);
-                $seniorsQueryPWD->where('birthdate', '=', $datefrom);
-                $seniorsQueryPension->where('birthdate', '=', $datefrom);
-                $seniorsQueryNonPension->where('birthdate', '=', $datefrom);
-
+                $startOfDay = Carbon::parse($datefrom)->startOfDay();
+                $seniorsQuery->where('created_at', '>=', $startOfDay);
+                $seniorsQueryMale->where('created_at', '>=', $startOfDay);
+                $seniorsQueryFemale->where('created_at', '>=', $startOfDay);
+                $seniorsQueryPWD->where('created_at', '>=', $startOfDay);
+                $seniorsQueryPension->where('created_at', '>=', $startOfDay);
+                $seniorsQueryNonPension->where('created_at', '>=', $startOfDay);
             } elseif ($datefrom && $dateto) {
-                $seniorsQuery->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryMale->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryFemale->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryPWD->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryPension->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryNonPension->whereBetween('birthdate', [$datefrom, $dateto]);
+                $startOfDay = Carbon::parse($datefrom)->startOfDay();
+                $endOfDay = Carbon::parse($dateto)->endOfDay();
+                $seniorsQuery->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryMale->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryFemale->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryPWD->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryPension->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryNonPension->whereBetween('created_at', [$startOfDay, $endOfDay]);
             }
+            
             $totalusers = $seniorsQuery->where('sex', 'Female')->get();
 
             $totalCount = $seniorsQuery->count();
@@ -645,21 +654,24 @@ class SeniorCitizenController extends Controller
                 $seniorsQueryNonPension->where('status_membership', $status_membership);
             }
             if ($datefrom && !$dateto) {
-                $seniorsQuery->where('birthdate', '=', $datefrom);
-                $seniorsQueryMale->where('birthdate', '=', $datefrom);
-                $seniorsQueryFemale->where('birthdate', '=', $datefrom);
-                $seniorsQueryPWD->where('birthdate', '=', $datefrom);
-                $seniorsQueryPension->where('birthdate', '=', $datefrom);
-                $seniorsQueryNonPension->where('birthdate', '=', $datefrom);
-
+                $startOfDay = Carbon::parse($datefrom)->startOfDay();
+                $seniorsQuery->where('created_at', '>=', $startOfDay);
+                $seniorsQueryMale->where('created_at', '>=', $startOfDay);
+                $seniorsQueryFemale->where('created_at', '>=', $startOfDay);
+                $seniorsQueryPWD->where('created_at', '>=', $startOfDay);
+                $seniorsQueryPension->where('created_at', '>=', $startOfDay);
+                $seniorsQueryNonPension->where('created_at', '>=', $startOfDay);
             } elseif ($datefrom && $dateto) {
-                $seniorsQuery->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryMale->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryFemale->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryPWD->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryPension->whereBetween('birthdate', [$datefrom, $dateto]);
-                $seniorsQueryNonPension->whereBetween('birthdate', [$datefrom, $dateto]);
+                $startOfDay = Carbon::parse($datefrom)->startOfDay();
+                $endOfDay = Carbon::parse($dateto)->endOfDay();
+                $seniorsQuery->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryMale->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryFemale->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryPWD->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryPension->whereBetween('created_at', [$startOfDay, $endOfDay]);
+                $seniorsQueryNonPension->whereBetween('created_at', [$startOfDay, $endOfDay]);
             }
+            
             $totalusers = $seniorsQuery->get();
             // $totalusers = $seniorsQueryPWD->get();
 

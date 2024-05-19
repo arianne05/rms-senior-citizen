@@ -272,16 +272,14 @@ class UserController extends Controller
         
 
         if ($datefrom && !$dateto) {
-            // If $datefrom has value but $dateto is null
-            $seniorsQuery->where('birthdate', '=', $datefrom);
+            $startOfDay = Carbon::parse($datefrom)->startOfDay();
+            $seniorsQuery->where('created_at', '>=', $startOfDay);
         } elseif (!$datefrom && $dateto) {
-            // If $datefrom is null but $dateto has value
-            // Display an error message or handle it accordingly
-            // For example, you can redirect back with an error message
             return redirect()->back()->with('message', 'Please provide a starting date.');
         } elseif ($datefrom && $dateto) {
-            // If both $datefrom and $dateto have values
-            $seniorsQuery->whereBetween('birthdate', [$datefrom, $dateto]);
+            $startOfDay = Carbon::parse($datefrom)->startOfDay();
+            $endOfDay = Carbon::parse($dateto)->endOfDay();
+            $seniorsQuery->whereBetween('created_at', [$startOfDay, $endOfDay]);
         }
         
 
