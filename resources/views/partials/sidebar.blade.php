@@ -32,11 +32,14 @@
 
                 <div class="h-full" name='getspace'>
                     <div class="">
+                        
+                        @if(auth()->user()->position == 'Admin')
                         <a href="/citizen">
                             <li class="flex align-center mb-2 mt-2 rounded-lg py-2.5 px-7 bg-[#DAE5FF] group hover:bg-[#5C7CC7] hover:text-white">
                                 <span class="material-symbols-outlined pr-2">group</span>Citizen Report
                             </li>
                         </a>
+                        @endif
     
                         <a href="/account">
                             <li class="flex align-center mb-2 mt-2 rounded-lg py-2.5 px-7 bg-[#DAE5FF] group hover:bg-[#5C7CC7] hover:text-white">
