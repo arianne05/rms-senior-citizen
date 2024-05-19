@@ -98,6 +98,7 @@ class UserController extends Controller
             "password" => 'required|min:6',
             "position" => ['required'],
             "status" => ['required'],
+            "assignbrgy" => ['required']
        ]); //set rule in validation
 
        $validated['password'] = Hash::make($validated['password']); //encrypt or hash the password | you can also use bycrpt($validated['password'])
@@ -122,6 +123,7 @@ class UserController extends Controller
             "password" => 'nullable|confirmed|min:6',
             "position" => ['required'],
             "status" => ['required'],
+            "assignbrgy" => ['required']
         ]);
 
         // Remove password from the validated data if it's null
