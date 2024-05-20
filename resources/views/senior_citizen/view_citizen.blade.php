@@ -77,6 +77,9 @@
                                     }
                                 @endphp
                             </p>
+
+                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Contact Number</label>
+                            <p class="mb-2">{{$citizens->contact}}</p>
                         </div>
                     </div>
                     
