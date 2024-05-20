@@ -39,7 +39,7 @@ Route::controller(SeniorCitizenController::class)->group(function(){
     Route::post('/brgypdf','brgypdf');
     Route::post('/viewbrgypdf','viewbrgypdf');
 
-    Route::post('/search','search');
+    Route::match(['get', 'post'], '/search','search');
 
 });
 
