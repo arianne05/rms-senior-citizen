@@ -235,5 +235,27 @@
 
 {{-- Component --}}
 <x-message />
+{{-- <x-notif /> --}}
+
+@if($notifications != null)
+<script>
+    Swal.fire({
+        title: "Centenarian Record Update",
+        text: "{{$notifications}}",
+        icon: "warning",
+        showCancelButton: true,
+        cancelButtonText: "Exit",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "View Record"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Redirect to the search result page with parameters
+            window.location.href = '/search?centenarian=true'; // Pass parameters here
+        }
+    });
+</script>
+@endif
+
 
 @include('partials.footer')

@@ -216,13 +216,38 @@ class UserController extends Controller
         $totalFemaleCount = DB::table('senior_citizens')
             ->where('sex', 'Female')
             ->count();
+        
+        date_default_timezone_set('Asia/Manila');
+        $datetoday = date('Y-m-d'); // Current date
+        $centenarianCount = 0;
 
-        return view('citizen', ['title'=>'Citizen','seniors'=> $seniors, 
-        'totalCount'=>$totalCount,
-        'totalMaleCount'=>$totalMaleCount,
-        'totalFemaleCount'=>$totalFemaleCount
+        foreach ($seniors as $senior) {
+            $birthdate = $senior->birthdate;
+            $age = \Carbon\Carbon::parse($birthdate)->age;
+
+            // Check if the birthday is today and the age is 100 or more
+            if (date('m-d', strtotime($birthdate)) == date('m-d', strtotime($datetoday)) && $age >= 100) {
+                $centenarianCount++;
+            }
+        }
+
+        if ($centenarianCount >=1){
+            $notifications = $centenarianCount . " record(s) are now Centenarians.";
+        }else{
+            $notifications = "";
+        }
+        
+    
+        return view('citizen', [
+            'title' => 'Citizen',
+            'seniors' => $seniors, 
+            'totalCount' => $totalCount,
+            'totalMaleCount' => $totalMaleCount,
+            'totalFemaleCount' => $totalFemaleCount,
+            'notifications' => $notifications
         ]);
     }
+    
 
     //FILTER PROCESS
     public function filter_process(Request $request){
