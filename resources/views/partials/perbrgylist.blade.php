@@ -48,6 +48,7 @@
 
     <br>
     
+    <h4>Total: {{$totalPerBrgy}}</h4>
     <table class="table">
         <thead>
             <tr>
@@ -64,7 +65,9 @@
                         <td>{{$brgy->firstname.' '.$brgy->lastname}}</td>
                         <td>{{$brgy->sex}}</td>
                         <td>{{$brgy->birthdate}}</td>
-                        <td>NA</td>
+                        <td>
+                            {{\Carbon\Carbon::parse($brgy->birthdate)->age}}
+                        </td>
                     </tr>
                 @endforeach
             @else

@@ -209,10 +209,13 @@ class SeniorCitizenController extends Controller
                 )
                 ->groupBy('barangay')
                 ->get();
+            
         }
         
+        // Calculate the total of all totalBrgy
+        $totalBrgyCount = $barangays->sum('totalBrgy');
     
-        $pdf = PDF::loadView('partials.brgylist', ['brgylist' => $barangays, 'header' => $header]);
+        $pdf = PDF::loadView('partials.brgylist', ['brgylist' => $barangays, 'header' => $header,'totalBrgyCount' => $totalBrgyCount ]);
         return $pdf->stream();
     }
 
@@ -249,7 +252,10 @@ class SeniorCitizenController extends Controller
                 ->get();
         }
 
-        $pdf = PDF::loadView('partials.perbrgylist', ['brgylist' => $barangays, 'header' => $header]);
+        // Calculate the total of all totalBrgy
+        $totalPerBrgy = $barangays->count();
+
+        $pdf = PDF::loadView('partials.perbrgylist', ['brgylist' => $barangays, 'header' => $header, 'totalPerBrgy' => $totalPerBrgy]);
         return $pdf->stream();
     }
     

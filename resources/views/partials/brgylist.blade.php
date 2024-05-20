@@ -47,7 +47,7 @@
     </table>
 
     <br>
-    
+    <H4>Total: {{$totalBrgyCount}}</H4>
     <table class="table">
         <thead>
             <tr>
@@ -56,6 +56,7 @@
                 <th>Female</th>
                 <th>Total</th>
             </tr>
+            
         </thead>
         <tbody>
             @if($brgylist)
