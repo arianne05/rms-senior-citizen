@@ -1,14 +1,14 @@
 @include('partials.header')
-              <div class="w-screen h-screen" style="background-image: linear-gradient(to top, rgb(8, 66, 161), rgba(59, 130, 246, 0)), url('img/bg2.jpg'); background-size: cover; background-position: center;">
+              <div class="w-screen h-screen" style="background-image: linear-gradient(to top, rgb(89, 2, 31), rgba(242, 233, 235, 0)), url('img/bg2.jpg'); background-size: cover; background-position: center;">
                 
                 <div class="flex">
                   {{-- Text Container --}}
                   <div class="w-1/2 h-screen p-20 flex flex-col justify-center items-center">
                     <div class="flex items-center justify-center">
-                      <img src="img/profile1.jpg" class="rounded-full object-cover w-20 h-20 mr-5" alt="">
+                      <img src="img/indang.png" class="rounded-full object-cover w-20 h-20 mr-5" alt="">
                       <div class="">
                         <div class="">
-                          <h1 class="text-white text-lg font-semibold font-sans pb-1">Reynalyn Avilla</h1>
+                          <h1 class="text-white text-lg font-semibold font-sans pb-1">Indang Cavite</h1>
                           <p class="text-neutral-200">In today's fast-paced digital landscape, investing in an electronic management record system is not just advantageous but essential for maintaining competitiveness, efficiency, and accountability in business operations.</p>  
                         </div>
                       </div>
@@ -16,12 +16,12 @@
 
                     <br>
                     <div class="">
-                      <h1 class="text-white text-5xl font-bold pb-5">OSCA Record Management System.</h1>
+                      <h1 class="text-red-100 text-5xl font-bold pb-5">OSCA Record Management System.</h1>
                       <p class="text-neutral-100 text-2xl">Marks the transition from traditional paper-based methods to efficient, digital workflows. The deployment process involves careful planning, customization, and training to ensure a smooth transition for all stakeholders.</p>
                    </div>
                    
                    <div class="flex pt-5 w-full gap-3">
-                    <a href="#" class="text-center p-2 w-40 mt-2 rounded-md text-white bg-teal-400 hover:bg-teal-600 active:bg-teal-700 focus:outline-none focus:ring focus:ring-teal-300">
+                    <a href="#" class="text-center p-2 w-40 mt-2 rounded-md text-white bg-[#2F4564] hover:bg-[#BEA5AA] active:bg-teal-700 focus:outline-none focus:ring focus:ring-teal-300">
                      Learn More
                     </a>
                    </div>
@@ -31,7 +31,7 @@
                   <div class="w-1/2 h-screen p-20 flex flex-col justify-center items-center">
                     <div class="w-full border-2 border-white-100 rounded-lg p-5 bg-white/50 backdrop-opacity-100">
                       <div class="p-10">
-                        <img src="img/indang.png" class="block mx-auto w-40 h-40" alt="">
+                        <img src="img/osca-logo.png" class="block mx-auto w-40 h-40" alt="">
                         <h1 class="text-3xl text-slate font-bold mb-1 mt-2 flex justify-center">
                           Login Here
                         </h1>
@@ -55,7 +55,7 @@
                               </p>
                           </label>
       
-                          <button type="submit" class="text-white bg-teal-400 hover:bg-teal-600 active:bg-teal-700 focus:outline-none focus:ring focus:ring-teal-300 p-2 w-full rounded-md mb-10">
+                          <button type="submit" class="text-white bg-[#BC486B] hover:bg-[#82083C] active:bg-[#FFE3EE] focus:outline-none focus:ring focus:ring-teal-300 p-2 w-full rounded-md mb-10">
                               Sign In
                           </button>
                         </form>

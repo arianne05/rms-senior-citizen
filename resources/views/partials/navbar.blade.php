@@ -12,13 +12,14 @@
                 </span>
                 <input name="searchvalue" value="{{ $searchValue ?? '' }}" class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Search for anything..." type="text" name="search"/>
             </label>
-            <button type="submit" class="flex align-center font-medium text-slate-100 bg-sky-500 hover:bg-sky-700 rounded-lg py-2 px-8">Search</button>
+            <button type="submit" class="flex align-center font-medium text-slate-100 bg-[#BC486B] hover:bg-[#82083C]
+             rounded-lg py-2 px-8">Search</button>
         </form>
         
         <ul class="flex space-x-4">
             <li>
                 <a href="/add_citizen">
-                <button class="flex align-center font-medium text-slate-100 bg-sky-500 hover:bg-sky-700 rounded-lg py-2 px-8 mr-5">
+                <button class="flex align-center font-medium text-slate-100 bg-[#BC486B] hover:bg-[#82083C] rounded-lg py-2 px-8 mr-5">
                     <span class="material-symbols-outlined">add</span>Add New
                 </button>
                 </a>

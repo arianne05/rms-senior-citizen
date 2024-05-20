@@ -24,7 +24,7 @@
                                     <input type="hidden" name="membership" value="{{ $membership ?? null }}">
                                     <input type="hidden" name="dateto" value="{{ $dateto ?? null }}">
                                     <input type="hidden" name="datefrom" value="{{ $datefrom ?? null }}">
-                                    <button type="submit" class="font-medium text-slate-100 bg-red-700 hover:bg-red-500 rounded-xl p-3 px-12">PDF</button>
+                                    <button type="submit" class="font-medium text-slate-100 bg-gray-400 hover:bg-red-500 rounded-xl p-3 px-12">PDF</button>
                                 </form>
                             </div>
 
@@ -37,7 +37,7 @@
                                     <input type="hidden" name="membership" value="{{ $membership ?? null }}">
                                     <input type="hidden" name="dateto" value="{{ $dateto ?? null }}">
                                     <input type="hidden" name="datefrom" value="{{ $datefrom ?? null }}">
-                                    <button type="submit" class="font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl p-3 px-12">Excel</button>
+                                    <button type="submit" class="font-medium text-slate-100 bg-gray-400 hover:bg-green-500 rounded-xl p-3 px-12">Excel</button>
                                 </form>
                             </div>
                         </div>
@@ -153,7 +153,7 @@
                             </div>
                         </div>
                         
-                        <button class="font-medium text-center text-slate-100 bg-blue-700 hover:bg-blue-500 rounded-xl p-3" type="submit">Filter</button>
+                        <button class="font-medium text-center text-slate-100 bg-gray-400 hover:bg-[#82083C] rounded-xl p-3" type="submit">Filter</button>
                         
                     </form>
                 </div>

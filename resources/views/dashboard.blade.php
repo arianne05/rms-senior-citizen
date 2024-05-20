@@ -12,7 +12,7 @@
     {{-- Main Section --}}
     <div class="container w-full h-auto p-10">
       {{-- Header --}}
-      <div class="flex justify-between items-center w-full h-auto p-[20px] bg-gradient-to-r from-[#2D3C61] to-[#5C7CC7] text-white rounded-tl-[100px] rounded-bl-[0] rounded-tr-[20px] rounded-br-[20px]">
+      <div class="flex justify-between items-center w-full h-auto p-[20px] bg-gradient-to-r from-[#8D113E] to-[#EA668E] text-white rounded-tl-[100px] rounded-bl-[0] rounded-tr-[20px] rounded-br-[20px]">
         <div class="pl-10">
           <h1 class="text-3xl font-bold">Welcome, <span class="text-[#FBE94B]">{{$name}}</span></h1>
           <p class="text-slate-300 pt-1">Start the day with a smile on your face, focus on the goal and aim higher.</p>

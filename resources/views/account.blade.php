@@ -46,7 +46,7 @@
                             </p>
                     @enderror
 
-                    <button type="submit" id="saveChangesBtn" class="w-4/2 font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl p-3 px-12 mt-8 text-center">Save Changes</button>
+                    <button type="submit" id="saveChangesBtn" class="w-4/2 font-medium text-slate-100 bg-gray-400 hover:bg-[#82083C] rounded-xl p-3 px-12 mt-8 text-center">Save Changes</button>
                 </form>
                 <div class="w-1/2 h-auto border-2 border-solid border-gray-200 p-5 rounded-xl">
                     <h1 class="font-bold text-xl">User Overview</h1>
@@ -77,7 +77,7 @@
                     <h1 class="font-bold text-xl mt-8">List of Registered User</h1>
                     <p>List of all registered user in the system</p>
                 </div>
-                <a href="/adduser" class="w-4/2 font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl p-3 px-12 mt-8 text-center">Add User</a>
+                <a href="/adduser" class="w-4/2 font-medium text-slate-100 bg-gray-400 hover:bg-[#82083C] rounded-xl p-3 px-12 mt-8 text-center">Add User</a>
             </div>
             
             <hr><br>
