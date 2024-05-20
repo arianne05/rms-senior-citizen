@@ -17,7 +17,7 @@
                         <img class="h-52 w-52 object-cover rounded-full" src="{{ $citizens->senior_img ? asset("storage/citizen_profile/".$citizens->senior_img): $default_img }}" alt="avatar" />
                     </div>
                     <h1 class="text-xl font-semibold">{{$citizens->firstname.' '.$citizens->lastname}}</h1>
-                    <p class="text-sm font-regular">{{$citizens->id}}</p>
+                    <p class="text-sm font-regular">Senior ID: {{$citizens->id}}</p>
 
                     <div class="flex justify-center mt-10 gap-x-2">
                         <a href="/edit_citizen/{{$citizens->id}}" class="font-medium text-slate-100 bg-green-700 hover:bg-green-500 rounded-xl py-2 px-5">Update</a>
@@ -57,6 +57,26 @@
 
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Sex</label>
                             <p class="mb-2">{{$citizens->sex}}</p>
+                        </div>
+                        <div class="w-1/2">
+                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Age</label>
+                            <p class="mb-2">{{\Carbon\Carbon::parse($citizens->birthdate)->age}}</p>
+
+                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Classification</label>
+                            <p class="mb-2">
+                                @php
+                                    $age = \Carbon\Carbon::parse($citizens->birthdate)->age;
+                                    if ($age >= 100) {
+                                        echo 'Centenarian';
+                                    } elseif ($age >= 90) {
+                                        echo 'Nonagenarian';
+                                    } elseif ($age >= 80) {
+                                        echo 'Octogenarian';
+                                    } else {
+                                        echo 'NA';
+                                    }
+                                @endphp
+                            </p>
                         </div>
                     </div>
                     
