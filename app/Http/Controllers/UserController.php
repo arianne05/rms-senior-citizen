@@ -207,7 +207,7 @@ class UserController extends Controller
     }
 
      //TEMPLATE CITIZEN PAGE
-     public function citizen(){
+     public function citizen() {
         $seniors = SeniorCitizen::all();
         $totalCount = DB::table('senior_citizens')->count();
         $totalMaleCount = DB::table('senior_citizens')
@@ -216,27 +216,22 @@ class UserController extends Controller
         $totalFemaleCount = DB::table('senior_citizens')
             ->where('sex', 'Female')
             ->count();
-        
+    
         date_default_timezone_set('Asia/Manila');
         $datetoday = date('Y-m-d'); // Current date
         $centenarianCount = 0;
-
+    
         foreach ($seniors as $senior) {
             $birthdate = $senior->birthdate;
             $age = \Carbon\Carbon::parse($birthdate)->age;
-
-            // Check if the birthday is today and the age is 100 or more
-            if (date('m-d', strtotime($birthdate)) == date('m-d', strtotime($datetoday)) && $age >= 100) {
+    
+            // Check if the birthday is today and the age is exactly 100
+            if (date('m-d', strtotime($birthdate)) == date('m-d', strtotime($datetoday)) && $age == 100) {
                 $centenarianCount++;
             }
         }
 
-        if ($centenarianCount >=1){
-            $notifications = $centenarianCount . " record(s) are now Centenarians.";
-        }else{
-            $notifications = "";
-        }
-        
+        $notifications = $centenarianCount >= 1 ? $centenarianCount . " record(s) are now Centenarians." : null;
     
         return view('citizen', [
             'title' => 'Citizen',
@@ -247,6 +242,8 @@ class UserController extends Controller
             'notifications' => $notifications
         ]);
     }
+    
+    
     
 
     //FILTER PROCESS

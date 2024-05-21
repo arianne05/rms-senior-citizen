@@ -237,7 +237,11 @@
 <x-message />
 {{-- <x-notif /> --}}
 
-@if($notifications != null)
+@php
+    $notifications = $notifications ?? null;
+@endphp
+
+@if($notifications)
 <script>
     Swal.fire({
         title: "Centenarian Record Update",
