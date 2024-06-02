@@ -111,8 +111,10 @@ class UserController extends Controller
             } else {
                 // If user status is 'Inactive', logout the user
                 auth()->logout();
-                return back()->withErrors(['loginerror' => 'Your account is inactive.']);
+                return back()->withErrors(['loginerror' => 'This account is inactive.']);
             }
+        } else {
+            return back()->withErrors(['loginerror' => 'Account Not Registered or Password/Email Incorrect']);
         }
     
         return back()->withErrors(['email' => 'Login Failed'])->onlyInput('email'); //if email is not existed nor password incorrect
