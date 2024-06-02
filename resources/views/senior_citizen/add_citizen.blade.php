@@ -80,7 +80,7 @@
 
                        {{-- Civil Status --}}
                         <div class="flex flex-col w-full">
-                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Civil Status</label>
+                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Civil Status <span class="font-bold text-red-600">*</span></label>
                             <select name="civil_status" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                                 <option value="" disabled {{ old('civil_status') == '' ? 'selected' : '' }}>Select Status</option>
                                 <option value="Single" {{ old('civil_status') == 'Single' ? 'selected' : '' }}>Single</option>
@@ -98,7 +98,7 @@
 
                     {{-- Birthplace --}}
                     <div class="flex flex-col w-full">
-                        <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Birthplace</label>
+                        <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Birthplace <span class="font-bold text-red-600">*</span></label>
                         <input type="text" name="birthplace" value="{{old('birthplace')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         @error('birthplace')
                             <p class="text-red-500 text-xs p-2">
@@ -121,7 +121,7 @@
                     <div class="flex gap-3">
                         {{-- Bdate --}}
                         <div class="flex flex-col w-full">
-                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Birthdate</label>
+                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Birthdate <span class="font-bold text-red-600">*</span></label>
                             <input type="date" name="birthdate" value="{{old('birthdate')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                             @error('birthdate')
                                 <p class="text-red-500 text-xs p-2">
@@ -132,7 +132,7 @@
 
                         {{-- Religion --}}
                         <div class="flex flex-col w-full">
-                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Religion</label>
+                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Religion <span class="font-bold text-red-600">*</span></label>
                             <input type="text" name="religion" value="{{old('religion')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                             @error('religion')
                                 <p class="text-red-500 text-xs p-2">
@@ -143,7 +143,7 @@
 
                         {{-- Sex --}}
                         <div class="flex flex-col align-center w-full">
-                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Sex</label>
+                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Sex <span class="font-bold text-red-600">*</span></label>
                             <div class="flex items-center space-x-4 py-2">
                                 <input type="radio" id="male" name="sex" value="Male" class="text-sky-500 focus:ring-sky-500" {{ old('sex') == 'Male' ? 'checked' : '' }}>
                                 <label for="male">Male</label>
@@ -165,7 +165,7 @@
 
                     {{-- Unit/House Number --}}
                     <div class="flex flex-col w-full">
-                        <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Unit/House Number</label>
+                        <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Unit/House Number <span class="font-bold text-red-600">*</span></label>
                         <input type="text" name="house_number" value="{{old('house_number')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         @error('house_number')
                             <p class="text-red-500 text-xs p-2">
@@ -177,7 +177,7 @@
                     <div class="flex gap-3">
                         {{-- Barangay --}}
                         <div class="flex flex-col w-full">
-                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Barangay</label>
+                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Barangay <span class="font-bold text-red-600">*</span></label>
                             {{-- <input type="text" name="barangay" value="{{old('barangay')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"> --}}
                             <select name="barangay" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                                 <option value="" disabled {{ old('barangay') == '' ? 'selected' : '' }}>Select Barangay</option>
@@ -354,7 +354,7 @@
 
                     {{-- Status --}}
                     <div class="flex flex-col align-center ml-2 w-full">
-                        <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Membership Status</label>
+                        <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Membership Status <span class="font-bold text-red-600">*</span></label>
                         <div class="flex flex-col">
                             <div class="flex items-center space-x-2">
                                 <input type="radio" name="status_membership" value="PWD" class="text-sky-500 focus:ring-sky-500" {{ old('status_membership') == 'PWD' ? 'checked' : '' }}>
