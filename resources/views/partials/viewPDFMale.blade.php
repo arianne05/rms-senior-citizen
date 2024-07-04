@@ -38,13 +38,16 @@
 <body>
     <table style="width: 100%; text-align:center;">
         <tr>
-            <td><img src="img/indang.png" width="70" height="70" alt=""></td>
+            <td><img src="img/osca-logo.png" width="70" height="70" alt=""></td>
         </tr>
         <tr>
             <td><h4 style="padding:0; margin:0;">OFFICE OF THE SENIOR CITIZEN INDANG</h4></td>
         </tr>
         <tr>
             <td> <p style="padding:0; margin:0;">Male Registered Senior Citizen Overall Report</p></td>
+        </tr>
+        <tr>
+            <td><b><p style="padding:0; margin:0; font-weight:100">Prepared by: OSCA Personnel</p></b></td>
         </tr>
     </table>
 
