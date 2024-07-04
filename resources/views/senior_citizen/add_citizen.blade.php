@@ -47,7 +47,7 @@
 
                         {{-- Middlename --}}
                         <div class="flex flex-col w-full">
-                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Middlename</label>
+                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Middlename <span class="text-gray-400">[optional]</span></label>
                             <input type="text" name="middlename" value="{{old('middlename')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                             @error('middlename')
                                 <p class="text-red-500 text-xs p-2">
