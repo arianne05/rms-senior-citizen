@@ -103,8 +103,8 @@
                             <option value="Kayquit 1" {{ $users->assignbrgy == 'Kayquit 1' ? 'selected' : '' }}>Kayquit 1</option>
                             <option value="Kayquit 2" {{ $users->assignbrgy == 'Kayquit 2' ? 'selected' : '' }}>Kayquit 2</option>
                             <option value="Kayquit 3" {{ $users->assignbrgy == 'Kayquit 3' ? 'selected' : '' }}>Kayquit 3</option>
-                            <option value="Καυταμβog" {{ $users->assignbrgy == 'Καυταμβog' ? 'selected' : '' }}>Καυταμβog</option>
-                            <option value="Καυταροs" {{ $users->assignbrgy == 'Καυταροs' ? 'selected' : '' }}>Καυταροs</option>
+                            <option value="Kautambog" {{ $users->assignbrgy == 'Kautambog' ? 'selected' : '' }}>Kautambog</option>
+                            <option value="Kautapos" {{ $users->assignbrgy == 'Kautapos' ? 'selected' : '' }}>Kautapos</option>
                             <option value="Limbon" {{ $users->assignbrgy == 'Limbon' ? 'selected' : '' }}>Limbon</option>
                             <option value="Lumampong Balagbag" {{ $users->assignbrgy == 'Lumampong Balagbag' ? 'selected' : '' }}>Lumampong Balagbag</option>
                             <option value="Lumampong Halayhay" {{ $users->assignbrgy == 'Lumampong Halayhay' ? 'selected' : '' }}>Lumampong Halayhay</option>

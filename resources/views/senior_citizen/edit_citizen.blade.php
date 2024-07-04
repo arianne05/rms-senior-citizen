@@ -223,8 +223,8 @@
                                 <option value="Kayquit 1" {{ $citizens->barangay == 'Kayquit 1' ? 'selected' : '' }}>Kayquit 1</option>
                                 <option value="Kayquit 2" {{ $citizens->barangay == 'Kayquit 2' ? 'selected' : '' }}>Kayquit 2</option>
                                 <option value="Kayquit 3" {{ $citizens->barangay == 'Kayquit 3' ? 'selected' : '' }}>Kayquit 3</option>
-                                <option value="Καυταμβog" {{ $citizens->barangay == 'Καυταμβog' ? 'selected' : '' }}>Καυταμβog</option>
-                                <option value="Καυταροs" {{ $citizens->barangay == 'Καυταροs' ? 'selected' : '' }}>Καυταροs</option>
+                                <option value="Kautambog" {{ $citizens->barangay == 'Kautambog' ? 'selected' : '' }}>Kautambog</option>
+                                <option value="Kautapos" {{ $citizens->barangay == 'Kautapos' ? 'selected' : '' }}>Kautapos</option>
                                 <option value="Limbon" {{ $citizens->barangay == 'Limbon' ? 'selected' : '' }}>Limbon</option>
                                 <option value="Lumampong Balagbag" {{ $citizens->barangay == 'Lumampong Balagbag' ? 'selected' : '' }}>Lumampong Balagbag</option>
                                 <option value="Lumampong Halayhay" {{ $citizens->barangay == 'Lumampong Halayhay' ? 'selected' : '' }}>Lumampong Halayhay</option>

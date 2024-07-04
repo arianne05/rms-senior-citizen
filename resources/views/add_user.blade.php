@@ -93,8 +93,8 @@
                             <option value="Kayquit 1" {{ old('assignbrgy') == 'Kayquit 1' ? 'selected' : '' }}>Kayquit 1</option>
                             <option value="Kayquit 2" {{ old('assignbrgy') == 'Kayquit 2' ? 'selected' : '' }}>Kayquit 2</option>
                             <option value="Kayquit 3" {{ old('assignbrgy') == 'Kayquit 3' ? 'selected' : '' }}>Kayquit 3</option>
-                            <option value="Καυταμβog" {{ old('assignbrgy') == 'Καυταμβog' ? 'selected' : '' }}>Καυταμβog</option>
-                            <option value="Καυταροs" {{ old('assignbrgy') == 'Καυταροs' ? 'selected' : '' }}>Καυταροs</option>
+                            <option value="Kautambog" {{ old('assignbrgy') == 'Kautambog' ? 'selected' : '' }}>Kautambog</option>
+                            <option value="Kautapos" {{ old('assignbrgy') == 'Kautapos' ? 'selected' : '' }}>Kautapos</option>
                             <option value="Limbon" {{ old('assignbrgy') == 'Limbon' ? 'selected' : '' }}>Limbon</option>
                             <option value="Lumampong Balagbag" {{ old('assignbrgy') == 'Lumampong Balagbag' ? 'selected' : '' }}>Lumampong Balagbag</option>
                             <option value="Lumampong Halayhay" {{ old('assignbrgy') == 'Lumampong Halayhay' ? 'selected' : '' }}>Lumampong Halayhay</option>
