@@ -251,7 +251,7 @@
                          {{-- Municipality --}}
                          <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Municipality</label>
-                            <input type="text" name="municipality" value="Indang" readonly class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="municipality" value="Indang" readonly class="w-auto bg-gray-300  border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         </div>
                     </div>
 
@@ -259,13 +259,13 @@
                         {{-- Province --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Province</label>
-                            <input type="text" name="province" value="Cavite" readonly class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="province" value="Cavite" readonly class="w-auto bg-gray-300  border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         </div>
 
                          {{-- Zip Code --}}
                          <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Zip Code</label>
-                            <input type="number" name="zipcode" value="4122" readonly class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="number" name="zipcode" value="4122" readonly class="w-auto bg-gray-300  border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         </div>
                     </div>
 
