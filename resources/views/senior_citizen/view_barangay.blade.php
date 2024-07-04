@@ -50,7 +50,8 @@
                           <td>{{$list->firstname}}</td>
                           <td>{{$list->middlename}}</td>
                           <td>{{$list->sex}}</td>
-                          <td>{{$list->birthdate}}</td>
+                          {{-- <td>{{$list->birthdate}}</td> --}}
+                          <td>{{ date('m/d/Y', strtotime($list->birthdate)) }}</td>
                           <td class="flex gap-3">
                             <a href="/edit_citizen/{{$list->id}}"><span class="material-symbols-outlined">edit</span></a> 
                             <a href="/view_citizen/{{$list->id}}"><span class="material-symbols-outlined">visibility</span></a> 

@@ -110,7 +110,7 @@
                     <td>{{$senior->lastname}}</td>
                     <td>{{$senior->firstname}}</td>
                     <td>{{$senior->middlename}}</td>
-                    <td>{{$senior->birthdate}}</td>
+                    <td>{{ date('m/d/Y', strtotime($senior->birthdate)) }}</td>
                     <td>{{ \Carbon\Carbon::parse($senior->birthdate)->age }}</td>
                     <td>{{$senior->sex}}</td>
                     <td>{{$senior->civil_status}}</td>

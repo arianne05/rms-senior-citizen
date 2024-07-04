@@ -64,7 +64,8 @@
                     <tr>
                         <td>{{ $brgy->firstname . ' ' . substr($brgy->middlename, 0, 1) . '. ' . $brgy->lastname }}</td>
                         <td>{{$brgy->sex}}</td>
-                        <td>{{$brgy->birthdate}}</td>
+                        {{-- <td>{{$brgy->birthdate}}</td> --}}
+                        <td>{{ date('m/d/Y', strtotime($brgy->birthdate)) }}</td>
                         <td>
                             {{\Carbon\Carbon::parse($brgy->birthdate)->age}}
                         </td>

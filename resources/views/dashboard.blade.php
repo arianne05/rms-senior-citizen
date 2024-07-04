@@ -99,7 +99,7 @@
                     <td>{{$senior->firstname}}</td>
                     <td>{{$senior->middlename}}</td>
                     <td>{{$senior->sex}}</td>
-                    <td>{{$senior->birthdate}}</td>
+                    <td>{{ date('m/d/Y', strtotime($senior->birthdate)) }}</td>
                     <td class="flex gap-x-3">
                       {{-- <a href="/edit_citizen/{{$senior->id}}">Edit</a>
                       @if(auth()->user()->position == 'Admin')
