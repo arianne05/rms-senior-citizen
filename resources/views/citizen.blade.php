@@ -137,9 +137,9 @@
                         <label>Classification</label>
                         <select name="age_class" id="" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm mb-2">
                             <option value="" {{ isset($class) ? 'selected' : '' }}>Choose Classification</option>
-                            <option value="Centenarian" {{ isset($class) && $class == 'Centenarian' ? 'selected' : '' }}>Centenarian</option>
-                            <option value="Octagenarian" {{ isset($class) && $class == 'Octagenarian' ? 'selected' : '' }}>Octagenarian</option>
-                            <option value="Nonagenarian" {{ isset($class) && $class == 'Nonagenarian' ? 'selected' : '' }}>Nonagenarian</option>
+                            <option value="Centenarian" {{ isset($class) && $class == 'Centenarian' ? 'selected' : '' }}>Centenarian - 100 above</option>
+                            <option value="Octagenarian" {{ isset($class) && $class == 'Octagenarian' ? 'selected' : '' }}>Octagenarian - 80-89</option>
+                            <option value="Nonagenarian" {{ isset($class) && $class == 'Nonagenarian' ? 'selected' : '' }}>Nonagenarian - 90-99</option>
                         </select>
 
                         <div class="flex gap-2">
@@ -187,11 +187,11 @@
                         <td>{{$senior->sex}}</td>
                         <td>{{$senior->birthdate}}</td>
                         <td class="flex gap-x-3">
-                            <a href="/edit_citizen/{{$senior->id}}">Edit</a>
+                            <a href="/edit_citizen/{{$senior->id}}"><span class="material-symbols-outlined">edit</span></a>
                             @if(auth()->user()->position == 'Admin')
-                                <a href="/delete_citizen/{{$senior->id}}">Delete</a>
+                                <a href="/delete_citizen/{{$senior->id}}"><span class="material-symbols-outlined">delete</span></a>
                             @endif
-                            <a href="/view_citizen/{{$senior->id}}">View</a>
+                            <a href="/view_citizen/{{$senior->id}}"><span class="material-symbols-outlined">visibility</span></a>
                         </td>
                     </tr>
                     @endforeach

@@ -105,7 +105,7 @@
                       @if(auth()->user()->position == 'Admin')
                         <a href="/delete_citizen/{{$senior->id}}" id="delete_confirmation">Delete</a>
                       @endif --}}
-                      <a href="/view_citizen/{{$senior->id}}">View</a>
+                      <a href="/view_citizen/{{$senior->id}}"><span class="material-symbols-outlined">visibility</span></a>
                     </td>
                 </tr>
               @endforeach

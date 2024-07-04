@@ -51,11 +51,11 @@
                           <td>{{$list->middlename}}</td>
                           <td>{{$list->sex}}</td>
                           <td>{{$list->birthdate}}</td>
-                          <td>
-                            <a href="/edit_citizen/{{$list->id}}">Edit</a> 
-                            <a href="/view_citizen/{{$list->id}}">View</a> 
+                          <td class="flex gap-3">
+                            <a href="/edit_citizen/{{$list->id}}"><span class="material-symbols-outlined">edit</span></a> 
+                            <a href="/view_citizen/{{$list->id}}"><span class="material-symbols-outlined">visibility</span></a> 
                             @if(auth()->user()->position == 'Admin')
-                                <a href="/delete_citizen/{{$list->id}}" id="delete_confirmation">Delete</button></a>
+                                <a href="/delete_citizen/{{$list->id}}" id="delete_confirmation"><span class="material-symbols-outlined">delete</span></button></a>
                             @endif
                           </td>
                       </tr>

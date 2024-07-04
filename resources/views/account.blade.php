@@ -101,7 +101,7 @@
                             <td>{{$user->position}}</td>
                             <td>{{$user->status}}</td>
                             <td class="flex gap-x-3">
-                                <a href="/edit_user/{{$user->id}}">Edit</a>
+                                <a href="/edit_user/{{$user->id}}"><span class="material-symbols-outlined">edit</span></a>
                                 @if ($user->status == 'Active')
                                     <a href="/activate/{{$user->id}}" id="deactiveBTN">Deactivate</a>
                                 @else
