@@ -136,13 +136,32 @@
                         {{-- Religion --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Religion</label>
-                            <input type="text" name="religion" value="{{$citizens->religion}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <select name="religion" id="religion" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                                <option value="" {{ old('religion', $citizens->religion) == '' ? 'selected' : '' }}>Select Religion</option>
+                                <option value="Christian" {{ old('religion', $citizens->religion) == 'Christian' ? 'selected' : '' }}>Christian</option>
+                                <option value="INC" {{ old('religion', $citizens->religion) == 'INC' ? 'selected' : '' }}>INC</option>
+                                <option value="Muslim" {{ old('religion', $citizens->religion) == 'Muslim' ? 'selected' : '' }}>Muslim</option>
+                                <option value="Roman Catholic" {{ old('religion', $citizens->religion) == 'Roman Catholic' ? 'selected' : '' }}>Roman Catholic</option>
+                                <option value="Other" {{ !in_array(old('religion', $citizens->religion), ['Christian', 'INC', 'Muslim', 'Roman Catholic']) ? 'selected' : '' }}>Other</option>
+                            </select>
                             @error('religion')
                                 <p class="text-red-500 text-xs p-2">
-                                    {{$message}}
+                                    {{ $message }}
                                 </p>
                             @enderror    
                         </div>
+
+                        <div class="flex flex-col w-full">
+                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Other Religion</label>
+                            <input type="text" name="other_religion" value="{{ in_array(old('religion', $citizens->religion), ['Christian', 'INC', 'Muslim', 'Roman Catholic']) ? '' : old('other_religion', $citizens->religion) }}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            @error('other_religion')
+                                <p class="text-red-500 text-xs p-2">
+                                    {{ $message }}
+                                </p>
+                            @enderror    
+                        </div>
+
+
 
                         {{-- Sex --}}
                         <div class="flex flex-col align-center w-full">

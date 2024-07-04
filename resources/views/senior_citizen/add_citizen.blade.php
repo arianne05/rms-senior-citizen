@@ -158,7 +158,6 @@
                                     {{$message}}
                                 </p>
                             @enderror    
-
                         </div>
 
                         {{-- Sex --}}
