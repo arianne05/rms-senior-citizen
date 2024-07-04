@@ -38,6 +38,7 @@
                         <th>Last Name</th>
                         <th>First Name</th>
                         <th>Middle Name</th>
+                        <th>Suffix</th>
                         <th>Sex</th>
                         <th>Birthdate</th>
                         <th>Action</th>
@@ -49,6 +50,7 @@
                           <td>{{$list->lastname}}</td>
                           <td>{{$list->firstname}}</td>
                           <td>{{$list->middlename}}</td>
+                          <td>{{$list->suffix}}</td>
                           <td>{{$list->sex}}</td>
                           {{-- <td>{{$list->birthdate}}</td> --}}
                           <td>{{ date('m/d/Y', strtotime($list->birthdate)) }}</td>

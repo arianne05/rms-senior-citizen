@@ -87,6 +87,7 @@
                   <th>Last Name</th>
                   <th>First Name</th>
                   <th>Middle Name</th>
+                  <th>Suffix</th>
                   <th>Sex</th>
                   <th>Birthdate</th>
                   <th>Action</th>
@@ -98,6 +99,7 @@
                     <td>{{$senior->lastname}}</td>
                     <td>{{$senior->firstname}}</td>
                     <td>{{$senior->middlename}}</td>
+                    <td>{{$senior->suffix}}</td>
                     <td>{{$senior->sex}}</td>
                     <td>{{ date('m/d/Y', strtotime($senior->birthdate)) }}</td>
                     <td class="flex gap-x-3">

@@ -65,7 +65,7 @@
             @if($brgylist)
                 @foreach ($brgylist as $brgy)  
                     <tr>
-                        <td>{{ $brgy->firstname . ' ' . substr($brgy->middlename, 0, 1) . '. ' . $brgy->lastname }}</td>
+                        <td>{{ $brgy->firstname . ' ' . substr($brgy->middlename, 0, 1) . '. ' . $brgy->lastname . ' '. $brgy->suffix }}</td>
                         <td>{{$brgy->sex}}</td>
                         {{-- <td>{{$brgy->birthdate}}</td> --}}
                         <td>{{ date('m/d/Y', strtotime($brgy->birthdate)) }}</td>

@@ -16,7 +16,7 @@
                     <div class="shrink-0 flex justify-center">
                         <img class="h-52 w-52 object-cover rounded-full" src="{{ $citizens->senior_img ? asset("storage/citizen_profile/".$citizens->senior_img): $default_img }}" alt="avatar" />
                     </div>
-                    <h1 class="text-xl font-semibold">{{$citizens->firstname.' '.$citizens->lastname}}</h1>
+                    <h1 class="text-xl font-semibold">{{$citizens->firstname.' '.$citizens->lastname.' '.$citizens->suffix}}</h1>
                     <p class="text-sm font-regular">Senior ID: {{$citizens->id}}</p>
 
                     <div class="flex justify-center mt-10 gap-x-2">
@@ -79,7 +79,12 @@
                             </p>
 
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Contact Number</label>
-                            <p class="mb-2">{{$citizens->contact}}</p>
+                            <p class="mb-2">
+                                @if ($citizens->contact)
+                                    {{ substr($citizens->contact, 0, 4) }} {{ substr($citizens->contact, 4, 4) }} {{ substr($citizens->contact, 8) }}
+                                @endif
+                            </p>
+
                         </div>
                     </div>
                     

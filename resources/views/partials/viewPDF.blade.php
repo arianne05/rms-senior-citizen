@@ -98,6 +98,7 @@
                 <th>Last Name</th>
                 <th>First Name</th>
                 <th>Middle Name</th>
+                <th>Suffix</th>
                 <th>Birthdate</th>
                 <th>Age</th>
                 <th>Sex</th>
@@ -113,6 +114,7 @@
                     <td>{{$senior->lastname}}</td>
                     <td>{{$senior->firstname}}</td>
                     <td>{{$senior->middlename}}</td>
+                    <td>{{$senior->suffix}}</td>
                     <td>{{ date('m/d/Y', strtotime($senior->birthdate)) }}</td>
                     <td>{{ \Carbon\Carbon::parse($senior->birthdate)->age }}</td>
                     <td>{{$senior->sex}}</td>
