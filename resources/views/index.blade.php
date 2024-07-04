@@ -20,11 +20,6 @@
                       <p class="text-neutral-100 text-2xl">Marks the transition from traditional paper-based methods to efficient, digital workflows. The deployment process involves careful planning, customization, and training to ensure a smooth transition for all stakeholders.</p>
                    </div>
                    
-                   <div class="flex pt-5 w-full gap-3">
-                    <a href="#" class="text-center p-2 w-40 mt-2 rounded-md text-white bg-[#2F4564] hover:bg-[#BEA5AA] active:bg-teal-700 focus:outline-none focus:ring focus:ring-teal-300">
-                     Learn More
-                    </a>
-                   </div>
                   </div>
 
                   {{-- Login Container --}}
