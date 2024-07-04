@@ -27,9 +27,64 @@ class SeniorCitizenController extends Controller
         'citizens'=>$citizens]);
     }
 
-    public function process_add(Request $request){
-        // dd($request);
+    // public function process_add(Request $request){
+    //     // dd($request);
 
+    //     $validated = $request->validate([
+    //         "lastname" => ['required', 'min:4'],
+    //         "firstname" => ['required', 'min:4'],
+    //         "middlename" => ['nullable'],
+    //         "suffix" => ['nullable'],
+    //         "civil_status" => ['required'],
+    //         "birthplace" => ['required'],
+    //         "contact" => ['nullable', 'min:11'],
+    //         "birthdate" => ['required'],
+    //         "religion" => ['required'],
+    //         "other_religion" => ['nullable'],
+    //         "sex" => ['required'],
+    //         "house_number" => ['required'],
+    //         "barangay" => ['required'],
+    //         "municipality" => ['required'],
+    //         "province" => ['required'],
+    //         "zipcode" => ['required'],
+    //         "gsis" => ['nullable'],
+    //         "philhealth" => ['nullable', Rule::unique('senior_citizens','philhealth')],
+    //         "tin" => ['nullable', Rule::unique('senior_citizens','philhealth')],
+    //         "sss" => ['nullable', Rule::unique('senior_citizens','philhealth')],
+    //         "beneficiary" => ['nullable'],
+    //         "contact_beneficiary" => ['nullable', 'min:11'],
+    //         "status_membership" => ['required']
+    //    ]); //set rule in validation
+
+    //     //save img query
+    //         if($request->hasFile('senior_img')){ //Validate for image
+    //             $request->validate([
+    //                 "senior_img" => 'mimes:jpeg,png,bmp,tiff |max:8192' //rules to validate image must be on jpeg,png and 4mb
+    //             ]);
+                
+    //             $filenameWithExtension = $request->file("senior_img");
+    //             $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME);
+    //             $extension = $request->file("senior_img")->getClientOriginalExtension();
+        
+    //             $filenameToStore = $filename.'_'.time().'.'.$extension;
+    //             $smallThumbnail= $filename.'_'.time().'.'.$extension;
+        
+    //             $request->file('senior_img')->storeAs('public/citizen_profile', $filenameToStore);
+    //             $request->file("senior_img")->storeAs('public/citizen_profile/thumbnail', $smallThumbnail);
+                
+    //             $thumbnail = 'storage/citizen_profile/thumbnail/'.$smallThumbnail;
+    //             $this->createThumbnail($thumbnail, 150, 93);
+        
+    //             $validated['senior_img'] = $filenameToStore; //save to the citizen_profile col in the db
+    //         }
+
+    //    SeniorCitizen::create($validated); //insert validated data in the database
+
+    //    return redirect('/add_citizen')->with('message','Added Successfully');
+
+    // }
+
+    public function process_add(Request $request){
         $validated = $request->validate([
             "lastname" => ['required', 'min:4'],
             "firstname" => ['required', 'min:4'],
@@ -53,35 +108,43 @@ class SeniorCitizenController extends Controller
             "beneficiary" => ['nullable'],
             "contact_beneficiary" => ['nullable', 'min:11'],
             "status_membership" => ['required']
-       ]); //set rule in validation
-
-        //save img query
-            if($request->hasFile('senior_img')){ //Validate for image
-                $request->validate([
-                    "senior_img" => 'mimes:jpeg,png,bmp,tiff |max:8192' //rules to validate image must be on jpeg,png and 4mb
-                ]);
-                
-                $filenameWithExtension = $request->file("senior_img");
-                $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME);
-                $extension = $request->file("senior_img")->getClientOriginalExtension();
-        
-                $filenameToStore = $filename.'_'.time().'.'.$extension;
-                $smallThumbnail= $filename.'_'.time().'.'.$extension;
-        
-                $request->file('senior_img')->storeAs('public/citizen_profile', $filenameToStore);
-                $request->file("senior_img")->storeAs('public/citizen_profile/thumbnail', $smallThumbnail);
-                
-                $thumbnail = 'storage/citizen_profile/thumbnail/'.$smallThumbnail;
-                $this->createThumbnail($thumbnail, 150, 93);
-        
-                $validated['senior_img'] = $filenameToStore; //save to the citizen_profile col in the db
-            }
-
-       SeniorCitizen::create($validated); //insert validated data in the database
-
-       return redirect('/add_citizen')->with('message','Added Successfully');
-
+        ]);
+    
+        // Check if 'religion' is 'Other' and assign 'other_religion' value to 'religion'
+        if ($request->input('religion') === 'Other') {
+            $validated['religion'] = $request->input('other_religion');
+        } else {
+            // If 'religion' is not 'Other', remove 'other_religion' from validated data
+            unset($validated['other_religion']);
+        }
+    
+        // Handle image upload if present
+        if ($request->hasFile('senior_img')) {
+            $request->validate([
+                "senior_img" => 'mimes:jpeg,png,bmp,tiff|max:8192' // Adjusted validation rule
+            ]);
+    
+            $filenameWithExtension = $request->file("senior_img");
+            $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME);
+            $extension = $request->file("senior_img")->getClientOriginalExtension();
+    
+            $filenameToStore = $filename.'_'.time().'.'.$extension;
+            $smallThumbnail = $filename.'_'.time().'.'.$extension;
+    
+            $request->file('senior_img')->storeAs('public/citizen_profile', $filenameToStore);
+            $request->file("senior_img")->storeAs('public/citizen_profile/thumbnail', $smallThumbnail);
+    
+            $thumbnail = 'storage/citizen_profile/thumbnail/'.$smallThumbnail;
+            $this->createThumbnail($thumbnail, 150, 93);
+    
+            $validated['senior_img'] = $filenameToStore; // Save to the 'senior_img' column in the database
+        }
+    
+        SeniorCitizen::create($validated); // Insert validated data into the database
+    
+        return redirect('/add_citizen')->with('message', 'Added Successfully');
     }
+    
 
     //UPLOAD FILE/IMG BY GETTING THE NAME PATH
     public function createThumbnail($path, $width, $height){
