@@ -187,6 +187,14 @@ class SeniorCitizenController extends Controller
             "status_membership" => ['required']
        ]); //set rule in validation
 
+       // Check if 'religion' is 'Other' and assign 'other_religion' value to 'religion'
+       if ($request->input('religion') === 'Other') {
+        $validated['religion'] = $request->input('other_religion');
+    } else {
+        // If 'religion' is not 'Other', remove 'other_religion' from validated data
+        unset($validated['other_religion']);
+    }
+
        $seniorCitizen = SeniorCitizen::find($id);
 
         //save img query
