@@ -2,7 +2,7 @@
     <div class="sticky top-0 overflow-hidden w-56 h-screen max-h-screen flex justify-center align-center h-full">
         <ul class="">
             <li class="font-bold flex align-center text-lg justify-center rounded-lg group pb-7 pt-5">
-                <img src="{{asset('img/osca-logo.png')}}" class="w-20 h-20" alt="">
+                <img src="{{asset('img/osca-logo.png')}}" class="w-[150px] h-[150px]" alt="">
             </li>
            
             <div class="flex flex-col justify-between h-max">
