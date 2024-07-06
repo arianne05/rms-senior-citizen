@@ -22,7 +22,7 @@
                             </p>
                     @enderror
 
-                    <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Email</label>
+                    <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Email or Username</label>
                     <input type="text" name="email" value="{{$userdetail->email}}" class="w-4/2 border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                     @error('email')
                             <p class="text-red-500 text-xs p-2">
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="flex flex-col p-4">
-                        <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Registered Email</label>
+                        <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Registered Email or Username</label>
                         <input type="text" name="confirmation_password" disabled value="{{$userdetail->email}}" class="w-full border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Assign Position</label>
                         <input type="text" name="confirmation_password" disabled value="{{$userdetail->position}}" class="w-full border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
@@ -87,7 +87,7 @@
                     <thead>
                         <tr>
                             <th>User Name</th>
-                            <th>Email</th>
+                            <th>Email or Username</th>
                             <th>Position</th>
                             <th>Status</th>
                             <th>Action</th>

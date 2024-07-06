@@ -47,7 +47,7 @@
                         <select name="position" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1">
                             <option value="" disabled {{ old('position') == '' ? 'selected' : '' }}>Choose Role</option>
                             <option value="OSCA Staff">OSCA Staff</option>
-                            <option value="Admin">Admin</option>
+                            {{-- <option value="Admin">Admin</option> --}}
                         </select>
                         @error('position')
                             <p class="text-red-500 text-xs p-2">

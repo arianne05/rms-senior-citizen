@@ -350,7 +350,7 @@ class UserController extends Controller
     public function process_user_update(Request $request, $id){
         $validated = $request->validate([
             "name" => ['required', 'min:4'],
-            "email" => ['required', 'email', Rule::unique('users', 'email')->ignore($id)],
+            "email" => ['required', Rule::unique('users')->ignore($id)],
             "password" => 'nullable|confirmed|min:6',
         ]);
 
