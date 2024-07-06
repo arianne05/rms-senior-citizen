@@ -187,7 +187,7 @@
                         <td>{{$senior->middlename}}</td>
                         <td>{{$senior->suffix}}</td>
                         <td>{{$senior->sex}}</td>
-                        <td>{{$senior->birthdate}}</td>
+                        <td>{{ date('m/d/Y', strtotime($senior->birthdate)) }}</td>
                         <td class="flex gap-x-3">
                             <a href="/edit_citizen/{{$senior->id}}"><span class="material-symbols-outlined">edit</span></a>
                             @if(auth()->user()->position == 'Admin')
