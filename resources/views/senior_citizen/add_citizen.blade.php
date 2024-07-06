@@ -425,6 +425,7 @@
 
 {{-- Component --}}
 <x-message />
+<x-age_error />
 
 <script>
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

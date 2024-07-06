@@ -12,6 +12,7 @@ use Intervention\Image\Facades\Image;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 use Carbon\Carbon;
+use DateTime;
 
 class SeniorCitizenController extends Controller
 {
@@ -110,6 +111,16 @@ class SeniorCitizenController extends Controller
             "status_membership" => ['required']
         ]);
     
+        // Calculate age based on birthdate
+        $birthdate = new DateTime($validated['birthdate']);
+        $today = new DateTime();
+        $age = $birthdate->diff($today)->y;
+    
+        // Check if age is less than 60
+        if ($age < 60) {
+            return redirect('/add_citizen')->with('error', 'Cannot add citizen below 60 years old.');
+        }
+    
         // Check if 'religion' is 'Other' and assign 'other_religion' value to 'religion'
         if ($request->input('religion') === 'Other') {
             $validated['religion'] = $request->input('other_religion');
@@ -144,6 +155,7 @@ class SeniorCitizenController extends Controller
     
         return redirect('/add_citizen')->with('message', 'Added Successfully');
     }
+    
     
 
     //UPLOAD FILE/IMG BY GETTING THE NAME PATH
