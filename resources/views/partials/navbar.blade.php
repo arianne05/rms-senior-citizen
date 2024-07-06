@@ -1,6 +1,7 @@
 <nav class="sticky top-0 flex justify-between p-5 align-center bg-white border-2 border-white border-b-gray-100">
     <h1 class="text-3xl font-bold flex justify-start align-center py-2 w-96">{{$title}}</h1>
-
+    
+    @if($title != "Account")
     <div class="flex items-center justify-end space-x-4 flex-1"> <!-- Adjusted this div -->
         <form action="/search" method="post" class="flex gap-x-3 items-center">
             @csrf
@@ -24,4 +25,6 @@
             </li>
         </ul>
     </div>
+    @endif
+
 </nav>
