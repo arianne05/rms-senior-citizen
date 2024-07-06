@@ -156,7 +156,7 @@ class UserController extends Controller
         // dd($request);
         $validated = $request->validate([
             "name" => ['required', 'min:4'],
-            "email" => ['required', 'email', Rule::unique('users', 'email')->ignore($id)],
+            "email" => ['required', Rule::unique('users')->ignore($id)],
             "password" => 'nullable|confirmed|min:6',
             "position" => ['required'],
             "status" => ['required'],
