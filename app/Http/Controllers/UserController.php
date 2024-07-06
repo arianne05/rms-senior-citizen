@@ -93,7 +93,7 @@ class UserController extends Controller
     //LOGIN USER
     public function process_signin(Request $request){
         $validated = $request->validate([
-            "email" => ['required', 'email'],
+            "email" => ['required'],
             "password" => 'required'
         ]); //set rule in validation
     
@@ -125,18 +125,24 @@ class UserController extends Controller
     public function register(Request $request){
         $validated = $request->validate([
             "name" => ['required', 'min:4'],
-            "email" => ['required', 'email', Rule::unique('users', 'email')],
+            "email" => [
+                'required',
+                Rule::unique('users', 'email')->where(function ($query) use ($request) {
+                    // Check uniqueness only if email is provided
+                    return $request->input('email') !== null;
+                })
+            ],
             "password" => 'required|min:6',
             "position" => ['required'],
             "status" => ['required'],
             "assignbrgy" => ['required']
        ]); //set rule in validation
-
-       $validated['password'] = Hash::make($validated['password']); //encrypt or hash the password | you can also use bycrpt($validated['password'])
-
+    
+       $validated['password'] = Hash::make($validated['password']); //encrypt or hash the password | you can also use bcrypt($validated['password'])
+    
        $user = User::create($validated); //insert validated name, email, pass in the database
-    //    auth()->login($user);
-       return redirect('/adduser')->with('message', 'Added Sucessfully');
+    
+       return redirect('/adduser')->with('message', 'Added Successfully');
     }
 
     //EDIT USER ACCOUNT
