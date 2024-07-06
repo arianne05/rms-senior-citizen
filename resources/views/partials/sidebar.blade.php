@@ -14,6 +14,8 @@
                     </a>     
                     @php
                     if(auth()->user()->position == 'Admin'){
+                        $user = auth()->user();
+                        $assignbrgy = $user->assignbrgy;
                         $linkbrgy = '/barangay';
                         $brgyNme = "Barangay";
                      } else{

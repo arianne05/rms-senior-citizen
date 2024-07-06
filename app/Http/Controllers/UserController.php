@@ -201,6 +201,7 @@ class UserController extends Controller
     public function view_barangay(Request $request, $barangay){
         $user = auth()->user();
         $assignbrgy = $user->assignbrgy;
+        $assignbrgyadmin = $barangay;
         $userPosition = $user->position;
 
         if($userPosition == "Admin"){
@@ -211,7 +212,7 @@ class UserController extends Controller
 
         
         return view("senior_citizen.view_barangay", ['title'=>$barangay,
-        'barangay_list' => $barangay_list]);
+        'barangay_list' => $barangay_list, 'assignbrgy'=>$assignbrgy , 'assignbrgyadmin'=> $assignbrgyadmin]);
     }
 
      //TEMPLATE CITIZEN PAGE
