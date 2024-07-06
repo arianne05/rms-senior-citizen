@@ -15,15 +15,17 @@
                     @php
                     if(auth()->user()->position == 'Admin'){
                         $linkbrgy = '/barangay';
+                        $brgyNme = "Barangay";
                      } else{
                         $user = auth()->user();
                         $assignbrgy = $user->assignbrgy;
                         $linkbrgy = '/view_barangay/'.$assignbrgy;
+                        $brgyNme = "Senior Citizen";
                      }
                     @endphp   
                     <a href="{{$linkbrgy}}">
                         <li class="flex align-center mb-2 mt-2 rounded-lg py-2.5 px-7 bg-[#f3b0c6] group hover:bg-[#82083C] hover:text-white">
-                            <span class="material-symbols-outlined pr-2">holiday_village</span>Barangay
+                            <span class="material-symbols-outlined pr-2">holiday_village</span>{{$brgyNme}}
                         </li>
                     </a>
                 </div>
