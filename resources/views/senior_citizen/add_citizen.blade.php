@@ -196,53 +196,60 @@
                     <div class="flex gap-3">
                         {{-- Barangay --}}
                         <div class="flex flex-col w-full">
+                            @php
+                                $assignbrgy = '';  // Initialize $assignbrgy variable
+                                if(auth()->user()->position == 'OSCA Staff'){
+                                    $user = auth()->user();
+                                    $assignbrgy = $user->assignbrgy;
+                                }
+                            @endphp
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Barangay <span class="font-bold text-red-600">*</span></label>
-                            {{-- <input type="text" name="barangay" value="{{old('barangay')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"> --}}
                             <select name="barangay" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                                 <option value="" disabled {{ old('barangay') == '' ? 'selected' : '' }}>Select Barangay</option>
-                                <option value="Agus-Os" {{ old('barangay') == 'Agus-Os' ? 'selected' : '' }}>Agus-Os</option>
-                                <option value="Alulod" {{ old('barangay') == 'Alulod' ? 'selected' : '' }}>Alulod</option>
-                                <option value="Banaba Cerca" {{ old('barangay') == 'Banaba Cerca' ? 'selected' : '' }}>Banaba Cerca</option>
-                                <option value="Banaba Lejos" {{ old('barangay') == 'Banaba Lejos' ? 'selected' : '' }}>Banaba Lejos</option>
-                                <option value="Bancod" {{ old('barangay') == 'Bancod' ? 'selected' : '' }}>Bancod</option>
-                                <option value="Buna Cerca" {{ old('barangay') == 'Buna Cerca' ? 'selected' : '' }}>Buna Cerca</option>
-                                <option value="Buna Lejos 1" {{ old('barangay') == 'Buna Lejos 1' ? 'selected' : '' }}>Buna Lejos 1</option>
-                                <option value="Buna Lejos 2" {{ old('barangay') == 'Buna Lejos 2' ? 'selected' : '' }}>Buna Lejos 2</option>
-                                <option value="Calumpang Cerca" {{ old('barangay') == 'Calumpang Cerca' ? 'selected' : '' }}>Calumpang Cerca</option>
-                                <option value="Calumpang Lejos" {{ old('barangay') == 'Calumpang Lejos' ? 'selected' : '' }}>Calumpang Lejos</option>
-                                <option value="Carasuchi" {{ old('barangay') == 'Carasuchi' ? 'selected' : '' }}>Carasuchi</option>
-                                <option value="Daine 1" {{ old('barangay') == 'Daine 1' ? 'selected' : '' }}>Daine 1</option>
-                                <option value="Daine 2" {{ old('barangay') == 'Daine 2' ? 'selected' : '' }}>Daine 2</option>
-                                <option value="Guyam Malaki" {{ old('barangay') == 'Guyam Malaki' ? 'selected' : '' }}>Guyam Malaki</option>
-                                <option value="Guyam Munti" {{ old('barangay') == 'Guyam Munti' ? 'selected' : '' }}>Guyam Munti</option>
-                                <option value="Harasan" {{ old('barangay') == 'Harasan' ? 'selected' : '' }}>Harasan</option>
-                                <option value="Kayquit 1" {{ old('barangay') == 'Kayquit 1' ? 'selected' : '' }}>Kayquit 1</option>
-                                <option value="Kayquit 2" {{ old('barangay') == 'Kayquit 2' ? 'selected' : '' }}>Kayquit 2</option>
-                                <option value="Kayquit 3" {{ old('barangay') == 'Kayquit 3' ? 'selected' : '' }}>Kayquit 3</option>
-                                <option value="Kaytambog" {{ old('barangay') == 'Kaytambog' ? 'selected' : '' }}>Kaytambog</option>
-                                <option value="Kaytapos" {{ old('barangay') == 'Kaytapos' ? 'selected' : '' }}>Kaytapos</option>
-                                <option value="Limbon" {{ old('barangay') == 'Limbon' ? 'selected' : '' }}>Limbon</option>
-                                <option value="Lumampong Balagbag" {{ old('barangay') == 'Lumampong Balagbag' ? 'selected' : '' }}>Lumampong Balagbag</option>
-                                <option value="Lumampong Halayhay" {{ old('barangay') == 'Lumampong Halayhay' ? 'selected' : '' }}>Lumampong Halayhay</option>
-                                <option value="Mahabang Kahoy Cerca" {{ old('barangay') == 'Mahabang Kahoy Cerca' ? 'selected' : '' }}>Mahabang Kahoy Cerca</option>
-                                <option value="Mahabang Kahoy Lejos" {{ old('barangay') == 'Mahabang Kahoy Lejos' ? 'selected' : '' }}>Mahabang Kahoy Lejos</option>
-                                <option value="Mataas Na Lupa" {{ old('barangay') == 'Mataas Na Lupa' ? 'selected' : '' }}>Mataas Na Lupa</option>
-                                <option value="Poblacion 1" {{ old('barangay') == 'Poblacion 1' ? 'selected' : '' }}>Poblacion 1</option>
-                                <option value="Poblacion 2" {{ old('barangay') == 'Poblacion 2' ? 'selected' : '' }}>Poblacion 2</option>
-                                <option value="Poblacion 3" {{ old('barangay') == 'Poblacion 3' ? 'selected' : '' }}>Poblacion 3</option>
-                                <option value="Poblacion 4" {{ old('barangay') == 'Poblacion 4' ? 'selected' : '' }}>Poblacion 4</option>
-                                <option value="Pulo" {{ old('barangay') == 'Pulo' ? 'selected' : '' }}>Pulo</option>
-                                <option value="Tambo Balagbag" {{ old('barangay') == 'Tambo Balagbag' ? 'selected' : '' }}>Tambo Balagbag</option>
-                                <option value="Tambo Ilaya" {{ old('barangay') == 'Tambo Ilaya' ? 'selected' : '' }}>Tambo Ilaya</option>
-                                <option value="Tambo Malaki" {{ old('barangay') == 'Tambo Malaki' ? 'selected' : '' }}>Tambo Malaki</option>
-                                <option value="Tambo Munti Kulit" {{ old('barangay') == 'Tambo Munti Kulit' ? 'selected' : '' }}>Tambo Munti Kulit</option>
+                                <option value="Agus-Os" {{ (old('barangay') == 'Agus-Os' || $assignbrgy == 'Agus-Os') ? 'selected' : '' }}>Agus-Os</option>
+                                <option value="Alulod" {{ (old('barangay') == 'Alulod' || $assignbrgy == 'Alulod') ? 'selected' : '' }}>Alulod</option>
+                                <option value="Banaba Cerca" {{ (old('barangay') == 'Banaba Cerca' || $assignbrgy == 'Banaba Cerca') ? 'selected' : '' }}>Banaba Cerca</option>
+                                <option value="Banaba Lejos" {{ (old('barangay') == 'Banaba Lejos' || $assignbrgy == 'Banaba Lejos') ? 'selected' : '' }}>Banaba Lejos</option>
+                                <option value="Bancod" {{ (old('barangay') == 'Bancod' || $assignbrgy == 'Bancod') ? 'selected' : '' }}>Bancod</option>
+                                <option value="Buna Cerca" {{ (old('barangay') == 'Buna Cerca' || $assignbrgy == 'Buna Cerca') ? 'selected' : '' }}>Buna Cerca</option>
+                                <option value="Buna Lejos 1" {{ (old('barangay') == 'Buna Lejos 1' || $assignbrgy == 'Buna Lejos 1') ? 'selected' : '' }}>Buna Lejos 1</option>
+                                <option value="Buna Lejos 2" {{ (old('barangay') == 'Buna Lejos 2' || $assignbrgy == 'Buna Lejos 2') ? 'selected' : '' }}>Buna Lejos 2</option>
+                                <option value="Calumpang Cerca" {{ (old('barangay') == 'Calumpang Cerca' || $assignbrgy == 'Calumpang Cerca') ? 'selected' : '' }}>Calumpang Cerca</option>
+                                <option value="Calumpang Lejos" {{ (old('barangay') == 'Calumpang Lejos' || $assignbrgy == 'Calumpang Lejos') ? 'selected' : '' }}>Calumpang Lejos</option>
+                                <option value="Carasuchi" {{ (old('barangay') == 'Carasuchi' || $assignbrgy == 'Carasuchi') ? 'selected' : '' }}>Carasuchi</option>
+                                <option value="Daine 1" {{ (old('barangay') == 'Daine 1' || $assignbrgy == 'Daine 1') ? 'selected' : '' }}>Daine 1</option>
+                                <option value="Daine 2" {{ (old('barangay') == 'Daine 2' || $assignbrgy == 'Daine 2') ? 'selected' : '' }}>Daine 2</option>
+                                <option value="Guyam Malaki" {{ (old('barangay') == 'Guyam Malaki' || $assignbrgy == 'Guyam Malaki') ? 'selected' : '' }}>Guyam Malaki</option>
+                                <option value="Guyam Munti" {{ (old('barangay') == 'Guyam Munti' || $assignbrgy == 'Guyam Munti') ? 'selected' : '' }}>Guyam Munti</option>
+                                <option value="Harasan" {{ (old('barangay') == 'Harasan' || $assignbrgy == 'Harasan') ? 'selected' : '' }}>Harasan</option>
+                                <option value="Kayquit 1" {{ (old('barangay') == 'Kayquit 1' || $assignbrgy == 'Kayquit 1') ? 'selected' : '' }}>Kayquit 1</option>
+                                <option value="Kayquit 2" {{ (old('barangay') == 'Kayquit 2' || $assignbrgy == 'Kayquit 2') ? 'selected' : '' }}>Kayquit 2</option>
+                                <option value="Kayquit 3" {{ (old('barangay') == 'Kayquit 3' || $assignbrgy == 'Kayquit 3') ? 'selected' : '' }}>Kayquit 3</option>
+                                <option value="Kaytambog" {{ (old('barangay') == 'Kaytambog' || $assignbrgy == 'Kaytambog') ? 'selected' : '' }}>Kaytambog</option>
+                                <option value="Kaytapos" {{ (old('barangay') == 'Kaytapos' || $assignbrgy == 'Kaytapos') ? 'selected' : '' }}>Kaytapos</option>
+                                <option value="Limbon" {{ (old('barangay') == 'Limbon' || $assignbrgy == 'Limbon') ? 'selected' : '' }}>Limbon</option>
+                                <option value="Lumampong Balagbag" {{ (old('barangay') == 'Lumampong Balagbag' || $assignbrgy == 'Lumampong Balagbag') ? 'selected' : '' }}>Lumampong Balagbag</option>
+                                <option value="Lumampong Halayhay" {{ (old('barangay') == 'Lumampong Halayhay' || $assignbrgy == 'Lumampong Halayhay') ? 'selected' : '' }}>Lumampong Halayhay</option>
+                                <option value="Mahabang Kahoy Cerca" {{ (old('barangay') == 'Mahabang Kahoy Cerca' || $assignbrgy == 'Mahabang Kahoy Cerca') ? 'selected' : '' }}>Mahabang Kahoy Cerca</option>
+                                <option value="Mahabang Kahoy Lejos" {{ (old('barangay') == 'Mahabang Kahoy Lejos' || $assignbrgy == 'Mahabang Kahoy Lejos') ? 'selected' : '' }}>Mahabang Kahoy Lejos</option>
+                                <option value="Mataas Na Lupa" {{ (old('barangay') == 'Mataas Na Lupa' || $assignbrgy == 'Mataas Na Lupa') ? 'selected' : '' }}>Mataas Na Lupa</option>
+                                <option value="Poblacion 1" {{ (old('barangay') == 'Poblacion 1' || $assignbrgy == 'Poblacion 1') ? 'selected' : '' }}>Poblacion 1</option>
+                                <option value="Poblacion 2" {{ (old('barangay') == 'Poblacion 2' || $assignbrgy == 'Poblacion 2') ? 'selected' : '' }}>Poblacion 2</option>
+                                <option value="Poblacion 3" {{ (old('barangay') == 'Poblacion 3' || $assignbrgy == 'Poblacion 3') ? 'selected' : '' }}>Poblacion 3</option>
+                                <option value="Poblacion 4" {{ (old('barangay') == 'Poblacion 4' || $assignbrgy == 'Poblacion 4') ? 'selected' : '' }}>Poblacion 4</option>
+                                <option value="Pulo" {{ (old('barangay') == 'Pulo' || $assignbrgy == 'Pulo') ? 'selected' : '' }}>Pulo</option>
+                                <option value="Tambo Balagbag" {{ (old('barangay') == 'Tambo Balagbag' || $assignbrgy == 'Tambo Balagbag') ? 'selected' : '' }}>Tambo Balagbag</option>
+                                <option value="Tambo Ilaya" {{ (old('barangay') == 'Tambo Ilaya' || $assignbrgy == 'Tambo Ilaya') ? 'selected' : '' }}>Tambo Ilaya</option>
+                                <option value="Tambo Malaki" {{ (old('barangay') == 'Tambo Malaki' || $assignbrgy == 'Tambo Malaki') ? 'selected' : '' }}>Tambo Malaki</option>
+                                <option value="Tambo Munti Kulit" {{ (old('barangay') == 'Tambo Munti Kulit' || $assignbrgy == 'Tambo Munti Kulit') ? 'selected' : '' }}>Tambo Munti Kulit</option>
                             </select>
                             @error('barangay')
                                 <p class="text-red-500 text-xs p-2">
-                                    {{$message}}
+                                    {{ $message }}
                                 </p>
                             @enderror    
                         </div>
+
 
                          {{-- Municipality --}}
                          <div class="flex flex-col w-full">
