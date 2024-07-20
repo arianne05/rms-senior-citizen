@@ -30,41 +30,44 @@
             </div>
         @endif
 
-        <div class="container w-full h-auto p-20">
+        <div class="w-full h-auto p-20 z-9999">
 
-            <table id="dashboardTbl" class="display">
-                <thead>
-                    <tr>
-                        <th>Last Name</th>
-                        <th>First Name</th>
-                        <th>Middle Name</th>
-                        <th>Suffix</th>
-                        <th>Sex</th>
-                        <th>Birthdate</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($barangay_list as $list)  
-                      <tr>
-                          <td class="uppercase">{{$list->lastname}}</td>
-                          <td class="uppercase">{{$list->firstname}}</td>
-                          <td class="uppercase">{{$list->middlename}}</td>
-                          <td class="uppercase">{{$list->suffix}}</td>
-                          <td class="uppercase">{{$list->sex}}</td>
-                          {{-- <td>{{$list->birthdate}}</td> --}}
-                          <td>{{ date('m/d/Y', strtotime($list->birthdate)) }}</td>
-                          <td class="flex gap-3">
-                            <a href="/edit_citizen/{{$list->id}}"><span class="material-symbols-outlined">edit</span></a> 
-                            <a href="/view_citizen/{{$list->id}}"><span class="material-symbols-outlined">visibility</span></a> 
-                            @if(auth()->user()->position == 'Admin')
-                                <a href="/delete_citizen/{{$list->id}}" id="delete_confirmation"><span class="material-symbols-outlined">delete</span></button></a>
-                            @endif
-                          </td>
-                      </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="">
+                <table id="dashboardTbl" class="display">
+                    <thead>
+                        <tr>
+                            <th>Last Name</th>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Suffix</th>
+                            <th>Sex</th>
+                            <th>Birthdate</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($barangay_list as $list)  
+                          <tr>
+                              <td class="uppercase">{{$list->lastname}}</td>
+                              <td class="uppercase">{{$list->firstname}}</td>
+                              <td class="uppercase">{{$list->middlename}}</td>
+                              <td class="uppercase">{{$list->suffix}}</td>
+                              <td class="uppercase">{{$list->sex}}</td>
+                              {{-- <td>{{$list->birthdate}}</td> --}}
+                              <td>{{ date('m/d/Y', strtotime($list->birthdate)) }}</td>
+                              <td class="flex gap-3">
+                                <a href="/edit_citizen/{{$list->id}}"><span class="material-symbols-outlined">edit</span></a> 
+                                <a href="/view_citizen/{{$list->id}}"><span class="material-symbols-outlined">visibility</span></a> 
+                                @if(auth()->user()->position == 'Admin')
+                                    <a href="/delete_citizen/{{$list->id}}" id="delete_confirmation"><span class="material-symbols-outlined">delete</span></button></a>
+                                @endif
+                              </td>
+                          </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            
       
           </div>
     </div>

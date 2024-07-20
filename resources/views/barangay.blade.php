@@ -32,13 +32,10 @@
         
         <div class="flex flex-wrap w-full h-auto p-8 overflow-hidden">
             @foreach ($data_barangay as $barangay)
-            <a href="/view_barangay/{{$barangay->barangay}}" class="group container bg-white border-2 border-solid border-gray-200 hover:border-blue-100 hover:shadow-lg h-40 w-60 rounded-xl p-4 m-4 flex flex-col justify-end relative">
-                <div class="absolute top-0 right-0 pt-12 pr-5">
-                    <img src="{{asset('img/totalbrgy.png')}}" class="w-[150px] h-[50px] opacity-70" alt="">
-                </div>
-                <div>
+            <a href="/view_barangay/{{$barangay->barangay}}" class="flex items-center justify-center bg-white border-2 border-solid border-gray-200 hover:border-blue-100 hover:shadow-lg h-40 w-60 rounded-xl p-4 m-4">
+                <div class="" style="background-image: url('{{asset('img/totalbrgy.png')}}'); background-size: 80px 70px; background-repeat: no-repeat; background-position: right center; background-color: rgba(255, 255, 255, 0.1);" id="text">
                     <h1 class="text-4xl font-bold">{{$barangay->barangay_count}}</h1>
-                    <h1 class="font-semibold">{{$barangay->barangay}}</h1>
+                    <h1 class="font-semibold text-red-600">{{$barangay->barangay}}</h1>
                     <p class="text-sm">Click here to view details</p>
                 </div>
             </a>
