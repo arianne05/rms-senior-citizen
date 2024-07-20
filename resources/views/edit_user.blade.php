@@ -95,7 +95,7 @@
                     <div class="w-1/2">
                         <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">Assign Barangay</span>
                         <select name="assignbrgy" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1">
-                            <option value="" disabled {{ $users->assignbrgy == '' ? 'selected' : '' }}>Select Barangay</option>
+                            <option value="Others" {{ !in_array($users->assignbrgy, ['Agus-Os', 'Alulod', 'Banaba Cerca', 'Banaba Lejos', 'Bancod', 'Buna Cerca', 'Buna Lejos 1', 'Buna Lejos 2', 'Calumpang Cerca', 'Calumpang Lejos', 'Carasuchi', 'Daine 1', 'Daine 2', 'Guyam Malaki', 'Guyam Munti', 'Harasan', 'Kayquit 1', 'Kayquit 2', 'Kayquit 3', 'Kaytambog', 'Kaytapos', 'Limbon', 'Lumampong Balagbag', 'Lumampong Halayhay', 'Mahabang Kahoy Cerca', 'Mahabang Kahoy Lejos', 'Mataas Na Lupa', 'Poblacion 1', 'Poblacion 2', 'Poblacion 3', 'Poblacion 4', 'Pulo', 'Tambo Balagbag', 'Tambo Ilaya', 'Tambo Malaki', 'Tambo Munti Kulit']) ? 'selected' : '' }}>Others</option>
                             <option value="Agus-Os" {{ $users->assignbrgy == 'Agus-Os' ? 'selected' : '' }}>Agus-Os</option>
                             <option value="Alulod" {{ $users->assignbrgy == 'Alulod' ? 'selected' : '' }}>Alulod</option>
                             <option value="Banaba Cerca" {{ $users->assignbrgy == 'Banaba Cerca' ? 'selected' : '' }}>Banaba Cerca</option>
@@ -132,12 +132,23 @@
                             <option value="Tambo Ilaya" {{ $users->assignbrgy == 'Tambo Ilaya' ? 'selected' : '' }}>Tambo Ilaya</option>
                             <option value="Tambo Malaki" {{ $users->assignbrgy == 'Tambo Malaki' ? 'selected' : '' }}>Tambo Malaki</option>
                             <option value="Tambo Munti Kulit" {{ $users->assignbrgy == 'Tambo Munti Kulit' ? 'selected' : '' }}>Tambo Munti Kulit</option>
+                            <option value="Others" {{ $users->assignbrgy == 'Tambo Munti Kulit' ? 'selected' : '' }}>Others</option>
                         </select>
                         @error('assignbrgy')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
                             </p>
                         @enderror   
+                    </div>
+
+                    <div class="w-1/2">
+                        <span class="text-sm font-medium text-slate-700">Other Barangay</span>
+                        <input type="text" name="other_barangay" value="{{$users->assignbrgy}}" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"/>
+                        @error('other_barangay')
+                            <p class="text-red-500 text-xs p-2">
+                                {{$message}}
+                            </p>
+                        @enderror    
                     </div>
                     
                 </label>

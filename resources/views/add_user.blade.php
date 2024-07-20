@@ -116,12 +116,23 @@
                             <option value="Tambo Ilaya" {{ old('assignbrgy') == 'Tambo Ilaya' ? 'selected' : '' }}>Tambo Ilaya</option>
                             <option value="Tambo Malaki" {{ old('assignbrgy') == 'Tambo Malaki' ? 'selected' : '' }}>Tambo Malaki</option>
                             <option value="Tambo Munti Kulit" {{ old('assignbrgy') == 'Tambo Munti Kulit' ? 'selected' : '' }}>Tambo Munti Kulit</option>
+                            <option value="Others" {{ old('assignbrgy') == 'Others' ? 'selected' : '' }}>Others</option>
                         </select>
                         @error('assignbrgy')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
                             </p>
                         @enderror   
+                    </div>
+
+                    <div class="w-1/2">
+                        <span class="text-sm font-medium text-slate-700">Other Barangay</span>
+                        <input type="text" name="other_barangay" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"/>
+                        @error('other_barangay')
+                            <p class="text-red-500 text-xs p-2">
+                                {{$message}}
+                            </p>
+                        @enderror    
                     </div>
                     
                 </label>

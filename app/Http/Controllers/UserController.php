@@ -137,6 +137,13 @@ class UserController extends Controller
             "status" => ['required'],
             "assignbrgy" => ['required']
        ]); //set rule in validation
+
+       if ($request->input('assignbrgy') === 'Others') {
+        $validated['assignbrgy'] = $request->input('other_barangay');
+        } else {
+            // If 'religion' is not 'Other', remove 'other_religion' from validated data
+            unset($validated['other_religion']);
+        }
     
        $validated['password'] = Hash::make($validated['password']); //encrypt or hash the password | you can also use bcrypt($validated['password'])
     
@@ -162,6 +169,13 @@ class UserController extends Controller
             "status" => ['required'],
             "assignbrgy" => ['required']
         ]);
+
+        if ($request->input('assignbrgy') === 'Others') {
+            $validated['assignbrgy'] = $request->input('other_barangay');
+            } else {
+                // If 'religion' is not 'Other', remove 'other_religion' from validated data
+                unset($validated['other_religion']);
+            }
 
         // Remove password from the validated data if it's null
         if ($validated['password'] === null) {
