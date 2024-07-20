@@ -108,7 +108,7 @@
             </tr>
         </thead>
 
-        <tbody>
+        <tbody style="text-transform: uppercase; font-size: 10px;">
             @foreach ($totalusers as $senior)  
                 <tr>
                     <td>{{$senior->lastname}}</td>

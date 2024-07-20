@@ -61,7 +61,7 @@
                 <th>Age</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="text-transform: uppercase; font-size: 10px;">
             @if($brgylist)
                 @foreach ($brgylist as $brgy)  
                     <tr>
