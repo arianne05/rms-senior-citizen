@@ -16,7 +16,7 @@
                     <div class="shrink-0 flex justify-center">
                         <img class="h-52 w-52 object-cover rounded-full" src="{{ $citizens->senior_img ? asset("storage/citizen_profile/".$citizens->senior_img): $default_img }}" alt="avatar" />
                     </div>
-                    <h1 class="text-xl font-semibold">{{$citizens->firstname.' '.$citizens->lastname.' '.$citizens->suffix}}</h1>
+                    <h1 class="text-xl font-semibold uppercase">{{$citizens->firstname.' '.$citizens->lastname.' '.$citizens->suffix}}</h1>
                     <p class="text-sm font-regular">Senior ID: {{$citizens->id}}</p>
 
                     <div class="flex justify-center mt-10 gap-x-2">
@@ -34,36 +34,36 @@
                     <div class="flex w-full justify-evenly">
                         <div class="w-1/2">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Firstname</label>
-                            <p class="mb-2">{{$citizens->firstname}}</p>
+                            <p class="mb-2 uppercase">{{$citizens->firstname}}</p>
 
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Lastname</label>
-                            <p class="mb-2">{{$citizens->lastname}}</p>
+                            <p class="mb-2 uppercase">{{$citizens->lastname}}</p>
 
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Middlename</label>
-                            <p class="mb-2">{{$citizens->middlename}}</p>
+                            <p class="mb-2 uppercase">{{$citizens->middlename}}</p>
 
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Suffix</label>
-                            <p class="mb-2">{{$citizens->suffix}}</p>
+                            <p class="mb-2 uppercase">{{$citizens->suffix}}</p>
                         </div>
                         <div class="w-1/2">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Birthdate</label>
-                            <p class="mb-2">{{$citizens->birthdate}}</p>
+                            <p class="mb-2 uppercase">{{$citizens->birthdate}}</p>
 
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Civil Status</label>
-                            <p class="mb-2">{{$citizens->civil_status}}</p>
+                            <p class="mb-2 uppercase">{{$citizens->civil_status}}</p>
 
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Religion</label>
-                            <p class="mb-2">{{$citizens->religion}}</p>
+                            <p class="mb-2 uppercase">{{$citizens->religion}}</p>
 
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Sex</label>
-                            <p class="mb-2">{{$citizens->sex}}</p>
+                            <p class="mb-2 uppercase">{{$citizens->sex}}</p>
                         </div>
                         <div class="w-1/2">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Age</label>
                             <p class="mb-2">{{\Carbon\Carbon::parse($citizens->birthdate)->age}}</p>
 
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Classification</label>
-                            <p class="mb-2">
+                            <p class="mb-2 uppercase">
                                 @php
                                     $age = \Carbon\Carbon::parse($citizens->birthdate)->age;
                                     if ($age >= 100) {
@@ -95,11 +95,11 @@
                     <div class="flex justify-evenly w-full mb-2">
                         <div class="w-1/2 text-start">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">House Number</label>
-                            <p>{{$citizens->house_number}}</p>
+                            <p class="uppercase">{{$citizens->house_number}}</p>
                         </div>
                         <div class="w-1/2">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Barangay</label>
-                            <p>{{$citizens->barangay}}</p>
+                            <p class="uppercase">{{$citizens->barangay}}</p>
                         </div>
                     </div>
                     <div class="flex">
@@ -110,12 +110,12 @@
                         
                         <div class="w-1/2">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Province</label>
-                            <p>{{$citizens->province}}</p>
+                            <p class="uppercase">{{$citizens->province}}</p>
                         </div>
 
                         <div class="w-1/2">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Zipcode</label>
-                            <p>{{$citizens->zipcode}}</p>
+                            <p class="uppercase">{{$citizens->zipcode}}</p>
                         </div>
                     </div>
                 </div>
@@ -126,24 +126,24 @@
             <div class="container flex border-2 border-solid border-gray-100 rounded-lg mt-6 p-10">
                 <div class="w-1/2">
                     <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Government Service Insurance System (GSIS)</label>
-                    <p class="mb-2">{{$citizens->gsis}}</p>
+                    <p class="mb-2 uppercase">{{$citizens->gsis}}</p>
 
                     <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Philippine Health ID (Philhealth)</label>
-                    <p class="mb-2">{{$citizens->philhealth}}</p>
+                    <p class="mb-2 uppercase">{{$citizens->philhealth}}</p>
 
                     <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Taxpayer Identification Number (TIN) </label>
-                    <p class="mb-2">{{$citizens->tin}}</p>
+                    <p class="mb-2 uppercase">{{$citizens->tin}}</p>
 
                     <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Social Security System (SSS) </label>
-                    <p class="mb-2">{{$citizens->sss}}</p>
+                    <p class="mb-2 uppercase">{{$citizens->sss}}</p>
                 </div>
                 
                 <div class="w-1/2">
                     <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Beneficiary</label>
-                    <p class="mb-2">{{$citizens->beneficiary}}</p>
+                    <p class="mb-2 uppercase">{{$citizens->beneficiary}}</p>
 
                     <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Contact Beneficiary</label>
-                    <p class="mb-2">{{$citizens->contact_beneficiary}}</p>
+                    <p class="mb-2 uppercase">{{$citizens->contact_beneficiary}}</p>
                 </div>
             </div>
 

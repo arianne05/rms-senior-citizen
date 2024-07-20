@@ -26,7 +26,7 @@
                          {{-- Lastname --}}
                          <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Lastname <span class="font-bold text-red-600">*</span></label>
-                            <input type="text" name="lastname" value="{{old('lastname')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="lastname" value="{{old('lastname')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                             @error('lastname')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -37,7 +37,7 @@
                         {{-- Firstname --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Firstname <span class="font-bold text-red-600">*</span></label>
-                            <input type="text" name="firstname" value="{{old('firstname')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="firstname" value="{{old('firstname')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                             @error('firstname')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -48,7 +48,7 @@
                         {{-- Middlename --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Middlename <span class="text-gray-400">[optional]</span></label>
-                            <input type="text" name="middlename" value="{{old('middlename')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="middlename" value="{{old('middlename')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                             @error('middlename')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -99,7 +99,7 @@
                     {{-- Birthplace --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Birthplace <span class="font-bold text-red-600">*</span></label>
-                        <input type="text" name="birthplace" value="{{old('birthplace')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="birthplace" value="{{old('birthplace')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('birthplace')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -152,7 +152,7 @@
 
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Other Religion</label>
-                            <input type="text" name="other_religion" value="{{old('religion')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="other_religion" value="{{old('religion')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                             @error('other_religion')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -185,7 +185,7 @@
                     {{-- Unit/House Number --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Unit/House Number <span class="font-bold text-red-600">*</span></label>
-                        <input type="text" name="house_number" value="{{old('house_number')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="house_number" value="{{old('house_number')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('house_number')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -280,7 +280,7 @@
                     {{-- GSIS --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">GSIS</label>
-                        <input type="text" name="gsis" value="{{old('gsis')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="gsis" value="{{old('gsis')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('gsis')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -291,7 +291,7 @@
                     {{-- Philhealth --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Philhealth</label>
-                        <input type="text" name="philhealth" value="{{old('philhealth')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="philhealth" value="{{old('philhealth')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('philhealth')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -302,7 +302,7 @@
                     {{-- Tin --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Tin</label>
-                        <input type="text" name="tin" value="{{old('tin')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="tin" value="{{old('tin')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('tin')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -313,7 +313,7 @@
                     {{-- SSS --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">SSS</label>
-                        <input type="text" name="sss" value="{{old('sss')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="sss" value="{{old('sss')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('sss')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -328,7 +328,7 @@
                     {{-- Beneficiary --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Beneficiaries</label>
-                        <input type="text" name="beneficiary" value="{{old('beneficiary')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="beneficiary" value="{{old('beneficiary')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('beneficiary')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}

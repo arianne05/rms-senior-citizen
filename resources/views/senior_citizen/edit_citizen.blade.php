@@ -28,7 +28,7 @@
                          {{-- Lastname --}}
                          <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Lastname <span class="font-bold text-red-600">*</span></label>
-                            <input type="text" name="lastname" value="{{$citizens->lastname}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="lastname" value="{{$citizens->lastname}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                             @error('lastname')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -39,7 +39,7 @@
                         {{-- Firstname --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Firstname <span class="font-bold text-red-600">*</span></label>
-                            <input type="text" name="firstname" value="{{$citizens->firstname}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="firstname" value="{{$citizens->firstname}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                             @error('firstname')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -50,7 +50,7 @@
                         {{-- Middlename --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Middlename</label>
-                            <input type="text" name="middlename" value="{{$citizens->middlename}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="middlename" value="{{$citizens->middlename}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                             @error('middlename')
                                 <p class="text-red-500 text-xs p-2">
                                     {{$message}}
@@ -102,7 +102,7 @@
                     {{-- Birthplace --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Birthplace</label>
-                        <input type="text" name="birthplace" value="{{$citizens->birthplace}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="birthplace" value="{{$citizens->birthplace}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('birthplace')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -153,7 +153,7 @@
 
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Other Religion</label>
-                            <input type="text" name="other_religion" value="{{ in_array(old('religion', $citizens->religion), ['Christian', 'INC', 'Muslim', 'Roman Catholic']) ? '' : old('other_religion', $citizens->religion) }}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <input type="text" name="other_religion" value="{{ in_array(old('religion', $citizens->religion), ['Christian', 'INC', 'Muslim', 'Roman Catholic']) ? '' : old('other_religion', $citizens->religion) }}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                             @error('other_religion')
                                 <p class="text-red-500 text-xs p-2">
                                     {{ $message }}
@@ -188,7 +188,7 @@
                     {{-- Unit/House Number --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Unit/House Number</label>
-                        <input type="text" name="house_number" value="{{$citizens->house_number}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="house_number" value="{{$citizens->house_number}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('house_number')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -277,7 +277,7 @@
                     {{-- GSIS --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">GSIS</label>
-                        <input type="text" name="gsis" value="{{$citizens->gsis}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="gsis" value="{{$citizens->gsis}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('gsis')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -288,7 +288,7 @@
                     {{-- Philhealth --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Philhealth</label>
-                        <input type="text" name="philhealth" value="{{$citizens->philhealth}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="philhealth" value="{{$citizens->philhealth}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('philhealth')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -299,7 +299,7 @@
                     {{-- Tin --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Tin</label>
-                        <input type="text" name="tin" value="{{$citizens->tin}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="tin" value="{{$citizens->tin}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('tin')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -310,7 +310,7 @@
                     {{-- SSS --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">SSS</label>
-                        <input type="text" name="sss" value="{{$citizens->sss}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="sss" value="{{$citizens->sss}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('sss')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -325,7 +325,7 @@
                     {{-- Beneficiary --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Beneficiaries</label>
-                        <input type="text" name="beneficiary" value="{{$citizens->beneficiary}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="beneficiary" value="{{$citizens->beneficiary}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('beneficiary')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
@@ -336,7 +336,7 @@
                     {{-- Contact Beneficiary --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Beneficiaries Contact</label>
-                        <input type="number" name="contact_beneficiary" value="{{$citizens->contact_beneficiary}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="number" name="contact_beneficiary" value="{{$citizens->contact_beneficiary}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('contact_beneficiary')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
