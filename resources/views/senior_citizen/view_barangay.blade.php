@@ -47,11 +47,11 @@
                 <tbody>
                     @foreach ($barangay_list as $list)  
                       <tr>
-                          <td>{{$list->lastname}}</td>
-                          <td>{{$list->firstname}}</td>
-                          <td>{{$list->middlename}}</td>
-                          <td>{{$list->suffix}}</td>
-                          <td>{{$list->sex}}</td>
+                          <td class="uppercase">{{$list->lastname}}</td>
+                          <td class="uppercase">{{$list->firstname}}</td>
+                          <td class="uppercase">{{$list->middlename}}</td>
+                          <td class="uppercase">{{$list->suffix}}</td>
+                          <td class="uppercase">{{$list->sex}}</td>
                           {{-- <td>{{$list->birthdate}}</td> --}}
                           <td>{{ date('m/d/Y', strtotime($list->birthdate)) }}</td>
                           <td class="flex gap-3">

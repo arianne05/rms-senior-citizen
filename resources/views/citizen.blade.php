@@ -182,12 +182,12 @@
                 <tbody>
                     @foreach ($seniors as $senior)  
                     <tr>
-                        <td>{{$senior->lastname}}</td>
-                        <td>{{$senior->firstname}}</td>
-                        <td>{{$senior->middlename}}</td>
-                        <td>{{$senior->suffix}}</td>
-                        <td>{{$senior->sex}}</td>
-                        <td>{{ date('m/d/Y', strtotime($senior->birthdate)) }}</td>
+                        <td class="uppercase">{{$senior->lastname}}</td>
+                        <td class="uppercase">{{$senior->firstname}}</td>
+                        <td class="uppercase">{{$senior->middlename}}</td>
+                        <td class="uppercase">{{$senior->suffix}}</td>
+                        <td class="uppercase">{{$senior->sex}}</td>
+                        <td class="uppercase">{{ date('m/d/Y', strtotime($senior->birthdate)) }}</td>
                         <td class="flex gap-x-3">
                             <a href="/edit_citizen/{{$senior->id}}"><span class="material-symbols-outlined">edit</span></a>
                             @if(auth()->user()->position == 'Admin')
