@@ -113,12 +113,31 @@
                     {{-- Contact --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Contact</label>
-                        <input type="number" name="contact" value="{{$citizens->contact}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                        <input type="text" name="contact" id="formattedContact" placeholder="09XX-XXX-XXXX" value="{{$citizens->contact}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                         @error('contact')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
                             </p>
-                        @enderror    
+                        @enderror  
+                        
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const inputField = document.getElementById('formattedContact');
+                            
+                                inputField.addEventListener('input', function() {
+                                    let value = this.value.replace(/\D/g, ''); // Remove non-digit characters
+                                    if (value.length > 11) {
+                                        value = value.substring(0, 11); // Limit to 11 characters (0939-393-3935)
+                                    }
+                                    if (value.length > 4 && value.length <= 7) {
+                                        value = value.slice(0, 4) + '-' + value.slice(4); // Add first dash (0939-)
+                                    } else if (value.length > 7) {
+                                        value = value.slice(0, 4) + '-' + value.slice(4, 7) + '-' + value.slice(7); // Add second dash (0939-393-)
+                                    }
+                                    this.value = value;
+                                });
+                            });
+                        </script>
                     </div>
 
                     <div class="flex gap-3">
@@ -277,45 +296,121 @@
                     {{-- GSIS --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">GSIS</label>
-                        <input type="text" name="gsis" value="{{$citizens->gsis}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
+                        <input type="text" name="gsis" id="formattedGSIS" placeholder="XXXX-XXXX" value="{{$citizens->gsis}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('gsis')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
                             </p>
                         @enderror   
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const inputField = document.getElementById('formattedGSIS');
+    
+                                inputField.addEventListener('input', function() {
+                                    let value = this.value.replace(/\D/g, ''); // Remove non-digit characters
+                                    if (value.length > 8) {
+                                        value = value.substring(0, 8); // Limit to 8 characters (XXXX-XXXX)
+                                    }
+                                    if (value.length > 4) {
+                                        value = value.slice(0, 4) + '-' + value.slice(4); // Add a dash after the first 4 characters
+                                    }
+                                    this.value = value;
+                                });
+                            });
+                            </script>
                     </div>
 
                     {{-- Philhealth --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Philhealth</label>
-                        <input type="text" name="philhealth" value="{{$citizens->philhealth}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
+                        <input type="text" name="philhealth" id="formattedPhil" placeholder="XX-XXXXXXXXX-X" value="{{$citizens->philhealth}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('philhealth')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
                             </p>
                         @enderror   
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const inputField = document.getElementById('formattedPhil');
+                            
+                                inputField.addEventListener('input', function() {
+                                    let value = this.value.replace(/\D/g, ''); // Remove non-digit characters
+                                    if (value.length > 13) {
+                                        value = value.substring(0, 12); // Limit to 14 characters (44-445555555-5)
+                                    }
+                                    if (value.length > 2 && value.length <= 12) {
+                                        value = value.slice(0, 2) + '-' + value.slice(2); // Add first dash (44-)
+                                    } else if (value.length > 12) {
+                                        value = value.slice(0, 2) + '-' + value.slice(2, 12) + '-' + value.slice(12); // Add second dash (44-445555555-)
+                                    }
+                                    this.value = value;
+                                });
+                            });
+                        </script>
                     </div>
 
                     {{-- Tin --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Tin</label>
-                        <input type="text" name="tin" value="{{$citizens->tin}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
+                        <input type="text" name="tin" id="formattedTin" placeholder="XXX-XXX-XXX-XXXXX" value="{{$citizens->tin}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('tin')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
                             </p>
                         @enderror   
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const inputField = document.getElementById('formattedTin');
+                            
+                                inputField.addEventListener('input', function() {
+                                    let value = this.value.replace(/\D/g, ''); // Remove non-digit characters
+                                    if (value.length > 14) {
+                                        value = value.substring(0, 13); // Limit to 15 characters (645-333-345-00000)
+                                    }
+                                    if (value.length > 3 && value.length <= 6) {
+                                        value = value.slice(0, 3) + '-' + value.slice(3); // Add first dash (645-)
+                                    } else if (value.length > 6 && value.length <= 9) {
+                                        value = value.slice(0, 3) + '-' + value.slice(3, 6) + '-' + value.slice(6); // Add second dash (645-333-)
+                                    } else if (value.length > 9 && value.length <= 15) {
+                                        value = value.slice(0, 3) + '-' + value.slice(3, 6) + '-' + value.slice(6, 9) + '-' + value.slice(9); // Add third dash (645-333-345-)
+                                    }
+                                    this.value = value;
+                                });
+                            });
+                        </script>
                     </div>
 
                     {{-- SSS --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">SSS</label>
-                        <input type="text" name="sss" value="{{$citizens->sss}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
+                        <input type="text" name="sss" id="formattedSSS" placeholder="XX-XXXXXX-X" value="{{$citizens->sss}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('sss')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
                             </p>
                         @enderror   
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const inputField = document.getElementById('formattedSSS');
+                            
+                                inputField.addEventListener('input', function() {
+                                    let value = this.value.replace(/\D/g, ''); // Remove non-digit characters
+                                    if (value.length > 10) {
+                                        value = value.substring(0, 10); // Limit to 12 characters (34-3456543-9)
+                                    }
+                                    if (value.length > 2 && value.length <= 4) {
+                                        value = value.slice(0, 2) + '-' + value.slice(2); // Add first dash (34-)
+                                    } else if (value.length > 4 && value.length <= 11) {
+                                        value = value.slice(0, 2) + '-' + value.slice(2, 9) + '-' + value.slice(9); // Add second dash (34-3456543-)
+                                    }
+                                    this.value = value;
+                                });
+                            });
+                        </script>
                     </div>
 
                     <br>
@@ -336,12 +431,31 @@
                     {{-- Contact Beneficiary --}}
                     <div class="flex flex-col w-full">
                         <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Beneficiaries Contact</label>
-                        <input type="number" name="contact_beneficiary" value="{{$citizens->contact_beneficiary}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
+                        <input type="text" name="contact_beneficiary" id="formattedBContact" placeholder="09XX-XXX-XXXX" value="{{$citizens->contact_beneficiary}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                         @error('contact_beneficiary')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
                             </p>
                         @enderror
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const inputField = document.getElementById('formattedBContact');
+                            
+                                inputField.addEventListener('input', function() {
+                                    let value = this.value.replace(/\D/g, ''); // Remove non-digit characters
+                                    if (value.length > 11) {
+                                        value = value.substring(0, 11); // Limit to 11 characters (0939-393-3935)
+                                    }
+                                    if (value.length > 4 && value.length <= 7) {
+                                        value = value.slice(0, 4) + '-' + value.slice(4); // Add first dash (0939-)
+                                    } else if (value.length > 7) {
+                                        value = value.slice(0, 4) + '-' + value.slice(4, 7) + '-' + value.slice(7); // Add second dash (0939-393-)
+                                    }
+                                    this.value = value;
+                                });
+                            });
+                        </script>
                     </div>
 
 
