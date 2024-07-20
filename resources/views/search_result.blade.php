@@ -24,17 +24,17 @@
                 <tbody>
                     @foreach ($seniors as $senior)  
                       <tr>
-                          <td>{{$senior->lastname}}</td>
-                          <td>{{$senior->firstname}}</td>
-                          <td>{{$senior->middlename}}</td>
-                          <td>{{$senior->sex}}</td>
-                          <td>{{$senior->birthdate}}</td>
+                          <td class="uppercase">{{$senior->lastname}}</td>
+                          <td class="uppercase">{{$senior->firstname}}</td>
+                          <td class="uppercase">{{$senior->middlename}}</td>
+                          <td class="uppercase">{{$senior->sex}}</td>
+                          <td class="uppercase">{{$senior->birthdate}}</td>
                           <td class="flex gap-x-3">
-                            <a href="/edit_citizen/{{$senior->id}}">Edit</a>
+                            <a href="/edit_citizen/{{$senior->id}}"><span class="material-symbols-outlined">edit</span></a>
                             @if(auth()->user()->position == 'Admin')
-                              <a href="/delete_citizen/{{$senior->id}}" id="delete_confirmation">Delete</a>
+                              <a href="/delete_citizen/{{$senior->id}}" id="delete_confirmation"><span class="material-symbols-outlined">delete</span></a>
                             @endif
-                            <a href="/view_citizen/{{$senior->id}}">View</a>
+                            <a href="/view_citizen/{{$senior->id}}"><span class="material-symbols-outlined">visibility</span></a>
                           </td>
                       </tr>
                     @endforeach
