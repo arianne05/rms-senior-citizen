@@ -47,7 +47,7 @@
                         </div>
                         <div class="w-1/2">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Birthdate</label>
-                            <p class="mb-2 uppercase">{{$citizens->birthdate}}</p>
+                            <p class="mb-2 uppercase">{{ date('m/d/Y', strtotime($citizens->birthdate)) }}</p>
 
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Civil Status</label>
                             <p class="mb-2 uppercase">{{$citizens->civil_status}}</p>
