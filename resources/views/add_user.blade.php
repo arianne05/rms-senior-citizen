@@ -78,7 +78,7 @@
 
                     <div class="w-1/2">
                         <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">Assign Barangay</span>
-                        <select name="assignbrgy" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1">
+                        <select name="assignbrgy" id="assignbrgy" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1">
                             <option value="" disabled {{ old('assignbrgy') == '' ? 'selected' : '' }}>Select Barangay</option>
                             <option value="Agus-Os" {{ old('assignbrgy') == 'Agus-Os' ? 'selected' : '' }}>Agus-Os</option>
                             <option value="Alulod" {{ old('assignbrgy') == 'Alulod' ? 'selected' : '' }}>Alulod</option>
@@ -127,13 +127,36 @@
 
                     <div class="w-1/2">
                         <span class="text-sm font-medium text-slate-700">Other Barangay</span>
-                        <input type="text" name="other_barangay" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"/>
+                        <input type="text" id="other_barangay" name="other_barangay" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"/>
                         @error('other_barangay')
                             <p class="text-red-500 text-xs p-2">
                                 {{$message}}
                             </p>
                         @enderror    
                     </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const assignBrgySelect = document.getElementById('assignbrgy');
+                            const otherBrgyInput = document.getElementById('other_barangay');
+                
+                            // Function to toggle the 'disabled' attribute of the input field
+                            function toggleOtherBrgyInput() {
+                                if (assignBrgySelect.value === 'Others') {
+                                    otherBrgyInput.disabled = false;
+                                } else {
+                                    otherBrgyInput.disabled = true;
+                                    otherBrgyInput.value = ''; // Clear the field when disabled
+                                }
+                            }
+                
+                            // Initial call to set the input field state based on the default dropdown value
+                            toggleOtherBrgyInput();
+                
+                            // Add event listener to handle changes in dropdown selection
+                            assignBrgySelect.addEventListener('change', toggleOtherBrgyInput);
+                        });
+                    </script>
                     
                 </label>
 
