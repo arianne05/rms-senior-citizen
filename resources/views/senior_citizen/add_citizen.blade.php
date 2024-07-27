@@ -47,7 +47,7 @@
 
                         {{-- Middlename --}}
                         <div class="flex flex-col w-full">
-                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Middlename <span class="text-gray-400">[optional]</span></label>
+                            <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Middlename <span class="font-bold text-red-600">*</span></label>
                             <input type="text" name="middlename" value="{{old('middlename')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
                             @error('middlename')
                                 <p class="text-red-500 text-xs p-2">
@@ -152,32 +152,49 @@
                         {{-- Religion --}}
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Religion <span class="font-bold text-red-600">*</span></label>
-                            {{-- <input type="text" name="religion" value="{{old('religion')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"> --}}
-                            <select name="religion" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
+                            <select id="religion" name="religion" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
                                 <option value="" disabled {{ old('religion') == '' ? 'selected' : '' }}>Select Religion</option>
-                                <option value="Christian" {{ old('religion') == 'Single' ? 'selected' : '' }}>Christian</option>
-                                <option value="INC" {{ old('religion') == 'Single' ? 'selected' : '' }}>INC</option>
-                                <option value="Muslim" {{ old('religion') == 'Single' ? 'selected' : '' }}>Muslim</option>
-                                <option value="Roman Catholic" {{ old('religion') == 'Single' ? 'selected' : '' }}>Roman Catholic</option>
-                                <option value="Other" {{ old('religion') == 'Single' ? 'selected' : '' }}>Other</option>
+                                <option value="Christian" {{ old('religion') == 'Christian' ? 'selected' : '' }}>Christian</option>
+                                <option value="INC" {{ old('religion') == 'INC' ? 'selected' : '' }}>INC</option>
+                                <option value="Muslim" {{ old('religion') == 'Muslim' ? 'selected' : '' }}>Muslim</option>
+                                <option value="Roman Catholic" {{ old('religion') == 'Roman Catholic' ? 'selected' : '' }}>Roman Catholic</option>
+                                <option value="Other" {{ old('religion') == 'Other' ? 'selected' : '' }}>Other</option>
                             </select>
                             @error('religion')
-                                <p class="text-red-500 text-xs p-2">
-                                    {{$message}}
-                                </p>
+                                <p class="text-red-500 text-xs p-2">{{ $message }}</p>
                             @enderror    
-
                         </div>
 
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Other Religion</label>
-                            <input type="text" name="other_religion" value="{{old('religion')}}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase">
+                            <input id="other_religion" type="text" name="other_religion" value="{{ old('other_religion') }}" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm uppercase" disabled>
                             @error('other_religion')
-                                <p class="text-red-500 text-xs p-2">
-                                    {{$message}}
-                                </p>
+                                <p class="text-red-500 text-xs p-2">{{ $message }}</p>
                             @enderror    
                         </div>
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const religionSelect = document.getElementById('religion');
+                                const otherReligionInput = document.getElementById('other_religion');
+                    
+                                // Function to toggle the 'disabled' attribute of the input field
+                                function toggleOtherReligionInput() {
+                                    if (religionSelect.value === 'Other') {
+                                        otherReligionInput.disabled = false;
+                                    } else {
+                                        otherReligionInput.disabled = true;
+                                        otherReligionInput.value = ''; // Clear the field when disabled
+                                    }
+                                }
+                    
+                                // Initial call to set the input field state based on the default dropdown value
+                                toggleOtherReligionInput();
+                    
+                                // Add event listener to handle changes in dropdown selection
+                                religionSelect.addEventListener('change', toggleOtherReligionInput);
+                            });
+                        </script>
 
                         {{-- Sex --}}
                         <div class="flex flex-col align-center w-full">

@@ -89,7 +89,7 @@ class SeniorCitizenController extends Controller
         $validated = $request->validate([
             "lastname" => ['required', 'min:4'],
             "firstname" => ['required', 'min:4'],
-            "middlename" => ['nullable'],
+            "middlename" => ['required'],
             "suffix" => ['nullable'],
             "civil_status" => ['required'],
             "birthplace" => ['required'],
