@@ -138,8 +138,11 @@
                         <select name="age_class" id="" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm mb-2">
                             <option value="" {{ isset($class) ? 'selected' : '' }}>Choose Classification</option>
                             <option value="Centenarian" {{ isset($class) && $class == 'Centenarian' ? 'selected' : '' }}>Centenarian - 100 above</option>
-                            <option value="Octagenarian" {{ isset($class) && $class == 'Octagenarian' ? 'selected' : '' }}>Octagenarian - 80-89</option>
                             <option value="Nonagenarian" {{ isset($class) && $class == 'Nonagenarian' ? 'selected' : '' }}>Nonagenarian - 90-99</option>
+                            <option value="Octagenarian" {{ isset($class) && $class == 'Octagenarian' ? 'selected' : '' }}>Octagenarian - 80-89</option>
+                            <option value="Senior1" {{ isset($class) && $class == 'Senior1' ? 'selected' : '' }}>Senior Citizen - 70-79</option>
+                            <option value="Senior2" {{ isset($class) && $class == 'Senior2' ? 'selected' : '' }}>Senior Citizen - 60-69</option>
+                            
                         </select>
 
                         <div class="flex gap-2">

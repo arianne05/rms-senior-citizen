@@ -130,9 +130,9 @@
                             } elseif ($age >= 90) {
                                 echo 'Nonagenarian';
                             } elseif ($age >= 80) {
-                                echo 'Octogenarian';
+                                echo 'Octagenarian';
                             } else {
-                                echo 'NA';
+                                echo 'Senior Citizen';
                             }
                         @endphp
                     </td>

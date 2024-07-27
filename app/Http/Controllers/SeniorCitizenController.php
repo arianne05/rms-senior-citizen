@@ -408,8 +408,14 @@ class SeniorCitizenController extends Controller
                     case "Nonagenarian":
                         $applyAgeFilter($seniorsQuery, 90, 99);
                         break;
-                    case "Octogenarian":
+                    case "Octagenarian":
                         $applyAgeFilter($seniorsQuery, 80, 89);
+                        break;
+                    case "Senior1":
+                        $applyAgeFilter($seniorsQuery, 70, 79);
+                        break;
+                    case "Senior2":
+                        $applyAgeFilter($seniorsQuery, 60, 69);
                         break;
                 }
             
@@ -516,9 +522,16 @@ class SeniorCitizenController extends Controller
                     case "Nonagenarian":
                         $applyAgeFilter($seniorsQuery, 90, 99);
                         break;
-                    case "Octogenarian":
+                    case "Octagenarian":
                         $applyAgeFilter($seniorsQuery, 80, 89);
                         break;
+                    case "Senior1":
+                        $applyAgeFilter($seniorsQuery, 70, 79);
+                        break;
+                    case "Senior2":
+                        $applyAgeFilter($seniorsQuery, 60, 69);
+                        break;
+
                 }
             
                 // Applying the same logic for other queries
@@ -625,8 +638,14 @@ class SeniorCitizenController extends Controller
                     case "Nonagenarian":
                         $applyAgeFilter($seniorsQuery, 90, 99);
                         break;
-                    case "Octogenarian":
+                    case "Octagenarian":
                         $applyAgeFilter($seniorsQuery, 80, 89);
+                        break;
+                    case "Senior1":
+                        $applyAgeFilter($seniorsQuery, 70, 79);
+                        break;
+                    case "Senior2":
+                        $applyAgeFilter($seniorsQuery, 60, 69);
                         break;
                 }
             

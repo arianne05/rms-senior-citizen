@@ -310,8 +310,14 @@ class UserController extends Controller
             if ($class == "Nonagenarian"){
                 $seniorsQuery->whereRaw('YEAR(NOW()) - YEAR(birthdate) >= 90 AND YEAR(NOW()) - YEAR(birthdate) <= 99');
             }
-            if ($class == "Octogenarian"){
+            if ($class == "Octagenarian"){
                 $seniorsQuery->whereRaw('YEAR(NOW()) - YEAR(birthdate) >= 80 AND YEAR(NOW()) - YEAR(birthdate) <= 89');
+            }
+            if ($class == "Senior1"){
+                $seniorsQuery->whereRaw('YEAR(NOW()) - YEAR(birthdate) >= 70 AND YEAR(NOW()) - YEAR(birthdate) <= 79');
+            }
+            if ($class == "Senior2"){
+                $seniorsQuery->whereRaw('YEAR(NOW()) - YEAR(birthdate) >= 60 AND YEAR(NOW()) - YEAR(birthdate) <= 69');
             }
         }
         
