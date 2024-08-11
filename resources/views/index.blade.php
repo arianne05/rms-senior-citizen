@@ -44,7 +44,13 @@
       
                           <label class="block">
                               <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">Password</span>
-                              <input type="password" name="password" placeholder="Enter Password" class="peer mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"/>
+                              {{-- <input type="password" name="password" placeholder="Enter Password" class="peer mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"/> --}}
+                              <div class="flex w-4/2">
+                                  <input type="password" name="password" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"/>
+                                  <span id="togglePassword" class="mt-3 ml-3 cursor-pointer">
+                                      <span class="material-symbols-outlined">visibility</span>
+                                  </span>
+                              </div>
                               <p class="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">
                                   Please provide a valid email address.
                               </p>
@@ -71,4 +77,6 @@
               </div>
 {{-- Component --}}
 <x-loginerror />
+<x-view_pass />
+
 @include('partials.footer')
