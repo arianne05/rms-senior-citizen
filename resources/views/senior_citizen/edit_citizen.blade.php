@@ -64,7 +64,7 @@
                         <div class="flex flex-col w-full">
                             <label class="mb-2 mt-2 text-sm font-regular text-gray-500">Suffix</label>
                             <select name="suffix" class="w-auto border border-slate-300 rounded-xl py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
-                                <option value="" disabled {{ $citizens->suffix == '' ? 'selected' : '' }}>Select Suffix</option>
+                                <option value="" {{ $citizens->suffix == '' ? 'selected' : '' }}>Select Suffix</option>
                                 <option value="Jr." {{ $citizens->suffix == 'Jr.' ? 'selected' : '' }}>Jr.</option>
                                 <option value="Sr." {{ $citizens->suffix == 'Sr.' ? 'selected' : '' }}>Sr.</option>
                                 <option value="I" {{ $citizens->suffix == 'I' ? 'selected' : '' }}>I</option>
