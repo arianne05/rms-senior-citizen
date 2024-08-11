@@ -4,7 +4,7 @@
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
-                confirmButton: "btn btn-success",
+                confirmButton: "#28a745",
                 cancelButton: "btn btn-danger"
             },
             buttonsStyling: true
@@ -17,7 +17,7 @@
             showCancelButton: true,
             confirmButtonText: "Yes, delete it!",
             cancelButtonText: "No, cancel",
-            reverseButtons: true
+            reverseButtons: true,
         }).then((result) => {
             if (result.isConfirmed) {
                 // Redirect to the specified URL
@@ -26,9 +26,26 @@
                 swalWithBootstrapButtons.fire({
                     title: "Cancelled",
                     text: "The account is safe",
-                    icon: "error"
+                    icon: "error",
+                    confirmButtonColor: "#3085d6"
                 });
             }
         });
+
+        // Apply custom button styles
+        const confirmButton = document.querySelector('.swal2-confirm');
+        const cancelButton = document.querySelector('.swal2-cancel');
+
+        if (confirmButton) {
+            confirmButton.style.backgroundColor = '#28a745'; // Custom green color
+            confirmButton.style.borderColor = '#28a745';
+            confirmButton.style.color = '#fff';
+        }
+
+        if (cancelButton) {
+            cancelButton.style.backgroundColor = '#dc3545'; // Custom red color
+            cancelButton.style.borderColor = '#dc3545';
+            cancelButton.style.color = '#fff';
+        }
     });
 </script>

@@ -194,8 +194,9 @@
                         <td class="flex gap-x-3">
                             <a href="/edit_citizen/{{$senior->id}}"><span class="material-symbols-outlined">edit</span></a>
                             @if(auth()->user()->position == 'Admin')
-                                <a href="/delete_citizen/{{$senior->id}}"><span class="material-symbols-outlined">delete</span></a>
+                                <a href="/delete_citizen/{{$senior->id}}" id="delete_confirmation"><span class="material-symbols-outlined">delete</span></a>
                             @endif
+                            
                             <a href="/view_citizen/{{$senior->id}}"><span class="material-symbols-outlined">visibility</span></a>
                         </td>
                     </tr>
@@ -239,6 +240,7 @@
 </script>
 
 {{-- Component --}}
+<x-delete_message />
 <x-message />
 {{-- <x-notif /> --}}
 

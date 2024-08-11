@@ -48,5 +48,6 @@
 </section>
 
 {{-- Component --}}
+<x-delete_message />
 <x-message />
 @include('partials.footer')
