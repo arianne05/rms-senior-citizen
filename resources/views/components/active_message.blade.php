@@ -30,5 +30,20 @@
                 });
             }
         });
+        // Apply custom button styles
+        const confirmButton = document.querySelector('.swal2-confirm');
+        const cancelButton = document.querySelector('.swal2-cancel');
+
+        if (confirmButton) {
+            confirmButton.style.backgroundColor = '#28a745'; // Custom green color
+            confirmButton.style.borderColor = '#28a745';
+            confirmButton.style.color = '#fff';
+        }
+
+        if (cancelButton) {
+            cancelButton.style.backgroundColor = '#dc3545'; // Custom red color
+            cancelButton.style.borderColor = '#dc3545';
+            cancelButton.style.color = '#fff';
+        }
     });
 </script>
