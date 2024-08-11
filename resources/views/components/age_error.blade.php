@@ -21,7 +21,8 @@
     Swal.fire({
     title: "Cannot Add User",
     text: "{{session('error')}}",
-    icon: "error"
+    icon: "error",
+    confirmButtonColor: "#3085d6"
     });
 </script>
 @endif
